@@ -1,0 +1,1 @@
+"""Final catalogue node mapping."""

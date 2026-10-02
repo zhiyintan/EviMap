@@ -1,0 +1,258 @@
+{
+  "modes": {
+    "nonother": {
+      "per_corpus": {
+        "peer_review": {
+          "EviMap": {
+            "n": 96,
+            "coherence": 4.49,
+            "label_soundness": 4.344
+          },
+          "TnT-LLM-style": {
+            "n": 24,
+            "coherence": 3.583,
+            "label_soundness": 3.458
+          },
+          "TopicGPT-style": {
+            "n": 24,
+            "coherence": 3.5,
+            "label_soundness": 3.458
+          }
+        },
+        "city_hotel": {
+          "EviMap": {
+            "n": 96,
+            "coherence": 4.5,
+            "label_soundness": 4.323
+          },
+          "TnT-LLM-style": {
+            "n": 28,
+            "coherence": 4.321,
+            "label_soundness": 4.107
+          },
+          "TopicGPT-style": {
+            "n": 24,
+            "coherence": 4.667,
+            "label_soundness": 4.625
+          }
+        },
+        "music_reviews": {
+          "EviMap": {
+            "n": 96,
+            "coherence": 4.5,
+            "label_soundness": 4.26
+          },
+          "TnT-LLM-style": {
+            "n": 31,
+            "coherence": 4.129,
+            "label_soundness": 4
+          },
+          "TopicGPT-style": {
+            "n": 24,
+            "coherence": 4.458,
+            "label_soundness": 4.292
+          }
+        },
+        "career_jobs": {
+          "EviMap": {
+            "n": 96,
+            "coherence": 4.427,
+            "label_soundness": 4.354
+          },
+          "TnT-LLM-style": {
+            "n": 32,
+            "coherence": 3.594,
+            "label_soundness": 3.531
+          },
+          "TopicGPT-style": {
+            "n": 24,
+            "coherence": 3.042,
+            "label_soundness": 3.042
+          }
+        },
+        "recipes": {
+          "EviMap": {
+            "n": 96,
+            "coherence": 4.719,
+            "label_soundness": 4.438
+          },
+          "TnT-LLM-style": {
+            "n": 32,
+            "coherence": 4.125,
+            "label_soundness": 3.688
+          },
+          "TopicGPT-style": {
+            "n": 24,
+            "coherence": 2.625,
+            "label_soundness": 2.333
+          }
+        },
+        "eu_debates": {
+          "EviMap": {
+            "n": 96,
+            "coherence": 4.521,
+            "label_soundness": 4.281
+          },
+          "TnT-LLM-style": {
+            "n": 32,
+            "coherence": 4,
+            "label_soundness": 3.938
+          },
+          "TopicGPT-style": {
+            "n": 24,
+            "coherence": 3.292,
+            "label_soundness": 3.25
+          }
+        }
+      },
+      "macro": {
+        "EviMap": {
+          "coherence": 4.526,
+          "label_soundness": 4.333
+        },
+        "TnT-LLM-style": {
+          "coherence": 3.959,
+          "label_soundness": 3.787
+        },
+        "TopicGPT-style": {
+          "coherence": 3.597,
+          "label_soundness": 3.5
+        }
+      },
+      "evimap_wins": {
+        "coherence": 5,
+        "label_soundness": 4
+      }
+    },
+    "withother": {
+      "per_corpus": {
+        "peer_review": {
+          "EviMap": {
+            "n": 96,
+            "coherence": 4.51,
+            "label_soundness": 4.375
+          },
+          "TnT-LLM-style": {
+            "n": 24,
+            "coherence": 3.542,
+            "label_soundness": 3.458
+          },
+          "TopicGPT-style": {
+            "n": 24,
+            "coherence": 3.5,
+            "label_soundness": 3.375
+          },
+          "evimap_other_n": 1
+        },
+        "city_hotel": {
+          "EviMap": {
+            "n": 96,
+            "coherence": 4.521,
+            "label_soundness": 4.312
+          },
+          "TnT-LLM-style": {
+            "n": 28,
+            "coherence": 4.357,
+            "label_soundness": 4.036
+          },
+          "TopicGPT-style": {
+            "n": 24,
+            "coherence": 4.625,
+            "label_soundness": 4.625
+          },
+          "evimap_other_n": 2
+        },
+        "music_reviews": {
+          "EviMap": {
+            "n": 96,
+            "coherence": 4.427,
+            "label_soundness": 4.24
+          },
+          "TnT-LLM-style": {
+            "n": 31,
+            "coherence": 4.194,
+            "label_soundness": 4.065
+          },
+          "TopicGPT-style": {
+            "n": 24,
+            "coherence": 4.417,
+            "label_soundness": 4.333
+          },
+          "evimap_other_n": 1
+        },
+        "career_jobs": {
+          "EviMap": {
+            "n": 96,
+            "coherence": 3.156,
+            "label_soundness": 2.521
+          },
+          "TnT-LLM-style": {
+            "n": 32,
+            "coherence": 3.562,
+            "label_soundness": 3.531
+          },
+          "TopicGPT-style": {
+            "n": 24,
+            "coherence": 2.958,
+            "label_soundness": 2.958
+          },
+          "evimap_other_n": 72
+        },
+        "recipes": {
+          "EviMap": {
+            "n": 96,
+            "coherence": 4.708,
+            "label_soundness": 4.448
+          },
+          "TnT-LLM-style": {
+            "n": 32,
+            "coherence": 4.125,
+            "label_soundness": 3.656
+          },
+          "TopicGPT-style": {
+            "n": 24,
+            "coherence": 2.625,
+            "label_soundness": 2.25
+          },
+          "evimap_other_n": 1
+        },
+        "eu_debates": {
+          "EviMap": {
+            "n": 96,
+            "coherence": 4.5,
+            "label_soundness": 4.312
+          },
+          "TnT-LLM-style": {
+            "n": 32,
+            "coherence": 4.031,
+            "label_soundness": 3.906
+          },
+          "TopicGPT-style": {
+            "n": 24,
+            "coherence": 3.375,
+            "label_soundness": 3.417
+          },
+          "evimap_other_n": 1
+        }
+      },
+      "macro": {
+        "EviMap": {
+          "coherence": 4.304,
+          "label_soundness": 4.035
+        },
+        "TnT-LLM-style": {
+          "coherence": 3.969,
+          "label_soundness": 3.775
+        },
+        "TopicGPT-style": {
+          "coherence": 3.583,
+          "label_soundness": 3.493
+        }
+      },
+      "evimap_wins": {
+        "coherence": 4,
+        "label_soundness": 3
+      }
+    }
+  }
+}

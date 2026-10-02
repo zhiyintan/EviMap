@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+!.env.example
+runs/
+site/
+dist/
+release_assets/
+upload_dataset/
+baselines/*/outputs/
+experiments/evaluation/
+*.log
+*.npy
+.DS_Store

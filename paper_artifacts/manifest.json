@@ -1,0 +1,1829 @@
+{
+  "schema_version": 1,
+  "paper": "arXiv:2609.06664v1",
+  "release_tag": "paper-artifacts-v1",
+  "release_base_url": "https://github.com/zhiyintan/EviMap/releases/download/paper-artifacts-v1",
+  "cohort_policy": "Published cohorts must never be smaller than Table 2.",
+  "corpora": [
+    {
+      "id": "peer_review",
+      "name": "ICLR peer reviews",
+      "minimum_documents": 2108,
+      "data_dir": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data",
+      "counts": {
+        "documents": 2108,
+        "linked_documents": 2108,
+        "topic_evidence_links": 7951,
+        "spans": 18477,
+        "unaligned_phrases": 53,
+        "groups": 110,
+        "leaf_nodes_including_other": 221
+      },
+      "archive": "evimap-peer_review.tar.gz",
+      "archive_bytes": 17657807,
+      "archive_sha256": "ad97b739e62085ee17f48944f07ff4e946cfaa02bc5ffcd164aa8406983cf1ff",
+      "files": [
+        {
+          "path": "baselines/tnt_llm_style/outputs/peer_review_full_shared/assignments.jsonl",
+          "bytes": 1254514,
+          "sha256": "1c2ee3d8a71e2c0d60cf8803e7f842a490564e936056dba427860f94478a6fa1"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/peer_review_full_shared/child_taxonomy_parts.jsonl",
+          "bytes": 3475,
+          "sha256": "4312b8734ab1b48aca537105f42d1216bdf1f9e529f315ce095f39456f676462"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/peer_review_full_shared/report.md",
+          "bytes": 4852,
+          "sha256": "b2e1590e6a830ecc2d9e8b63cbe7e9e02e6638276bdd6b2bd59bcb7714163af8"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/peer_review_full_shared/sampled_documents.jsonl",
+          "bytes": 9036334,
+          "sha256": "42afaaac1ae56f7b382e080b2acd55f6984e678781976357d33aeb7fbf420b97"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/peer_review_full_shared/summaries.jsonl",
+          "bytes": 139695,
+          "sha256": "65fc630265b8010c2680d066c0072893ce36ad287cf41eff8d3d646f47ccadc5"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/peer_review_full_shared/summary.json",
+          "bytes": 1389,
+          "sha256": "fdb31f8deb9240e768666766cf0e58b8537f86e2be792f8cfda3e3eb2ed89d78"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/peer_review_full_shared/taxonomy_tree.json",
+          "bytes": 6521,
+          "sha256": "c17a468f0129362c79de9ed01c7c2d13323163d1cdad48f45149f187b4db4e19"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/peer_review_full_shared/taxonomy_tree_raw.json",
+          "bytes": 5111,
+          "sha256": "41397cce89ecf64bcb87d7d022a4ee0380272dbc6dc8621b279f6180584815e9"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/peer_review_full_shared/top_taxonomy.json",
+          "bytes": 3739,
+          "sha256": "e34b01e6674a56c9d615618152e82de53359b17ecb22a7ec58bc56c69c65a010"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/peer_review_full_shared/top_taxonomy_raw.jsonl",
+          "bytes": 174626,
+          "sha256": "05648849e8e99a25d56396a8d705e1e696b97af6ebc9cfb7551b325c33897067"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/peer_review_full_shared/assignments.jsonl",
+          "bytes": 1223659,
+          "sha256": "018f902380ff5213956065097cbf67be59f5f913fa0e31a2eb54d0c69734e597"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/peer_review_full_shared/generated_topics_raw.jsonl",
+          "bytes": 383813,
+          "sha256": "66ba5741950679653647ea42a3b4eb328d6bd301ba9a54fa9b14c840d3580760"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/peer_review_full_shared/refine_raw.json",
+          "bytes": 21078,
+          "sha256": "3fe9613f7ffa27f7983dbc2f01216d36dc85cca7c2dded81765f853a7aadfeb0"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/peer_review_full_shared/report.md",
+          "bytes": 5439,
+          "sha256": "2de76d254d5909a10cac538d631a6cf060c58b134bb2f6a7edf9711702072e8d"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/peer_review_full_shared/sampled_documents.jsonl",
+          "bytes": 9036334,
+          "sha256": "42afaaac1ae56f7b382e080b2acd55f6984e678781976357d33aeb7fbf420b97"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/peer_review_full_shared/summary.json",
+          "bytes": 1140,
+          "sha256": "018ec45c545a5007e020b59263d300f4355187a717d8b9fe93b68de11fe78a11"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/peer_review_full_shared/topics_refined.json",
+          "bytes": 6021,
+          "sha256": "21fe9acc0b8ca7309cde8fd8a748b3ab4d5f28d02af2d48f3342cecf8d91010a"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_peer_review_full_shared/eval_items.jsonl",
+          "bytes": 130872,
+          "sha256": "513379a0ca8fc3287e101a3835970055945f0918680400318c132369168f936d"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_peer_review_full_shared/evimap_diagnostic_slices.json",
+          "bytes": 1759,
+          "sha256": "71e21b018cd41accfdca3d47b33e618e3d718d20d30ecdb2f73f6bec73314cd6"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_peer_review_full_shared/judgments.jsonl",
+          "bytes": 170974,
+          "sha256": "3dbec2f4437f9d960416c045c0b9532512cd31689b91dc1c0784faacb9a5ac4f"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_peer_review_full_shared/report.md",
+          "bytes": 4405,
+          "sha256": "08e077438fef0b52fcbeb25a0fc2f618524a34bf204dc3469fa058fe0920c91b"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_peer_review_full_shared/summary.json",
+          "bytes": 1916,
+          "sha256": "7a1fb93a741d30471d97412e05239896cc7695258eb83c399b18a6400e041d12"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_peer_review_full_shared_nonother/eval_items.jsonl",
+          "bytes": 130945,
+          "sha256": "c9da281bb27796c3d49a2163262bfc63bb31b0cb834d3a7ecfc3a5dcb80e7704"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_peer_review_full_shared_nonother/evimap_diagnostic_slices.json",
+          "bytes": 1569,
+          "sha256": "86feac55ef13318e6be8eb445aae133bd30339103a5c2f5195b9e471a4f90900"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_peer_review_full_shared_nonother/judgments.jsonl",
+          "bytes": 170954,
+          "sha256": "0fae859f90dbe6d930cceba9cc5c8a43b3b59147e98eae54859846240c85533c"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_peer_review_full_shared_nonother/report.md",
+          "bytes": 4326,
+          "sha256": "1cdef0ee9729885062535ec28cf11b56fa5bdc47cd0a3d8ac02856274c80a13c"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_peer_review_full_shared_nonother/summary.json",
+          "bytes": 1884,
+          "sha256": "3f619d55889b6895c791240708717f62f4dceb42f4384e44b56dd6ff5b0a3874"
+        },
+        {
+          "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/accepted_merged_refined_nodes.jsonl",
+          "bytes": 486485,
+          "sha256": "f26234af628ec133b06e632bee9c904cf7578e7c37d3922c5487802790e1b2fe"
+        },
+        {
+          "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/accepted_refined_nodes.jsonl",
+          "bytes": 805705,
+          "sha256": "6998e7712585a509e91fcdcb55b3044f5e6a4991d43ec02001167b222ed7acbe"
+        },
+        {
+          "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/aspect_trees.jsonl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/aspects.jsonl",
+          "bytes": 37606,
+          "sha256": "2d3c94eaca35cbe22e443d77d5114a92b9974e9478b15029f4a293a8a0e85c2c"
+        },
+        {
+          "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/aspects_pre_coassoc.jsonl",
+          "bytes": 270676,
+          "sha256": "b6c8596d47d27752ff245f83de7a527ac69726c30c487af220ff21843e239f44"
+        },
+        {
+          "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/atom_rebasket_baskets.jsonl",
+          "bytes": 666965,
+          "sha256": "d8d62285e347b3b54e8b04cad24c0d02472841247ddab1c23933b793716abbbc"
+        },
+        {
+          "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/atom_rebasket_validation.jsonl",
+          "bytes": 287518,
+          "sha256": "42039641429cc2c413198cebd4e8757393970d029f6174722395e489a64112bb"
+        },
+        {
+          "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/atom_subclusters.jsonl",
+          "bytes": 121148,
+          "sha256": "f9c22811f35c387089b5d70b7abddb7dbdaddc31d5a22a2d82088276e353b94d"
+        },
+        {
+          "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/atom_subclusters_from_rebasket.jsonl",
+          "bytes": 869919,
+          "sha256": "e701d4f34db5ac296a0e7e7717e9cc8897422e0acd9a18f73945d0bfef081b45"
+        },
+        {
+          "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/basket_merge_candidates.jsonl",
+          "bytes": 108420609,
+          "sha256": "5381781f357686230169b5d8a3d72ca0a0549c5185141d10ce1b9619756e1d35"
+        },
+        {
+          "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/bottom_up_aspect_assignments.jsonl",
+          "bytes": 143193,
+          "sha256": "102dba1dadaee673af9120ab02a4264d8ac3c9db50545892b39123dbe151719b"
+        },
+        {
+          "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/doc_all_phrases.jsonl",
+          "bytes": 3461667,
+          "sha256": "8585c46ea091e7fdbe8c0916420d0e65a69196e8a0ea51a5a990593e701ae689"
+        },
+        {
+          "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/document_links.jsonl",
+          "bytes": 445228,
+          "sha256": "f9a3b86155449a77bfcb6197bbae46e6ac38359cfee1c097953701d2b5af36a6"
+        },
+        {
+          "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/documents.jsonl",
+          "bytes": 9036334,
+          "sha256": "ef357f4c2b39967699bdfc7e103c72c7848b2cca058f9d3466243eba6b09aa9c"
+        },
+        {
+          "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/evidence_phrases.jsonl",
+          "bytes": 3913217,
+          "sha256": "4b51cf42047c48861c75d596c323588862243b02e937d3349606f28f3eae6b0b"
+        },
+        {
+          "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/facets_by_sub.jsonl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/llm_aspect_facets.jsonl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/llm_atom_facets.jsonl",
+          "bytes": 53752,
+          "sha256": "6f2a86ac0f2302a65db247f3f6f700edc962430662e3627433acbd36a24baae3"
+        },
+        {
+          "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/llm_atom_names.jsonl",
+          "bytes": 168411,
+          "sha256": "9e25e03e952a3f37995e9092cdbcb272cd258757eea730b147f6bb6c4335866a"
+        },
+        {
+          "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/merged_refined_nodes.jsonl",
+          "bytes": 686563,
+          "sha256": "90aad5ad4f8d4ab4a66595e55565915c79a1dd4b5f825071b597451a4a8bdb6e"
+        },
+        {
+          "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/merged_refined_phrase_assignments.jsonl",
+          "bytes": 470958,
+          "sha256": "29e9ee44214d987f177cb13f632a66bd8f1576a9dad44c847f5a85ab65d9a1f7"
+        },
+        {
+          "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/method_comparison.json",
+          "bytes": 214,
+          "sha256": "48a6b1ab3b884ec1b2170f0af98af9914c7515234416221511845764eeffd707"
+        },
+        {
+          "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/nodes.jsonl",
+          "bytes": 613758,
+          "sha256": "aa59f731ceb6ddcb2fc1883a5cadfe3d81194dda664731b0de315c0cd861e199"
+        },
+        {
+          "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/nodes_pre_v5.jsonl",
+          "bytes": 800455,
+          "sha256": "f69f733b37cae5f16b2441ddd98869ce6f4f591f84b8596ee7144379dc9cc7dc"
+        },
+        {
+          "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/pending_recovery_candidates.jsonl",
+          "bytes": 266756,
+          "sha256": "cf3b9570086a3c4dbc3736c130cca65a0d0fa40b61ff35acaabdedbc730ab2f3"
+        },
+        {
+          "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/pending_recovery_llm_prompts.jsonl",
+          "bytes": 268006,
+          "sha256": "dbc343db5a697d2790a64d89773bfa0070eb5268ec611bf173768517e8fcb240"
+        },
+        {
+          "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/pending_recovery_summary.json",
+          "bytes": 2421,
+          "sha256": "33dd071032faa193727e996791a38563702ed8268dfc832c102a115bf5bb3a1e"
+        },
+        {
+          "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/rebasket_merge_summary.json",
+          "bytes": 108637,
+          "sha256": "51875058cf671c0e04d331b022ba34d1426289a434d80d78b0a1b0e23233e87e"
+        },
+        {
+          "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/refined_nodes.jsonl",
+          "bytes": 1207316,
+          "sha256": "b3c32e35eee50488c1f6177867b2634f460b38a48bf98abbb0a3cedb623cd2cc"
+        },
+        {
+          "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/refined_phrase_assignments.jsonl",
+          "bytes": 315023,
+          "sha256": "8e29ef7e28810d4dc948693efdabcd7c60cf77a62a45f17626b7d1d2e1d7609e"
+        },
+        {
+          "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/statistical_pre_assignments.jsonl",
+          "bytes": 414003,
+          "sha256": "fd659d4050e9b48b663ed574ef31e433811d1cf20e71b350c316c76b21d6a6bb"
+        },
+        {
+          "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/statistical_pre_baskets.jsonl",
+          "bytes": 822457,
+          "sha256": "9b3e821bec1579992f9bd167ad9ba4db2da07d8037e70521036d1a9fe785c6b4"
+        },
+        {
+          "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/statistical_pre_rebasket_summary.json",
+          "bytes": 511,
+          "sha256": "4a5af8dfd45f3e5ad958135c6ac1669049de2655aab48ab669545173571a6cec"
+        }
+      ]
+    },
+    {
+      "id": "city_hotel",
+      "name": "TripAdvisor hotel reviews",
+      "minimum_documents": 2864,
+      "data_dir": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data",
+      "counts": {
+        "documents": 2864,
+        "linked_documents": 2864,
+        "topic_evidence_links": 15597,
+        "spans": 19277,
+        "unaligned_phrases": 121,
+        "groups": 52,
+        "leaf_nodes_including_other": 110
+      },
+      "archive": "evimap-city_hotel.tar.gz",
+      "archive_bytes": 10429923,
+      "archive_sha256": "bdaabc48500a554acf07d77427e22041b81758c98cc6c78493feb03eb40601b5",
+      "files": [
+        {
+          "path": "baselines/tnt_llm_style/outputs/city_hotel_full_shared/assignments.jsonl",
+          "bytes": 1281926,
+          "sha256": "ee62e3cfc182ca7aee1b6647443bc346f38511a10009317ee94cd0f7fc2a8dc2"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/city_hotel_full_shared/child_taxonomy_parts.jsonl",
+          "bytes": 3988,
+          "sha256": "8da96aa40ce7e91074c318696f9e3184584e88addf48aeecb70e8754a92bee96"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/city_hotel_full_shared/report.md",
+          "bytes": 5328,
+          "sha256": "0ef2068bb5845829835312716cae4a5b6fdeab03b6f9b597c87fa81d27c4e03f"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/city_hotel_full_shared/sampled_documents.jsonl",
+          "bytes": 3095199,
+          "sha256": "7b54ddb6ef0c63241e5632856fdf858a631ae0c786333b32d7d227605ffea06d"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/city_hotel_full_shared/summaries.jsonl",
+          "bytes": 113608,
+          "sha256": "76341a84e37528b428fcb0325a515697ba92524fe5173a6e1fd74447ca386251"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/city_hotel_full_shared/summary.json",
+          "bytes": 1454,
+          "sha256": "51985628995b8927f26c3ca8776847a73f2facc998ba0d3f4e9dfbe0e89dd308"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/city_hotel_full_shared/taxonomy_tree.json",
+          "bytes": 7294,
+          "sha256": "a942a6bf66218a4c4c20e4421d184bb2fdd4eb530022ac2f3e75ed0da7232a0d"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/city_hotel_full_shared/taxonomy_tree_raw.json",
+          "bytes": 5763,
+          "sha256": "b10c0d755167ee7c1f5fd713e8f6c60369fc2c890fad133ba0d85932f26fa7d5"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/city_hotel_full_shared/top_taxonomy.json",
+          "bytes": 3487,
+          "sha256": "ee991a414f5b8751de45a254c17fc6dfa45cbdeee65db98aa80c3308bfd05cd9"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/city_hotel_full_shared/top_taxonomy_raw.jsonl",
+          "bytes": 145546,
+          "sha256": "298b64762d9a991552dd560c4cdfa67061dcffc072b0b9bf5421108e9388d770"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/city_hotel_full_shared/assignments.jsonl",
+          "bytes": 2646856,
+          "sha256": "5aeae702e026c8b8a8f1ee2022ddcf0038bd25aba75a642e5fa7f68cd71471f9"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/city_hotel_full_shared/generated_topics_raw.jsonl",
+          "bytes": 330379,
+          "sha256": "1ed98b35ddc8070c1197a4435fb5ee53f423fb787c72913d42e4947d3f65050a"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/city_hotel_full_shared/refine_raw.json",
+          "bytes": 18913,
+          "sha256": "c8d9b3fc9ba7a9ff4aaa246cdb13681ed2589967249d38ba1fa79651996b3c88"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/city_hotel_full_shared/report.md",
+          "bytes": 5011,
+          "sha256": "a2bd6a8ecf4a064bfc51d72f7e90d40a5582cfa27f762b3c6b8b69e4822b5c11"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/city_hotel_full_shared/sampled_documents.jsonl",
+          "bytes": 3095199,
+          "sha256": "7b54ddb6ef0c63241e5632856fdf858a631ae0c786333b32d7d227605ffea06d"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/city_hotel_full_shared/summary.json",
+          "bytes": 1155,
+          "sha256": "b25b9dacc6cfbada997ca877e6b771a7f33e7191c25b461648740ce3c86deb03"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/city_hotel_full_shared/topics_refined.json",
+          "bytes": 5578,
+          "sha256": "f55f5610ef7149e24fe7593901577def791272b32b97c8109013dc1158f3e4aa"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_city_hotel_full_shared/eval_items.jsonl",
+          "bytes": 104048,
+          "sha256": "725c5a9e56a7bbc400e083125cb025d7df34d26f38d4a0ce8e5e2e92663b3f81"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_city_hotel_full_shared/evimap_diagnostic_slices.json",
+          "bytes": 1760,
+          "sha256": "6f3abe6200c8434b532b193c693205f92f48d6685050369733c80b5ffa3600c6"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_city_hotel_full_shared/judgments.jsonl",
+          "bytes": 144750,
+          "sha256": "28aeec9bfd2e57ad3f3ba66f8c45d83ae716a7711336e68719ca96a2fc526e14"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_city_hotel_full_shared/report.md",
+          "bytes": 4086,
+          "sha256": "0a5d16b0de45ba8550fccaeb0c0649e979c211763c31bdbee7c0f163d3c3f522"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_city_hotel_full_shared/summary.json",
+          "bytes": 1865,
+          "sha256": "800d1175ef851ac72b598900d18a63f4504b06615315b67cd07922bbc92d58f8"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_city_hotel_full_shared_nonother/eval_items.jsonl",
+          "bytes": 104104,
+          "sha256": "d901cabe858a325bf60ad775e8437b7890cdc16c3170c0915e27e73a9c957a38"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_city_hotel_full_shared_nonother/evimap_diagnostic_slices.json",
+          "bytes": 1344,
+          "sha256": "44bbc1e2ccbf946baec8a926ab0abd2ce778e7e2e1f82c76c57897b79cbdef84"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_city_hotel_full_shared_nonother/judgments.jsonl",
+          "bytes": 144849,
+          "sha256": "f0a6ff3387e2b02d1c8f77b86c202756a1d99605a745690f85f57cc03788b744"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_city_hotel_full_shared_nonother/report.md",
+          "bytes": 3944,
+          "sha256": "fc2d28f259826b1bd9edfb90af1f662bafa946dd1b88700a60e4f41ad2daa469"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_city_hotel_full_shared_nonother/summary.json",
+          "bytes": 1832,
+          "sha256": "4d144d9f1cc23303c6a1a27483b6c0c2a3051383d56209214cda33e9fa7dbde5"
+        },
+        {
+          "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/accepted_merged_refined_nodes.jsonl",
+          "bytes": 532486,
+          "sha256": "f9b28123fca32768fd2e0c5340c03696f5b91488bceff7adaf535b3ed38e7136"
+        },
+        {
+          "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/accepted_refined_nodes.jsonl",
+          "bytes": 778508,
+          "sha256": "b29ca3078f7fe1848342056484c01a4bc03c117f0c8d5944a445671ae85ecb41"
+        },
+        {
+          "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/aspect_trees.jsonl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/aspects.jsonl",
+          "bytes": 20753,
+          "sha256": "6d8608802b0616b0683f217331c7c4cdfe93e9db3981ad153d8181660caf1e32"
+        },
+        {
+          "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/aspects_pre_coassoc.jsonl",
+          "bytes": 179015,
+          "sha256": "9d1127602236478994418f9bdfe7414dae26b0e7647f0d6f17b0cfb00bf60d30"
+        },
+        {
+          "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/atom_rebasket_baskets.jsonl",
+          "bytes": 574418,
+          "sha256": "c10b45df8795211f274e61f7956904a4b9cae609fb2120e86812cd9c6dbc6583"
+        },
+        {
+          "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/atom_rebasket_validation.jsonl",
+          "bytes": 279699,
+          "sha256": "69f03533e7ca29485a6773468c1d0ce7b451c27dbd0c9e8ba403e46cebc7939e"
+        },
+        {
+          "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/atom_subclusters.jsonl",
+          "bytes": 87816,
+          "sha256": "4b8e8393acc82b6e0b1f28345b7eda0dee3ef5265c0f92d9d70ff734dc016d8e"
+        },
+        {
+          "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/atom_subclusters_from_rebasket.jsonl",
+          "bytes": 911883,
+          "sha256": "4e166141c5918d0e6fb8be718eccca968a8ba18132d05cf58a04dc5adf5c2f08"
+        },
+        {
+          "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/basket_merge_candidates.jsonl",
+          "bytes": 60906502,
+          "sha256": "02b4a3362600e63cd0e720f6ba240e7c24092b813108e184cb3ce65fdef55435"
+        },
+        {
+          "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/bottom_up_aspect_assignments.jsonl",
+          "bytes": 97199,
+          "sha256": "6645672152526114b3fa458e6776226f2142a28e634b3e97e0709801c56412c5"
+        },
+        {
+          "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/doc_all_phrases.jsonl",
+          "bytes": 3559769,
+          "sha256": "05f3793115e089bbed8354c87ef7e25202b3a98e193f9b8634b963b19becf9f4"
+        },
+        {
+          "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/document_links.jsonl",
+          "bytes": 834437,
+          "sha256": "ad42331a17394a51233036433898294f4a48dd849f41b76f9171844061f9e1bf"
+        },
+        {
+          "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/documents.jsonl",
+          "bytes": 3095199,
+          "sha256": "00eb622c376f4a1379c5a85b1b9bfe00e5bea61b91e22f8bdd95e99218b8f64a"
+        },
+        {
+          "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/evidence_phrases.jsonl",
+          "bytes": 5138563,
+          "sha256": "1e754817007c9ceddc046fe0ebac499964a6b2f5adc06fbc83a06d1f23dbbebc"
+        },
+        {
+          "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/facets_by_sub.jsonl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/llm_aspect_facets.jsonl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/llm_atom_facets.jsonl",
+          "bytes": 39226,
+          "sha256": "495c1645c7419c5d86a7ee4a27f64a9ca50fbdc6d8a96a87ede0a2737ec308b6"
+        },
+        {
+          "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/llm_atom_names.jsonl",
+          "bytes": 108049,
+          "sha256": "bc9538d8a89d7ad4bbbd51292c04b9d1d592175a61203902676fb4dd72fb0326"
+        },
+        {
+          "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/merged_refined_nodes.jsonl",
+          "bytes": 684600,
+          "sha256": "bf1fa4412aecfce9787696b31b22b0fc8157867c6b8f18b5cc32ba5363965647"
+        },
+        {
+          "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/merged_refined_phrase_assignments.jsonl",
+          "bytes": 350889,
+          "sha256": "150efc2d73e6ce323c11d5b435b494d28803f881cf666000b39d7870ffc11a1a"
+        },
+        {
+          "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/method_comparison.json",
+          "bytes": 213,
+          "sha256": "def1b730b1e745d5e09d18c6e75e103c0da944e86e9830ced3f2cc2670eeb843"
+        },
+        {
+          "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/nodes.jsonl",
+          "bytes": 710121,
+          "sha256": "5cdbc5db1fda2e608d0460be2352fade7898fa4715a61d656543a58e544ad883"
+        },
+        {
+          "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/nodes_pre_v5.jsonl",
+          "bytes": 764876,
+          "sha256": "66ac2a312fc800375158f518241f35304337ea99bf3ceada6a0dca4e179530c1"
+        },
+        {
+          "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/pending_recovery_candidates.jsonl",
+          "bytes": 115587,
+          "sha256": "e0e315133d2a10cd26a445e5746c1dc7e51700687348356c6d103d8fa236ce04"
+        },
+        {
+          "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/pending_recovery_llm_prompts.jsonl",
+          "bytes": 116401,
+          "sha256": "28bc2188c8a4b6e0aab986685f17c926bf9d928a5bcaea1739fb6736ae079983"
+        },
+        {
+          "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/pending_recovery_summary.json",
+          "bytes": 1385,
+          "sha256": "96d392fbfc76dddc0ed04bf5fa7052f351c16bbdd3ec60ef82e42cfaae455221"
+        },
+        {
+          "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/rebasket_merge_summary.json",
+          "bytes": 105206,
+          "sha256": "784a6e4daff16bf195bb4e908698ea2de38e34afa0a3734e3df3b2ef252f5973"
+        },
+        {
+          "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/refined_nodes.jsonl",
+          "bytes": 1086960,
+          "sha256": "b5232c2d8e4f4f00e6217fa453d805c47907cb5e470bd2ccdc68b4e8de663002"
+        },
+        {
+          "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/refined_phrase_assignments.jsonl",
+          "bytes": 227250,
+          "sha256": "1cfd42500acff8caea7e3b66ff65875cbca8c9a43e17e29281bcda07bde84ba9"
+        },
+        {
+          "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/statistical_pre_assignments.jsonl",
+          "bytes": 303438,
+          "sha256": "6c7c748fefa649d19eba20fdc4fadacb7c98ec75f8e13b90c0dd5dac527aa52c"
+        },
+        {
+          "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/statistical_pre_baskets.jsonl",
+          "bytes": 865374,
+          "sha256": "f14fc2dd6ac494a2ead5c43cfcd1de8da26d4372aadf2e4b613cc624c4eaf353"
+        },
+        {
+          "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/statistical_pre_rebasket_summary.json",
+          "bytes": 509,
+          "sha256": "5546c2420d3fabf0f70e2fbdd7c38d90618ce66e4661432e547b8198f6c0bf50"
+        }
+      ]
+    },
+    {
+      "id": "music_reviews",
+      "name": "Pitchfork music reviews",
+      "minimum_documents": 24640,
+      "data_dir": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data",
+      "counts": {
+        "documents": 24640,
+        "linked_documents": 24640,
+        "topic_evidence_links": 392199,
+        "spans": 629483,
+        "unaligned_phrases": 1853,
+        "groups": 170,
+        "leaf_nodes_including_other": 277
+      },
+      "archive": "evimap-music_reviews.tar.gz",
+      "archive_bytes": 280066209,
+      "archive_sha256": "1852e869237058721c6bc3ff09b78c990273a3df0affea62b705e0042f71ef39",
+      "files": [
+        {
+          "path": "baselines/tnt_llm_style/outputs/music_reviews_full_shared/assignments.jsonl",
+          "bytes": 12881247,
+          "sha256": "45faaa506b67026a6a1aa2af47f4eac05d8eb979ea635475f5c8bb9fe54bbe0a"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/music_reviews_full_shared/child_taxonomy_parts.jsonl",
+          "bytes": 4697,
+          "sha256": "006ef6bfa8e2d0208f1099a06901b7e9a9ec72d1cfd0a915611228b97ee74dd7"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/music_reviews_full_shared/report.md",
+          "bytes": 6342,
+          "sha256": "db6e253095f3b14d0c0db7a310aba2ee91513880948db43612900168df854ab8"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/music_reviews_full_shared/sampled_documents.jsonl",
+          "bytes": 88232466,
+          "sha256": "28f9645163a074f870b7be5643b5dc0cd0012b8d00b95e0959e71fdd4a37200b"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/music_reviews_full_shared/summaries.jsonl",
+          "bytes": 124277,
+          "sha256": "faa6c756583063a262d1bf55fccd80a4adab721689c31ba5268f94ef5c8942d1"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/music_reviews_full_shared/summary.json",
+          "bytes": 1558,
+          "sha256": "4434393936e56e4d21a0df6e2fea2334302c6c1c46b195ce1a4b5c7cb44d6b30"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/music_reviews_full_shared/taxonomy_tree.json",
+          "bytes": 8482,
+          "sha256": "9679820903df26ff983c34166c080801bca53f95ced2f7fc8ec2a5facfb641f1"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/music_reviews_full_shared/taxonomy_tree_raw.json",
+          "bytes": 6610,
+          "sha256": "dfe586cccb623de22f29d50d354e3847f82be2900bc2585acacfb80a24e40d16"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/music_reviews_full_shared/top_taxonomy.json",
+          "bytes": 4035,
+          "sha256": "e19d9cacdd4031688894adb98682c35ed699e180d16ffccc13658251d08329a2"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/music_reviews_full_shared/top_taxonomy_raw.jsonl",
+          "bytes": 162574,
+          "sha256": "7f0c88bf79692085a86fc9386994be797febc24e7bd347cd4143feb8d5fb5c67"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/music_reviews_full_shared/assignments.jsonl",
+          "bytes": 19586848,
+          "sha256": "d3db28a79cbc06efe39beb0d40aa771e1e3d561a38e5b9edd0e10e9b0213ea09"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/music_reviews_full_shared/generated_topics_raw.jsonl",
+          "bytes": 340600,
+          "sha256": "2a5c8add94bbe5a480e169fc25ce44fd753940b5684c7cfac8b26f5d8d8c1b59"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/music_reviews_full_shared/refine_raw.json",
+          "bytes": 18488,
+          "sha256": "04877a39be344dfcf308d967d40d7ae6ede5b5e7b30ced261f9ba482c909ede8"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/music_reviews_full_shared/report.md",
+          "bytes": 4773,
+          "sha256": "cbb8194d9515ce9a0b1c2a62e071f74f567026c365ce8f1631a35879678fd3b7"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/music_reviews_full_shared/sampled_documents.jsonl",
+          "bytes": 88232466,
+          "sha256": "28f9645163a074f870b7be5643b5dc0cd0012b8d00b95e0959e71fdd4a37200b"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/music_reviews_full_shared/summary.json",
+          "bytes": 1182,
+          "sha256": "9f962a2bd24e41cd85f100549de6019fd90151a1603aa9a41b40d2d9f5be5110"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/music_reviews_full_shared/topics_refined.json",
+          "bytes": 5315,
+          "sha256": "9f1967786c41ed1732e46d616919ea786b20dca7f3ce90c1a47ba50421ff27c3"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_music_reviews_full_shared/eval_items.jsonl",
+          "bytes": 151446,
+          "sha256": "d17b5a9d19fd227f90b52b08220d8fed5f9d133a543baae31f60c2c0b0970b95"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_music_reviews_full_shared/evimap_diagnostic_slices.json",
+          "bytes": 1536,
+          "sha256": "92bcc3eb228676b6f43806696cced2bb5925c34c96f37469319e2578883f2360"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_music_reviews_full_shared/judgments.jsonl",
+          "bytes": 194000,
+          "sha256": "499cc0b2c0a94cb33e4fe0c8f4623e203406eedfc248d9bd0780d5dbe2dd775f"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_music_reviews_full_shared/report.md",
+          "bytes": 4423,
+          "sha256": "17424a1eb465da4a87a41792500972e6125d9d03b2914e575e32ae409329457b"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_music_reviews_full_shared/summary.json",
+          "bytes": 1885,
+          "sha256": "a912502e7ca2be28fd77520d45f50521b1175c57bfc271d28ef42d1f141fee09"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_music_reviews_full_shared_nonother/eval_items.jsonl",
+          "bytes": 151461,
+          "sha256": "3eb5acfc5fbc8a4c0a759622a57367410b2436ad8a1f11c45eb9f4ac65a48d42"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_music_reviews_full_shared_nonother/evimap_diagnostic_slices.json",
+          "bytes": 1340,
+          "sha256": "7aa1aa2df9d4cf27a6fb1c788844d92f54a396e08421e5a0a0e0e44189c0ce6a"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_music_reviews_full_shared_nonother/judgments.jsonl",
+          "bytes": 194163,
+          "sha256": "f56d64b0f1b211ad6d7c580ada201e575ead873f492332e4c6c3c45b2d6c21cb"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_music_reviews_full_shared_nonother/report.md",
+          "bytes": 4518,
+          "sha256": "d184e6eed9c9049979186298738fa9696b9c31bbb8ccb7b7f8d0b0d5dbd05aed"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_music_reviews_full_shared_nonother/summary.json",
+          "bytes": 1878,
+          "sha256": "8b99aafe77ef0d99c2e87fc3d0ca67654222c2fd1f3d575dfa57b9b34c129912"
+        },
+        {
+          "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/accepted_merged_refined_nodes.jsonl",
+          "bytes": 15056399,
+          "sha256": "ec7061bd3ed11f7ead82538c5602d139c79cfe81c49f1e7f3f1925a9dcd4317b"
+        },
+        {
+          "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/accepted_refined_nodes.jsonl",
+          "bytes": 17557790,
+          "sha256": "8ec8d1fa1c97b11974bbace90f9fb066a682b21f8edcd4d48c99665b104547d8"
+        },
+        {
+          "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/aspect_trees.jsonl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/aspects.jsonl",
+          "bytes": 55275,
+          "sha256": "14b109d080c520af08b28b595e99f5326eb7d21bb73c94bf3837794ae2c43bd5"
+        },
+        {
+          "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/aspects_pre_coassoc.jsonl",
+          "bytes": 843448,
+          "sha256": "84d0eb03151e89822c81cac03de8d5cabd4f12c31f1d4cf1031955b3d4988b95"
+        },
+        {
+          "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/atom_rebasket_baskets.jsonl",
+          "bytes": 1866791,
+          "sha256": "b4034351df50412bf6645196bccbc78ef159223a95b1ae77013878e998dd7b43"
+        },
+        {
+          "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/atom_rebasket_validation.jsonl",
+          "bytes": 313632,
+          "sha256": "8e34dfe5cb7b8427fd186384a93bc6584063721f1ec0278e4f8516f5251e9ca5"
+        },
+        {
+          "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/atom_subclusters.jsonl",
+          "bytes": 382701,
+          "sha256": "038651841368876334a922aa62ca45684bd76b49307037c4b492dc49c6483889"
+        },
+        {
+          "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/atom_subclusters_from_rebasket.jsonl",
+          "bytes": 16351223,
+          "sha256": "2f6a1015ecb04fdb4664ce6eef473028f3ce65d77fbcd821e92a863ff63330dd"
+        },
+        {
+          "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/basket_merge_candidates.jsonl",
+          "bytes": 1537735738,
+          "sha256": "103e4f0f7f52db25fa96d1f687279361dcf058d33652976e8fc662fcd9768a5c"
+        },
+        {
+          "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/bottom_up_aspect_assignments.jsonl",
+          "bytes": 460162,
+          "sha256": "d15c355a1ab6528f0ea3e894f33c8922caf7da5581e02f4aa1b8a870e1425549"
+        },
+        {
+          "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/doc_all_phrases.jsonl",
+          "bytes": 134953767,
+          "sha256": "1d41dce1e3d88da89798e494f8d7e842815f2eedb52d798e3d12e24587c74134"
+        },
+        {
+          "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/document_links.jsonl",
+          "bytes": 30902306,
+          "sha256": "3661d703276d70998f8ecaf0b08cedc3f273791c63bcb28b4ef0db1d024fe602"
+        },
+        {
+          "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/documents.jsonl",
+          "bytes": 88232466,
+          "sha256": "d34f14a1c75218d116e4701aefe79af256e2cb861a7997434c8d50b207c05fda"
+        },
+        {
+          "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/evidence_phrases.jsonl",
+          "bytes": 168749052,
+          "sha256": "dd5fda8b2c08df6a18c531634e151f270276b066d47436d470c4f1b1f1f99077"
+        },
+        {
+          "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/facets_by_sub.jsonl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/llm_aspect_facets.jsonl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/llm_atom_facets.jsonl",
+          "bytes": 175669,
+          "sha256": "3a5479b11aa4b93e77456c31b15e9c44181e7e377be9926deed37d820af7544e"
+        },
+        {
+          "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/llm_atom_names.jsonl",
+          "bytes": 534391,
+          "sha256": "4bc66159294d9b9c89524748da4954dd66cb06afdcdde243660c928b24b743e0"
+        },
+        {
+          "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/merged_refined_nodes.jsonl",
+          "bytes": 15948453,
+          "sha256": "38d0b0f3fd49b6ece0722a46bb7a46bd80e943a4751dbf0f25faca91157494be"
+        },
+        {
+          "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/merged_refined_phrase_assignments.jsonl",
+          "bytes": 15488043,
+          "sha256": "6b89d5fb12c8df0794e409fc1ed0a877a7b088aeefd8d708ea64d7724633e3c8"
+        },
+        {
+          "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/method_comparison.json",
+          "bytes": 232,
+          "sha256": "f8de67c08c7edbe7c69824fd3651a31130a120b255b0cccd494e3d663c0326b6"
+        },
+        {
+          "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/nodes.jsonl",
+          "bytes": 19814905,
+          "sha256": "77514c8d9a7fb9b881105b53203d5a7fe0991a00f49f26790ef11034afbe90bc"
+        },
+        {
+          "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/nodes_pre_v5.jsonl",
+          "bytes": 15799474,
+          "sha256": "86c89814afcc2f5df7ce616b3b8a2b461870119b04575aaf445b744e2d080c2d"
+        },
+        {
+          "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/pending_recovery_candidates.jsonl",
+          "bytes": 12717283,
+          "sha256": "0bbcc92b7098e8d1af70431162eb4012a67d367482d2509aa8142a69d15e5604"
+        },
+        {
+          "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/pending_recovery_llm_prompts.jsonl",
+          "bytes": 12764498,
+          "sha256": "d228f6520089abefdfc2459e1a20405d28e5da12007a29d8795f5903c8192278"
+        },
+        {
+          "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/pending_recovery_summary.json",
+          "bytes": 37502,
+          "sha256": "0bea5d4f28d22b01cca6464fcef37b189f87c6dbd23433c9b00c6455fd6aa62b"
+        },
+        {
+          "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/rebasket_merge_summary.json",
+          "bytes": 302583,
+          "sha256": "8efd566d146a6b93471751a18ca0203efba97eebc876509fe0ba93b7baed079d"
+        },
+        {
+          "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/refined_nodes.jsonl",
+          "bytes": 18658481,
+          "sha256": "a25a83871f7819ea232853c6cabc82d8ce92deaa63170e7969d904e626622cb6"
+        },
+        {
+          "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/refined_phrase_assignments.jsonl",
+          "bytes": 7261932,
+          "sha256": "226c7a38600cb99a4aa6393bba2b3ba9d0d9f1ec8fc6e0e9f3d882946965d5c9"
+        },
+        {
+          "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/statistical_pre_assignments.jsonl",
+          "bytes": 9362242,
+          "sha256": "dc980261162a98f547379265f9207675e7839e7db37346bfdcd3a5d5f72c983b"
+        },
+        {
+          "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/statistical_pre_baskets.jsonl",
+          "bytes": 21490307,
+          "sha256": "63b45135ea14afa74dc594a79160b1a5eff1becae7347af8e033f6b0930644f8"
+        },
+        {
+          "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/statistical_pre_rebasket_summary.json",
+          "bytes": 519,
+          "sha256": "f64373594539297a5d9f3b8b27302dd23bd24da7f5101fd08a1764206aaf7068"
+        }
+      ]
+    },
+    {
+      "id": "career_jobs",
+      "name": "LinkedIn job postings",
+      "minimum_documents": 32686,
+      "data_dir": "runs/2026-06-04_career_jobs_numeric_filtered_strict_dashboard/dashboard_ui/data",
+      "counts": {
+        "documents": 32686,
+        "linked_documents": 32686,
+        "topic_evidence_links": 1568772,
+        "spans": 1987564,
+        "unaligned_phrases": 227380,
+        "groups": 350,
+        "leaf_nodes_including_other": 3246
+      },
+      "archive": "evimap-career_jobs.tar.gz",
+      "archive_bytes": 368465680,
+      "archive_sha256": "75d750c9532843d5943cb3361eeb4dda5c0e1eecf5cb3ed8a6de9bb467a6414b",
+      "files": [
+        {
+          "path": "baselines/tnt_llm_style/outputs/career_jobs_full_shared/assignments.jsonl",
+          "bytes": 19422056,
+          "sha256": "aeb569abfb39fcbbb79be8ef1e49683fa48ae4d117ef7be969d7af01160fc9f6"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/career_jobs_full_shared/report.md",
+          "bytes": 8398,
+          "sha256": "5650acda3c6bd378d87d2aadc20fe331e234c939b8d5ee2ffe42a3628575a25c"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/career_jobs_full_shared/sampled_documents.jsonl",
+          "bytes": 132898413,
+          "sha256": "b31766b527961cd92d49c994b24fe2b6771bc85580b6284e720c0b5ee2326ab8"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/career_jobs_full_shared/summaries.jsonl",
+          "bytes": 127041,
+          "sha256": "023472f5750e0134b40d50104eebe2e05e82a4556b57426b906314e34d09e6cc"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/career_jobs_full_shared/summary.json",
+          "bytes": 1564,
+          "sha256": "95470bc9672f4baaea0a7d2ebc89e240158a70b692fcf5bab75e3dddca45afd6"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/career_jobs_full_shared/taxonomy_tree.json",
+          "bytes": 10625,
+          "sha256": "3b63c4ed268898403a3c58c9efb35b654f17d689261c3109420c0c7631322523"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/career_jobs_full_shared/taxonomy_tree_raw.json",
+          "bytes": 159316,
+          "sha256": "80084fb366bb548097063f98b90fc75327c90d6acb1f34adc87b753d373117cc"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/career_jobs_full_shared/top_taxonomy.json",
+          "bytes": 3747,
+          "sha256": "95764215f1b441456c2b1de05d1e74fd3fe0728994b52ef52cf1dc2179636c42"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/career_jobs_full_shared/top_taxonomy_raw.jsonl",
+          "bytes": 161777,
+          "sha256": "e5b4a3656791c396c3ec37fe80c6f851a482f32a6f93febd85c0cceffb861297"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/career_jobs_full_shared/assignments.jsonl",
+          "bytes": 21143728,
+          "sha256": "6d24ca6989ed26bddeff2c3bec3ee972cfa83a697ac8b3f034aed8f2eb005345"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/career_jobs_full_shared/generated_topics_raw.jsonl",
+          "bytes": 342134,
+          "sha256": "e1b8773bf351637b6d314f13433eacf22c758e1c17613f75311a8d8fdddb7bde"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/career_jobs_full_shared/refine_raw.json",
+          "bytes": 21496,
+          "sha256": "3dd4abad7b1d71fc95c653141d139c795aa75d31034d5b9fffe9fe6dab286085"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/career_jobs_full_shared/report.md",
+          "bytes": 5442,
+          "sha256": "551e33dc05272c9869e99f33986ae48d3c60daa042a1d26a4cd4adb6a7f6310d"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/career_jobs_full_shared/sampled_documents.jsonl",
+          "bytes": 132898413,
+          "sha256": "b31766b527961cd92d49c994b24fe2b6771bc85580b6284e720c0b5ee2326ab8"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/career_jobs_full_shared/summary.json",
+          "bytes": 1160,
+          "sha256": "8a005119f93a25ca2680fceba4ea130602ca1891d7e725bb25ddbecb5ad61913"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/career_jobs_full_shared/topics_refined.json",
+          "bytes": 6006,
+          "sha256": "a3f4325284524d11020092eb734c50454ea7c7c40e070b68fcd9ab555b147666"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_career_jobs_full_shared/eval_items.jsonl",
+          "bytes": 169740,
+          "sha256": "984057b0332b307ee6bcecf60e307c1cdc975f3a93d55c3d29a9defc2fd1d436"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_career_jobs_full_shared/evimap_diagnostic_slices.json",
+          "bytes": 1791,
+          "sha256": "b632fb2cacd47d25fbc554bc4ff31757f998de6bbf9b220228b0fa04ae25c002"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_career_jobs_full_shared/judgments.jsonl",
+          "bytes": 212518,
+          "sha256": "b2e9a93e8433b2902fd435e58179af804cb1159b111b47d9ae4faf795cf09e9e"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_career_jobs_full_shared/report.md",
+          "bytes": 4244,
+          "sha256": "bd6505fec3f7dc2dcffba5d1e3e8892319be680974d89ab11a67781c45a472e9"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_career_jobs_full_shared/summary.json",
+          "bytes": 1909,
+          "sha256": "9ff77c76f839b3de1f587ca928f6877be32e8eb24939b52810aa17581316b525"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_career_jobs_full_shared_nonother/eval_items.jsonl",
+          "bytes": 175443,
+          "sha256": "77508d3c1cd6f2bf2ffd4dad94059f129e306b2988f5d9373f3161dbb919e644"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_career_jobs_full_shared_nonother/evimap_diagnostic_slices.json",
+          "bytes": 1557,
+          "sha256": "ce00b0f2051bd6757893159c24570c7ecae6f4a95a415772fb08c227214d4cb6"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_career_jobs_full_shared_nonother/judgments.jsonl",
+          "bytes": 218976,
+          "sha256": "95c8342c8edd3790ee7a08041cd5906d472ba612350a98c2504ceb919f32b7df"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_career_jobs_full_shared_nonother/report.md",
+          "bytes": 4416,
+          "sha256": "9b5f0995660ca1e1be08f052200cb5fb7ddd8774028cc712486a36205df8debd"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_career_jobs_full_shared_nonother/summary.json",
+          "bytes": 1875,
+          "sha256": "21a80b040c5ac9aef9f8a3501c8c73d8c1aaad1e8ffde90cc8bba87518dc619c"
+        },
+        {
+          "path": "runs/2026-06-04_career_jobs_numeric_filtered_strict_dashboard/dashboard_ui/data/aspect_trees.jsonl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "runs/2026-06-04_career_jobs_numeric_filtered_strict_dashboard/dashboard_ui/data/aspects.jsonl",
+          "bytes": 179955,
+          "sha256": "a8f00cd6aceb639f6439fbf49f2818648e88f93389ac64c2a4e8a1ccba125141"
+        },
+        {
+          "path": "runs/2026-06-04_career_jobs_numeric_filtered_strict_dashboard/dashboard_ui/data/aspects_pre_coassoc.jsonl",
+          "bytes": 6633319,
+          "sha256": "73dca79ffd33170522670dd6dbf84f86cb972cc53512a8c3861f0c3f576b05ef"
+        },
+        {
+          "path": "runs/2026-06-04_career_jobs_numeric_filtered_strict_dashboard/dashboard_ui/data/atom_subclusters.jsonl",
+          "bytes": 4414368,
+          "sha256": "2dd0b7186946422e31ed752a29b71b8e59adf3269b469c5b4ee9c1e853b95781"
+        },
+        {
+          "path": "runs/2026-06-04_career_jobs_numeric_filtered_strict_dashboard/dashboard_ui/data/bottom_up_aspect_assignments.jsonl",
+          "bytes": 5132822,
+          "sha256": "d8f1115b8cd32ae22b9fe095530b540b1f7da6a3d476694d03c793fc67a14c83"
+        },
+        {
+          "path": "runs/2026-06-04_career_jobs_numeric_filtered_strict_dashboard/dashboard_ui/data/doc_all_phrases.jsonl",
+          "bytes": 473624717,
+          "sha256": "7b7b67761519c53d4371af483d373975e793041bb072248c234271d56d2e6115"
+        },
+        {
+          "path": "runs/2026-06-04_career_jobs_numeric_filtered_strict_dashboard/dashboard_ui/data/document_links.jsonl",
+          "bytes": 84795088,
+          "sha256": "7adb735c868bf7bdb6e234f9399c8e1106ae3ce43311483aeaf2a7437b071c3d"
+        },
+        {
+          "path": "runs/2026-06-04_career_jobs_numeric_filtered_strict_dashboard/dashboard_ui/data/documents.jsonl",
+          "bytes": 132898413,
+          "sha256": "89b8bafee265227c5811a7880d77e7bb9dfe10a5dc425d82607ed6ffc51e3130"
+        },
+        {
+          "path": "runs/2026-06-04_career_jobs_numeric_filtered_strict_dashboard/dashboard_ui/data/evidence_phrases.jsonl",
+          "bytes": 577075974,
+          "sha256": "35dcc326b5ed4b30d8c574bb2290ebaf940c16c3b78d0338f42cf9b9c470f868"
+        },
+        {
+          "path": "runs/2026-06-04_career_jobs_numeric_filtered_strict_dashboard/dashboard_ui/data/facets_by_sub.jsonl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "runs/2026-06-04_career_jobs_numeric_filtered_strict_dashboard/dashboard_ui/data/llm_aspect_facets.jsonl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "runs/2026-06-04_career_jobs_numeric_filtered_strict_dashboard/dashboard_ui/data/llm_atom_facets.jsonl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "runs/2026-06-04_career_jobs_numeric_filtered_strict_dashboard/dashboard_ui/data/llm_atom_names.jsonl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "runs/2026-06-04_career_jobs_numeric_filtered_strict_dashboard/dashboard_ui/data/method_comparison.json",
+          "bytes": 220,
+          "sha256": "ce7da9adb8813297a05420a34ad0f7d7cccd96ba6ecff9ce505770473c15ba47"
+        },
+        {
+          "path": "runs/2026-06-04_career_jobs_numeric_filtered_strict_dashboard/dashboard_ui/data/nodes.before_round2_verify.jsonl",
+          "bytes": 54962894,
+          "sha256": "df94d98f01fa60c05668b2282dbf62d00a8ec87e829e14d5608f95b14d8bf8fe"
+        },
+        {
+          "path": "runs/2026-06-04_career_jobs_numeric_filtered_strict_dashboard/dashboard_ui/data/nodes.jsonl",
+          "bytes": 54483918,
+          "sha256": "79595809804ca78cb2709766e161d357be89a78b884e85108ada9ee0b2330384"
+        },
+        {
+          "path": "runs/2026-06-04_career_jobs_numeric_filtered_strict_dashboard/dashboard_ui/data/nodes_pre_v5.jsonl",
+          "bytes": 72565220,
+          "sha256": "14dbc8b22e781a4920f6d30f1ff43f4d7057eb0685f21092b578f6c6cfb6bd53"
+        }
+      ]
+    },
+    {
+      "id": "recipes",
+      "name": "Recipes",
+      "minimum_documents": 39447,
+      "data_dir": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data",
+      "counts": {
+        "documents": 39447,
+        "linked_documents": 39447,
+        "topic_evidence_links": 662519,
+        "spans": 746815,
+        "unaligned_phrases": 287,
+        "groups": 91,
+        "leaf_nodes_including_other": 142
+      },
+      "archive": "evimap-recipes.tar.gz",
+      "archive_bytes": 92974412,
+      "archive_sha256": "aca5940d06a1fa9090505f6e861c2256a57da5f957c08e2d29a5f51778410a05",
+      "files": [
+        {
+          "path": "baselines/tnt_llm_style/outputs/recipes_full_shared/assignments.jsonl",
+          "bytes": 15364697,
+          "sha256": "a67ca0585e035f91b7cf9e9a5b67500f70b6034f48b86b7547b5142903044737"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/recipes_full_shared/child_taxonomy_parts.jsonl",
+          "bytes": 4253,
+          "sha256": "fff75e47dece2227880594cd05d5a9594ae7e3bb9a252170ceb7fc4dcd197ee3"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/recipes_full_shared/report.md",
+          "bytes": 5802,
+          "sha256": "24f43355cfacc724ea228deb45332dd1141154f469bdd0f3a94413cf28706c15"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/recipes_full_shared/sampled_documents.jsonl",
+          "bytes": 29873896,
+          "sha256": "076f13973f62733ff20592e07a98221afd7842b8caa7b08e4da72b0b714455ba"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/recipes_full_shared/summaries.jsonl",
+          "bytes": 104448,
+          "sha256": "88beddc07bc72cad570f3f7642829caa75833ae96aaf7b0f60db88f1caac7935"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/recipes_full_shared/summary.json",
+          "bytes": 1592,
+          "sha256": "1f62c87dda1eaa914c221346576cd5de7b20ddfb9749724f493ad606434b5087"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/recipes_full_shared/taxonomy_tree.json",
+          "bytes": 7999,
+          "sha256": "b2d00a3e52b7282f7961a58a348a2c5ec36221d9ccb5b78acb1f514bf3918633"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/recipes_full_shared/taxonomy_tree_raw.json",
+          "bytes": 6212,
+          "sha256": "19579d7135c0f3507a8742f750559faf258918cff65c2e65f2e6abe858b0e23a"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/recipes_full_shared/top_taxonomy.json",
+          "bytes": 3821,
+          "sha256": "aacb964b6b98728d3c48157c02d65d5540f829702107dbf4ca2a608c7b2299bf"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/recipes_full_shared/top_taxonomy_raw.jsonl",
+          "bytes": 139400,
+          "sha256": "12db3bb7a0f4e05eccc30a360a2b541d166ff857fc5426d2c871739c35576bbb"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/recipes_full_shared/assignments.jsonl",
+          "bytes": 14369561,
+          "sha256": "cc0b157a21cdbd1b4b2902cec0068e6d73dad902da00d4213514102fa47416cc"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/recipes_full_shared/generated_topics_raw.jsonl",
+          "bytes": 240782,
+          "sha256": "37e2db298dd724019045544abe5b6381a810dba122d95e3282adf3b6c4606ea9"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/recipes_full_shared/refine_raw.json",
+          "bytes": 15029,
+          "sha256": "fb2766334729a2d50790ce86b21c710f8603ed305fb00a930286b83a0d1e728e"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/recipes_full_shared/report.md",
+          "bytes": 3523,
+          "sha256": "4cdc64cf9366a593ceb7b8f4669ad201edcd0e602aac420efe5aab7d55343e8d"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/recipes_full_shared/sampled_documents.jsonl",
+          "bytes": 29873896,
+          "sha256": "076f13973f62733ff20592e07a98221afd7842b8caa7b08e4da72b0b714455ba"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/recipes_full_shared/summary.json",
+          "bytes": 1181,
+          "sha256": "3d663aa3390a0cd9fa6383c12bfbf4b3d8c93c2618c2ed815a5e06f90155e54a"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/recipes_full_shared/topics_refined.json",
+          "bytes": 4066,
+          "sha256": "c849be454d2b930d241d641cb9a475a87315bbb47eee1dee5dadd0fbd85f2e99"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_recipes_full_shared/eval_items.jsonl",
+          "bytes": 92711,
+          "sha256": "33455b00cbf01edef4556256881669384200f006a1690db7073db23aeb2a70ee"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_recipes_full_shared/evimap_diagnostic_slices.json",
+          "bytes": 1538,
+          "sha256": "56d259c96d1a3dd690f9283481f1d764dc2de3c0f9cb0f6a6b6b2b1cc639b9ec"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_recipes_full_shared/judgments.jsonl",
+          "bytes": 134396,
+          "sha256": "6501f3453ed86c6b27642b60b52ee6435041a0986f688e3af00c8cf7282b773d"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_recipes_full_shared/report.md",
+          "bytes": 3858,
+          "sha256": "ba3e2bbd2fe239f36979107cb74c3bf177dbd3cf3a75f6addbefdb81496b5c8e"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_recipes_full_shared/summary.json",
+          "bytes": 1942,
+          "sha256": "bd723cd1a92790f3845fe345d34f9dfcc43ef6894f13e583e8db0228953316a0"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_recipes_full_shared_nonother/eval_items.jsonl",
+          "bytes": 92666,
+          "sha256": "e2d18ae2682d7586838ce04ae1b357718d42bb137b90fc8e090fc4253db0ab22"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_recipes_full_shared_nonother/evimap_diagnostic_slices.json",
+          "bytes": 1347,
+          "sha256": "1c2911debc545e30e1e7fcbf31465a492dbd2330838116abbb5d2d10c82f3fc0"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_recipes_full_shared_nonother/judgments.jsonl",
+          "bytes": 134244,
+          "sha256": "bc1bf76a30fcf0a806da1416866ed5b8ad86026861d5acb9889ee01e32f069b6"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_recipes_full_shared_nonother/report.md",
+          "bytes": 3714,
+          "sha256": "cc98de6ff004c3feab28efcedeb40fa8f2bdf29d26feb3e939b3d088a081d348"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_recipes_full_shared_nonother/summary.json",
+          "bytes": 1912,
+          "sha256": "a3cd73153eae03166671faeba4b437e091f6ee4ce9734112f36adca423b8da91"
+        },
+        {
+          "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/accepted_merged_refined_nodes.jsonl",
+          "bytes": 12645572,
+          "sha256": "b65c6a64286ef4975741e7264bf402b2fda12e4597d58d1d27f68ed05aa42bcc"
+        },
+        {
+          "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/accepted_refined_nodes.jsonl",
+          "bytes": 13035109,
+          "sha256": "29d5fcc7f3c1ae895b3c1f2e909a0f919d94ec9a54bc2f16f27204ca37f445be"
+        },
+        {
+          "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/aspect_trees.jsonl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/aspects.jsonl",
+          "bytes": 30262,
+          "sha256": "333332bdac7e7076f13ea00aa5e6df64e72d608125e2ab540fb57d7063ca733b"
+        },
+        {
+          "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/aspects_pre_coassoc.jsonl",
+          "bytes": 369769,
+          "sha256": "d9212066132735bcd83c04fb5eb40ddaa8a8a05222f045ff7253a92412012c99"
+        },
+        {
+          "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/atom_rebasket_baskets.jsonl",
+          "bytes": 700214,
+          "sha256": "2519fb062bc7e2998d6c2a39d4826d009e3bb61639511b636fbb973afd7bc904"
+        },
+        {
+          "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/atom_rebasket_validation.jsonl",
+          "bytes": 189044,
+          "sha256": "35c4aceaa0bb481f8a7208b9f57d96d8005755fafa0086877a104d16fcc9faef"
+        },
+        {
+          "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/atom_subclusters.jsonl",
+          "bytes": 154965,
+          "sha256": "ce0909c1f7edc15428c653b5a8f64f04184282e6557b9bb18dff3248d5747a3d"
+        },
+        {
+          "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/atom_subclusters_from_rebasket.jsonl",
+          "bytes": 16902790,
+          "sha256": "ee935395706a49b17e9494014ff2882e363c7818c8245b8d040a050824bfee23"
+        },
+        {
+          "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/basket_merge_candidates.jsonl",
+          "bytes": 229416919,
+          "sha256": "6be68d98de1f379bfec54068edea4c29ae4b50c4a1f219598d8a51ba5bc25917"
+        },
+        {
+          "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/bottom_up_aspect_assignments.jsonl",
+          "bytes": 177204,
+          "sha256": "1d5f3ff4373a579fad46df6c28a18cd2927089ba687ab7d35c2c2f5bb9339398"
+        },
+        {
+          "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/doc_all_phrases.jsonl",
+          "bytes": 140068853,
+          "sha256": "c492dd0342d42d16c8b4a618b5bc52e26bdd8b6cefdd6523a516491be919075d"
+        },
+        {
+          "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/document_links.jsonl",
+          "bytes": 35283681,
+          "sha256": "15aab8e956298094a392843ff5b8145902c4c95f75ada669def88b43efc629fa"
+        },
+        {
+          "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/documents.jsonl",
+          "bytes": 29873896,
+          "sha256": "f01049e9e48c5fe8861188a3dde5e26615f771a916475ffe99cbc17d556c5aa5"
+        },
+        {
+          "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/evidence_phrases.jsonl",
+          "bytes": 209589738,
+          "sha256": "9d75d4bca4fbc1f6fa5335375fa21f4fa26604cac1f101b8770f0cab7c788aba"
+        },
+        {
+          "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/facets_by_sub.jsonl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/llm_aspect_facets.jsonl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/llm_atom_facets.jsonl",
+          "bytes": 70429,
+          "sha256": "b98527f3b57bbd3e1fa969aa9f998b40d137e13149e03a70e856829c0e044da2"
+        },
+        {
+          "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/llm_atom_names.jsonl",
+          "bytes": 199627,
+          "sha256": "20e928b2e49e0f1928c136c0dde81b6351d35472e5cf54f097fe88147e9e5581"
+        },
+        {
+          "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/merged_refined_nodes.jsonl",
+          "bytes": 16856444,
+          "sha256": "7d402c11ae93828c773c248d86d25aebacaf3bbf8dbac353d8fff07f8d037c68"
+        },
+        {
+          "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/merged_refined_phrase_assignments.jsonl",
+          "bytes": 3210330,
+          "sha256": "8baaf36b09733fc4013dd6e947571687e1e5ae5da99d8cccfb6dc850ed35e342"
+        },
+        {
+          "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/method_comparison.json",
+          "bytes": 221,
+          "sha256": "7711b64875592f94efc8e077fd276cbc1648f18beb452bc5e9bdfa78c78aafc1"
+        },
+        {
+          "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/nodes.jsonl",
+          "bytes": 28013862,
+          "sha256": "9d9fe7afe7c488cd954b895c70fe47e666bc7cc38468b2e63f9ee93d2411e846"
+        },
+        {
+          "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/nodes_pre_v5.jsonl",
+          "bytes": 16816010,
+          "sha256": "6f8a92bc1f7e21ce097e0258f5794db9dba008a8defa3253452c1c11563ddfc2"
+        },
+        {
+          "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/pending_recovery_candidates.jsonl",
+          "bytes": 702803,
+          "sha256": "b312438a4a4eb7eb1fe35a3143435b25492649317626715da3fd3a574622a6c3"
+        },
+        {
+          "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/pending_recovery_llm_prompts.jsonl",
+          "bytes": 705710,
+          "sha256": "cf17cba8125f6acc76d8c71d18bea397b1d4409335b9dff30d020ca72386d4af"
+        },
+        {
+          "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/pending_recovery_summary.json",
+          "bytes": 4540,
+          "sha256": "9410f0f4a4faced1cb3990553d51dba130ce4042d2468a209c887495873fdf77"
+        },
+        {
+          "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/rebasket_merge_summary.json",
+          "bytes": 150088,
+          "sha256": "98e948a4b5f9cf92e036f54185cb4640d67144bc0d76bf94167028320775cc68"
+        },
+        {
+          "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/refined_nodes.jsonl",
+          "bytes": 17751566,
+          "sha256": "c76cafeb3d8029418573738f366f0c22817d3a38049fcf7f81cadad3e6fc2ffb"
+        },
+        {
+          "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/refined_phrase_assignments.jsonl",
+          "bytes": 1755214,
+          "sha256": "77ae1b48edc1432b7cb6cffce79795be46d5097d00d7858d41fbd2888151a63f"
+        },
+        {
+          "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/statistical_pre_assignments.jsonl",
+          "bytes": 2370897,
+          "sha256": "73ce8bc49c32b31046c8e03e837d5f0a649198fd95e7636df9a6ccd698633152"
+        },
+        {
+          "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/statistical_pre_baskets.jsonl",
+          "bytes": 17786800,
+          "sha256": "e47e73921a6319cc871196fe319faea88bc6323fcd34bbca82b8ba4f0c5c5d0a"
+        },
+        {
+          "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/statistical_pre_rebasket_summary.json",
+          "bytes": 516,
+          "sha256": "133e4cd31349ccadb751030fdcf6caea96d867d1d777e9e7174bf9e7f8d643da"
+        }
+      ]
+    },
+    {
+      "id": "eu_debates",
+      "name": "EU debates",
+      "minimum_documents": 101699,
+      "data_dir": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data",
+      "counts": {
+        "documents": 101699,
+        "linked_documents": 101699,
+        "topic_evidence_links": 643882,
+        "spans": 956005,
+        "unaligned_phrases": 22008,
+        "groups": 323,
+        "leaf_nodes_including_other": 972
+      },
+      "archive": "evimap-eu_debates.tar.gz",
+      "archive_bytes": 442824744,
+      "archive_sha256": "69a45fa53db22441f58c3e88786c8f29c1b9bf9b3538161ba1990c60727e9859",
+      "files": [
+        {
+          "path": "baselines/tnt_llm_style/outputs/eu_debates_full_shared/assignments.jsonl",
+          "bytes": 62469904,
+          "sha256": "f1208ab4e8c9f568bed4169471cef5596aba95c3108e00d0d7f84c091fdb74f1"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/eu_debates_full_shared/child_taxonomy_parts.jsonl",
+          "bytes": 4965,
+          "sha256": "20948dde1fc0cfcd8f2dedd6996ab8fe921d6e21776f06ea1d398155dab10fee"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/eu_debates_full_shared/report.md",
+          "bytes": 6399,
+          "sha256": "77fe6d5311381e4e8efd1895ad1ee3c7e801681116933c7362a53cceeaa65db1"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/eu_debates_full_shared/sampled_documents.jsonl",
+          "bytes": 179303162,
+          "sha256": "0ce90705316cc09e0d39559782b32eda9521866d59e4821feff6194b646b4775"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/eu_debates_full_shared/summaries.jsonl",
+          "bytes": 141000,
+          "sha256": "501315162f584db70d884cf646174429d917156a92eca17eb2d87f98f6a6ae24"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/eu_debates_full_shared/summary.json",
+          "bytes": 1594,
+          "sha256": "af96e4dd39b163f91f422318e3e49a117421e4f44d754f358e933c83616bdd31"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/eu_debates_full_shared/taxonomy_tree.json",
+          "bytes": 8596,
+          "sha256": "dea2c4fca65b69681760dffdfdc392780673743b6f046ca625acd0a98995bd47"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/eu_debates_full_shared/taxonomy_tree_raw.json",
+          "bytes": 6924,
+          "sha256": "46533768ea41c9d4dbdea95db07b2de9f991ef945da98ccf187a52180c1269e2"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/eu_debates_full_shared/top_taxonomy.json",
+          "bytes": 3587,
+          "sha256": "5ef485c35b8b88d3d5aac1d8314506f8541bca67eb342755f43b9c0a250d63e7"
+        },
+        {
+          "path": "baselines/tnt_llm_style/outputs/eu_debates_full_shared/top_taxonomy_raw.jsonl",
+          "bytes": 177085,
+          "sha256": "5e81db5e609dae3fb297c3d1aeab0979ed97b3ad3a6327c61048aea4459c4d0c"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/eu_debates_full_shared/assignments.jsonl",
+          "bytes": 70606543,
+          "sha256": "ccbbc370819def9d750066322b84b7eb6c15887e1bf7ac2f30a5f1979182bfc2"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/eu_debates_full_shared/generated_topics_raw.jsonl",
+          "bytes": 299750,
+          "sha256": "a70541f9cf0172d44eeac73e5a28e0092ccb3c6d3df8a394fce4515854329ab6"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/eu_debates_full_shared/refine_raw.json",
+          "bytes": 22158,
+          "sha256": "899337ad44f43d608f3127399bf85e5fe6ac62d5a9f1a5e386ed9793869781e3"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/eu_debates_full_shared/report.md",
+          "bytes": 6021,
+          "sha256": "a18a4cabe1bdf89d11b48489ae0852574f76652498843f32a193df9403b130ba"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/eu_debates_full_shared/sampled_documents.jsonl",
+          "bytes": 179303162,
+          "sha256": "0ce90705316cc09e0d39559782b32eda9521866d59e4821feff6194b646b4775"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/eu_debates_full_shared/summary.json",
+          "bytes": 1180,
+          "sha256": "a8863d91eea27a5734c0cc007cf6c8fe59adb27ab41c932bb18cfa7aaf1b93ec"
+        },
+        {
+          "path": "baselines/topicgpt_style/outputs/eu_debates_full_shared/topics_refined.json",
+          "bytes": 6566,
+          "sha256": "facbd014455fee3dfded8115e47317c21b31e13bd0121520bb601e3b6b80671d"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_eu_debates_full_shared/eval_items.jsonl",
+          "bytes": 179375,
+          "sha256": "d62c62d00c061b76b5c02557e8927b587c2b252be27b2bc453cd053b17686cc5"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_eu_debates_full_shared/evimap_diagnostic_slices.json",
+          "bytes": 1531,
+          "sha256": "243eca9c2932fe4209ee08db93ca579437839058b5040eb48ec92b8f0ab2bae9"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_eu_debates_full_shared/judgments.jsonl",
+          "bytes": 222791,
+          "sha256": "f708662023023f2fb918a20f0c3c24b8d028bc17bcd7e82bd664df85d72a3546"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_eu_debates_full_shared/report.md",
+          "bytes": 4347,
+          "sha256": "c9a7c477e7c1c31b6b3703ba732be5f1016f39bed207fd9063ddae51c6a1c932"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_eu_debates_full_shared/summary.json",
+          "bytes": 1876,
+          "sha256": "da4d366f5fc38f78b24813936905859c0f7d02a01e269a44ced49f9da133a517"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_eu_debates_full_shared_nonother/eval_items.jsonl",
+          "bytes": 179460,
+          "sha256": "3a40dfc4267f2a8c51e971ccd06a6756df9ed002e7c7871c9febfaf56c576965"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_eu_debates_full_shared_nonother/evimap_diagnostic_slices.json",
+          "bytes": 1340,
+          "sha256": "cb8d7dbf739fcc897b4a4f6d4904a24f316d2095c9aecdfabe3993dcfdfcf8e0"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_eu_debates_full_shared_nonother/judgments.jsonl",
+          "bytes": 222813,
+          "sha256": "09b4aaef255cf98ab3b47848687efd18083c7c9b0dc257969d6dbdc695005f33"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_eu_debates_full_shared_nonother/report.md",
+          "bytes": 4225,
+          "sha256": "29ef5a8edab551d15696aee10700ba1ff47d024ef19d041677ee3d1f81ef75c5"
+        },
+        {
+          "path": "experiments/evaluation/topic_soundness_eu_debates_full_shared_nonother/summary.json",
+          "bytes": 1858,
+          "sha256": "ae933d1728897e5fab84a4e93144248d82b06f4b0c6376a3957dde2c30b147a9"
+        },
+        {
+          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/accepted_merged_refined_nodes.jsonl",
+          "bytes": 15592235,
+          "sha256": "e1f093239b9d9a9107021b678e237f7a9934a71135959225ac4f1672d116f9e4"
+        },
+        {
+          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/accepted_refined_nodes.jsonl",
+          "bytes": 17799541,
+          "sha256": "2099f6ee4031f4463884a27ff77aa3a0170dc42997e08047798fd1cfafde0c62"
+        },
+        {
+          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/aspect_trees.jsonl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/aspects.jsonl",
+          "bytes": 141884,
+          "sha256": "281971f1246e436e802c6434b7f13b6d826329eccbcdcb9a463ee929df32f7e3"
+        },
+        {
+          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/aspects_pre_coassoc.jsonl",
+          "bytes": 1003178,
+          "sha256": "f699171439525355af815a83f60c20f4e12c7ef1db8d0ca20c3054889189d2e7"
+        },
+        {
+          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/atom_rebasket_baskets.jsonl",
+          "bytes": 1659948,
+          "sha256": "05bf64bd51d464faa0fea7a4764226cbb7c199c966ae8d52bbda0058daefa269"
+        },
+        {
+          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/atom_rebasket_validation.jsonl",
+          "bytes": 193330,
+          "sha256": "b9a503c2e059e07b5160894d1ec4bdc8039ed5430a55da3af9f59df7b7e2e4bd"
+        },
+        {
+          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/atom_subclusters.jsonl",
+          "bytes": 454005,
+          "sha256": "cdaa10b4c8fdd8bbf4127bc7a1aeb7bd6fdea976e04b96bb89d567312d4d4e87"
+        },
+        {
+          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/atom_subclusters_from_rebasket.jsonl",
+          "bytes": 16744468,
+          "sha256": "4ffbfb333220cd05f8770eff1371b763fb53a8b330b7ce43a25560aa20037faf"
+        },
+        {
+          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/basket_merge_candidates.jsonl",
+          "bytes": 1602222329,
+          "sha256": "1869b99a040faaf1364ea8cca733bb4e8f94774103cdc2be12411b0bae71ccfa"
+        },
+        {
+          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/bottom_up_aspect_assignments.jsonl",
+          "bytes": 546631,
+          "sha256": "3b72ce7064b613099e3fd341efe0fb90ee80bb3db62dd1e392782afbb547155d"
+        },
+        {
+          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/doc_all_phrases.jsonl",
+          "bytes": 204732855,
+          "sha256": "5c6903fb391d3b7a23f6d23d4b05ac55391f2e8e2c1a3fe1cb2de4f83ac7fe5f"
+        },
+        {
+          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/document_links.jsonl",
+          "bytes": 38629299,
+          "sha256": "9d6b55cee7890fd90bdddd7f53a66e07af20aa30e3514296a40cbc1992229328"
+        },
+        {
+          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/documents.jsonl",
+          "bytes": 179303162,
+          "sha256": "7109a4bedd23961f9722e8e0d9caad2d57584602d7d7aa21c5b66a6e2352cebc"
+        },
+        {
+          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/evidence_phrases.jsonl",
+          "bytes": 258647216,
+          "sha256": "0837c3a3cafa1f6e9739a7f807181b848b651ddc876c620900d7829e6f607b5d"
+        },
+        {
+          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/facets_by_sub.jsonl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/llm_aspect_facets.jsonl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/llm_atom_facets.jsonl",
+          "bytes": 201601,
+          "sha256": "06f5303fc306737f6025c2ae3ac9a8a09f7b6f0f0ae07ae57c36ef507fe989a2"
+        },
+        {
+          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/llm_atom_names.jsonl",
+          "bytes": 685980,
+          "sha256": "24fbbb56a444128ad91e678454a371dcfab0fff0f06f20aa8544d511ae5706cd"
+        },
+        {
+          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/merged_refined_nodes.jsonl",
+          "bytes": 17039352,
+          "sha256": "938cc5e5612f2fb282154fabac30db5d38f9fd534023c57d7ea8679a5b9cde86"
+        },
+        {
+          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/merged_refined_phrase_assignments.jsonl",
+          "bytes": 14435325,
+          "sha256": "eeb8b1d505e0ffbfc02874143a247ad59d80da473cd43bc4f0dd68df125b9629"
+        },
+        {
+          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/method_comparison.json",
+          "bytes": 205,
+          "sha256": "57500ebacc24adb94952a6f563dce2a5d66e4717ac5bfc297d0171f68548c6cf"
+        },
+        {
+          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/nodes.jsonl",
+          "bytes": 25943970,
+          "sha256": "494323ab9ae50ed02b6f67cbb49fe8524d870ea66299171fd476b9645df29f9d"
+        },
+        {
+          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/nodes_pre_v5.jsonl",
+          "bytes": 16591260,
+          "sha256": "e1afa6a2bee725813bdd5d3875a819d66212bda8df5bfed406a8660968be8815"
+        },
+        {
+          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/pending_recovery_candidates.jsonl",
+          "bytes": 24688883,
+          "sha256": "80e71aa340a59306dd26aaaf9bf84840411bf6555a0522c085e8e80c22d8cdf5"
+        },
+        {
+          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/pending_recovery_llm_prompts.jsonl",
+          "bytes": 24781234,
+          "sha256": "87c66f16a49d2d8a5af25f689b710539e20101b5b5ab8da2afe49a611981b0a0"
+        },
+        {
+          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/pending_recovery_summary.json",
+          "bytes": 51158,
+          "sha256": "ba2a5cf02b1eef065675887d55914c22dc4cc3d7f7b3cf1480782de5c44efb79"
+        },
+        {
+          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/rebasket_merge_summary.json",
+          "bytes": 205983,
+          "sha256": "886859d1456c5bd902ae98214807e04350405912ff25077be11a8d5c1dd38206"
+        },
+        {
+          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/refined_nodes.jsonl",
+          "bytes": 19569364,
+          "sha256": "83c41004f4d0da8213340de0c003466448bb33dc9d7b5f01ccc5d8a2cd98ea3c"
+        },
+        {
+          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/refined_phrase_assignments.jsonl",
+          "bytes": 9057297,
+          "sha256": "36cb51e14ffacb06ade291d151b054d4fdb37d36376b4710bcc7bffb1a4bf016"
+        }
+      ]
+    }
+  ]
+}

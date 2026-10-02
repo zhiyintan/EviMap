@@ -1,0 +1,20 @@
+# tt — runtime dependencies (verified against actual imports)
+# Install with uv:
+#   uv venv --python 3.9
+#   uv pip install -r requirements.txt
+
+# --- embeddings ---
+sentence-transformers>=3.0.0
+torch>=2.0.0              # used directly for device detection; also a sentence-transformers dep
+
+# --- clustering / numerics ---
+scikit-learn>=1.4.0
+scipy>=1.11.0
+numpy>=1.26.0,<2.0       # <2.0 for torch / sentence-transformers wheel compatibility on py3.9
+
+# --- LLM extractor ---
+openai>=1.0.0
+httpx>=0.25.0
+
+# --- real-corpus catalogue (Phase 1) ---
+datasets>=2.18.0

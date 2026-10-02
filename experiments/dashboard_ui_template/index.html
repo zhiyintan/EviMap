@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Catalogue Explorer</title>
+<link rel="stylesheet" href="style.css?v=51">
+</head>
+<body>
+<header>
+  <h1 id="catalogue-title">Catalogue Explorer</h1>
+  <p class="sub" id="catalogue-subtitle">
+    Browse <strong>aspects</strong> on the left, expand to see
+    <strong>topics</strong> within them, click a topic to see linked
+    documents, and click a document to read its text with key phrases
+    highlighted.
+  </p>
+  <nav>
+    <button data-tab="browse" class="tab active">Browse Aspects</button>
+    <button data-tab="combine" class="tab">Combine Two Topics</button>
+    <button data-tab="about" class="tab">About</button>
+    <button id="guide-open" class="guide-open" type="button">Guide</button>
+  </nav>
+</header>
+
+<div id="guide-modal" class="guide-modal" hidden>
+  <div class="guide-backdrop"></div>
+  <div id="guide-focus" class="guide-focus"></div>
+  <div id="guide-focus-2" class="guide-focus guide-focus-secondary" hidden></div>
+  <!-- Closing step: static catalogue previews for every domain, floating over a
+       dimmed page. Populated by the guide from the baked-in DOMAIN_PREVIEWS. -->
+  <div id="guide-previews" class="guide-previews" hidden></div>
+  <section class="guide-panel" role="dialog" aria-modal="true" aria-labelledby="guide-title">
+    <button class="guide-close" type="button" data-guide-close aria-label="Skip tour">Skip tour</button>
+    <div class="guide-progress"><div id="guide-progress-fill"></div></div>
+    <div class="guide-kicker" id="guide-kicker">Guided tour</div>
+    <h2 id="guide-title">How to read this corpus map</h2>
+    <p class="guide-lead" id="guide-body"></p>
+    <p class="guide-click-hint" id="guide-click-hint"></p>
+    <div class="guide-actions">
+      <button type="button" class="guide-secondary" id="guide-prev">Back</button>
+      <button type="button" class="guide-primary" id="guide-next">Next</button>
+    </div>
+  </section>
+</div>
+
+<main id="loading">
+  <div class="loading-box">
+    <div class="loading-label" id="loading-label">Loading catalogue index…</div>
+    <div class="loading-track"><div class="loading-fill" id="loading-fill"></div></div>
+  </div>
+</main>
+
+<main id="app" hidden>
+  <!-- ============================================= -->
+  <!-- TAB 1: BROWSE BY ASPECT → TOPIC               -->
+  <!-- ============================================= -->
+  <section id="view-browse" class="view three-col">
+    <aside class="left">
+      <div class="pane-header">
+        <h2>Aspects</h2>
+        <p class="hint">
+          Each aspect groups related topics. Expand to see them.
+        </p>
+        <input type="text" id="aspect-filter" placeholder="Search aspects, atoms, phrases…">
+        <div id="search-results" class="search-results" hidden></div>
+      </div>
+      <div id="aspect-tree"></div>
+    </aside>
+    <div class="col-resizer" data-resizer="browse-1" title="drag to resize"></div>
+
+    <aside class="middle">
+      <div class="pane-header">
+        <h2 id="middle-title">Documents</h2>
+        <p class="hint" id="middle-sub">Pick a topic on the left.</p>
+        <label class="auto-scroll-toggle">
+          <input type="checkbox" class="auto-scroll-toggle-input" checked>
+          Auto-scroll to first phrase
+        </label>
+      </div>
+      <div id="topic-summary" hidden>
+        <h3 id="topic-summary-name"></h3>
+        <p class="topic-summary-meta" id="topic-summary-meta"></p>
+        <div class="related-phrases">
+          <span class="related-phrases-label">Related phrases:</span>
+          <span id="topic-summary-phrases"></span>
+        </div>
+        <details class="absorbed-list" id="topic-summary-absorbed" hidden>
+          <summary id="topic-summary-absorbed-summary"></summary>
+          <ul id="topic-summary-absorbed-list"></ul>
+        </details>
+      </div>
+      <ul id="doc-list"></ul>
+    </aside>
+    <div class="col-resizer" data-resizer="browse-2" title="drag to resize"></div>
+
+    <article class="right" id="doc-detail">
+      <p class="hint">Click a document above to read its text with the topic's key phrases highlighted.</p>
+    </article>
+  </section>
+
+  <!-- ============================================= -->
+  <!-- TAB 2: COMBINE TWO TOPICS                     -->
+  <!-- ============================================= -->
+  <section id="view-combine" class="view three-col" hidden>
+    <aside class="left">
+      <div class="pane-header">
+        <h2>Combine</h2>
+        <p class="hint">Pick two aspects (or a sub-group inside one). Documents
+          that discuss both are shown, with a count.</p>
+      </div>
+      <div class="combine-pickers">
+        <div class="combine-side combine-side-a">
+          <div class="combine-side-label">Side A</div>
+          <label>Aspect
+            <select id="combine-a-aspect"></select>
+          </label>
+          <label>Within
+            <select id="combine-a-scope"></select>
+          </label>
+          <label>Topic
+            <select id="combine-a-atom"></select>
+          </label>
+        </div>
+        <div class="combine-plus">+</div>
+        <div class="combine-side combine-side-b">
+          <div class="combine-side-label">Side B</div>
+          <label>Aspect
+            <select id="combine-b-aspect"></select>
+          </label>
+          <label>Within
+            <select id="combine-b-scope"></select>
+          </label>
+          <label>Topic
+            <select id="combine-b-atom"></select>
+          </label>
+        </div>
+      </div>
+    </aside>
+    <div class="col-resizer" data-resizer="combine-1" title="drag to resize"></div>
+
+    <aside class="middle">
+      <div class="pane-header">
+        <h2 id="combine-title">Documents</h2>
+        <p class="hint" id="combine-sub">Pick two topics.</p>
+        <label class="auto-scroll-toggle">
+          <input type="checkbox" class="auto-scroll-toggle-input" checked>
+          Auto-scroll to first phrase
+        </label>
+      </div>
+      <ul id="combine-doc-list"></ul>
+    </aside>
+    <div class="col-resizer" data-resizer="combine-2" title="drag to resize"></div>
+
+    <article class="right" id="combine-doc-detail">
+      <p class="hint">Pick two topics, then click a document to see both topics highlighted.</p>
+    </article>
+  </section>
+
+  <!-- ============================================= -->
+  <!-- TAB 3: ABOUT                                  -->
+  <!-- ============================================= -->
+  <section id="view-about" class="view single-col" hidden>
+    <article class="about">
+      <div class="about-actions">
+        <button type="button" id="about-explore-domains">Explore domain catalogues</button>
+      </div>
+      <p class="about-hook">
+        A new corpus comes on board, and the time to understand it is short.
+        You cannot read it all, and skimming a handful of documents reveals
+        little about the whole.
+      </p>
+      <p class="about-hook">
+        This platform reads everything and turns the corpus into a map you
+        can browse, whether it holds three thousand documents or well beyond
+        a hundred thousand. The map is a <strong>multi-aspect topic
+        tree</strong>, built bottom-up from the corpus itself with no
+        predefined taxonomy imposed on it.
+      </p>
+
+      <h3>What you can do</h3>
+      <ul class="about-caps">
+        <li><span class="cap-ico">🔎</span>Every topic, along any aspect,
+            expands to its documents and the exact sentences that locate it,
+            so nothing you see stands without evidence you can check.</li>
+        <li><span class="cap-ico">📚</span>Once the map exists, the whole
+            corpus becomes searchable by keyword or theme, returning every
+            document that carries it.</li>
+        <li><span class="cap-ico">🔗</span>Combine two topics to find the
+            documents where they co-occur.</li>
+        <li><span class="cap-ico">↪</span>While reading a document, click any
+            linked phrase that draws your attention, as you would on
+            Wikipedia, to see the path its topic takes through the tree, its
+            neighboring topics, how many documents it spans, and the documents
+            themselves to read on.</li>
+      </ul>
+
+      <h3>How it works</h3>
+      <div class="about-flow">
+        <span class="flow-step">Documents</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-step">Phrases</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-step">Topics</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-step">Aspects</span>
+      </div>
+      <p>
+        A language model reads each document and extracts the phrases that
+        carry its meaning. Those phrases are clustered by similarity and
+        refined into clean topics, then organized bottom-up into groups and
+        aspects. Because the structure grows from the evidence rather than a
+        fixed schema, every node stays anchored to the text that produced it.
+      </p>
+
+      <h3>Reading it well</h3>
+      <p>
+        Topic names are generated summaries, so when one looks off, open it
+        and read the phrases underneath. The top-level grouping is a useful
+        first cut, and the <strong>"Other"</strong> category holds the topics
+        too distinct to place or too small to stand alone.
+      </p>
+    </article>
+  </section>
+</main>
+
+<script src="app.js?v=51"></script>
+</body>
+</html>

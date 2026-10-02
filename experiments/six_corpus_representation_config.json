@@ -1,0 +1,66 @@
+{
+  "cohort_definition": "Documents linked to at least one inspectable record in the current submitted EviMap demo artifact.",
+  "seed": 23,
+  "corpora": [
+    {
+      "id": "peer_review",
+      "paper_name": "ICLR peer reviews",
+      "corpus_label": "ICLR peer-review reports",
+      "expected_documents": 2108,
+      "evimap_data_dir": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data",
+      "input_documents": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/documents.jsonl",
+      "topicgpt_dir": "baselines/topicgpt_style/outputs/peer_review_full_shared",
+      "tnt_dir": "baselines/tnt_llm_style/outputs/peer_review_full_shared"
+    },
+    {
+      "id": "city_hotel",
+      "paper_name": "TripAdvisor hotel reviews",
+      "corpus_label": "TripAdvisor hotel reviews",
+      "expected_documents": 2864,
+      "evimap_data_dir": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data",
+      "input_documents": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/documents.jsonl",
+      "topicgpt_dir": "baselines/topicgpt_style/outputs/city_hotel_full_shared",
+      "tnt_dir": "baselines/tnt_llm_style/outputs/city_hotel_full_shared"
+    },
+    {
+      "id": "music_reviews",
+      "paper_name": "Pitchfork music reviews",
+      "corpus_label": "Pitchfork music reviews",
+      "expected_documents": 24640,
+      "evimap_data_dir": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data",
+      "input_documents": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/documents.jsonl",
+      "topicgpt_dir": "baselines/topicgpt_style/outputs/music_reviews_full_shared",
+      "tnt_dir": "baselines/tnt_llm_style/outputs/music_reviews_full_shared"
+    },
+    {
+      "id": "career_jobs",
+      "paper_name": "LinkedIn job postings",
+      "corpus_label": "LinkedIn job postings",
+      "expected_documents": 32686,
+      "evimap_data_dir": "runs/2026-06-04_career_jobs_numeric_filtered_strict_dashboard/dashboard_ui/data",
+      "input_documents": "runs/2026-06-04_career_jobs_numeric_filtered_strict_dashboard/dashboard_ui/data/documents.jsonl",
+      "topicgpt_dir": "baselines/topicgpt_style/outputs/career_jobs_full_shared",
+      "tnt_dir": "baselines/tnt_llm_style/outputs/career_jobs_full_shared"
+    },
+    {
+      "id": "recipes",
+      "paper_name": "Recipes",
+      "corpus_label": "recipes",
+      "expected_documents": 39447,
+      "evimap_data_dir": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data",
+      "input_documents": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/documents.jsonl",
+      "topicgpt_dir": "baselines/topicgpt_style/outputs/recipes_full_shared",
+      "tnt_dir": "baselines/tnt_llm_style/outputs/recipes_full_shared"
+    },
+    {
+      "id": "eu_debates",
+      "paper_name": "EU debates",
+      "corpus_label": "European Parliament debates",
+      "expected_documents": 101699,
+      "evimap_data_dir": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data",
+      "input_documents": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/documents.jsonl",
+      "topicgpt_dir": "baselines/topicgpt_style/outputs/eu_debates_full_shared",
+      "tnt_dir": "baselines/tnt_llm_style/outputs/eu_debates_full_shared"
+    }
+  ]
+}

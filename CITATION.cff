@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "Please cite the EviMap paper when using this software or its artifacts."
+title: "EviMap: Evidence-Grounded Hierarchical Topic Maps for Exploring Unlabeled Corpora"
+type: software
+authors:
+  - family-names: Tan
+    given-names: Zhiyin
+  - family-names: Duan
+    given-names: Changxu
+repository-code: "https://github.com/zhiyintan/EviMap"
+url: "https://arxiv.org/abs/2609.06664"
+preferred-citation:
+  type: conference-paper
+  title: "EviMap: Evidence-Grounded Hierarchical Topic Maps for Exploring Unlabeled Corpora"
+  authors:
+    - family-names: Tan
+      given-names: Zhiyin
+    - family-names: Duan
+      given-names: Changxu
+  year: 2026
+  doi: "10.1145/3799682.3840239"
