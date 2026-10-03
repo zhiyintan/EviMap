@@ -18,12 +18,16 @@ The fix uses the only authoritative, lossless mapping: phrase_entry_id.
 So every occurrence is re-tagged with the atom that actually owns its phrase
 entry now. (Independent of how the atom was merged, so it never misses a path.)
 
+`document_links.jsonl` is written before the rebuild as well, so it is
+regenerated here from the re-tagged occurrences.
+
 Run at the very end of rebuild_aspects, after apply_coassoc_to_dashboard.
 """
 from __future__ import annotations
 
 import argparse
 import json
+from collections import defaultdict
 from pathlib import Path
 from experiments.catalogue.io_utils import load_jsonl
 
@@ -60,19 +64,24 @@ def main() -> int:
     # document text and therefore have start=end=None; using only (doc_id,
     # start) collapses all of those phrases onto one arbitrary entry. Include
     # normalized text in the primary key, and keep a text-only fallback because
-    # phrase_entry_id is deduped globally by normalized text.
+    # phrase_entry_id is deduped globally by normalized text. Offsets alone
+    # match when the two files normalize the text differently.
     occ_key2ent: dict = {}
+    occ_span_key2ent: dict = {}
     occ_text_key2ent: dict = {}
     for o in load_jsonl(occ_path):
         did = o["doc_id"]
         text_norm = (o.get("text_normalized") or (o.get("text") or "").lower().strip())
         ent = o.get("phrase_entry_id")
         occ_key2ent[(did, o.get("start"), o.get("end"), text_norm)] = ent
+        if o.get("start") is not None:
+            occ_span_key2ent[(did, o.get("start"), o.get("end"))] = ent
         occ_text_key2ent[(did, text_norm)] = ent
 
     # rewrite doc_all_phrases occurrence atom_ids in place (keep order)
-    total = rewritten = unmapped = 0
+    total = rewritten = unmapped = detached = 0
     out_lines = []
+    doc_atoms: dict = defaultdict(set)
     for line in dap_path.open(encoding="utf-8"):
         if not line.strip():
             continue
@@ -82,6 +91,8 @@ def main() -> int:
             total += 1
             text_norm = (ph.get("text") or "").lower().strip()
             ent = occ_key2ent.get((did, ph.get("start"), ph.get("end"), text_norm))
+            if ent is None and ph.get("start") is not None:
+                ent = occ_span_key2ent.get((did, ph.get("start"), ph.get("end")))
             if ent is None:
                 ent = occ_text_key2ent.get((did, text_norm))
             new = ent2atom.get(ent) if ent is not None else None
@@ -94,6 +105,14 @@ def main() -> int:
                 ph["sub_id"] = None
             else:
                 unmapped += 1
+                if ph.get("atom_id") not in title_by_atom:
+                    # no final node owns this phrase: drop its stale topic
+                    ph["atom_id"] = None
+                    ph["atom_title"] = ""
+                    ph["sub_id"] = None
+                    detached += 1
+            if ph.get("atom_id") in title_by_atom:
+                doc_atoms[did].add(ph["atom_id"])
         out_lines.append(json.dumps(rec, ensure_ascii=False))
 
     bak = dap_path.with_suffix(".jsonl.pre_remap")
@@ -101,8 +120,17 @@ def main() -> int:
         bak.write_text(dap_path.read_text(encoding="utf-8"), encoding="utf-8")
     dap_path.write_text("\n".join(out_lines) + "\n", encoding="utf-8")
 
+    with (data / "document_links.jsonl").open("w", encoding="utf-8") as f:
+        for did in sorted(doc_atoms):
+            f.write(json.dumps({
+                "doc_id": did,
+                "linked_atom_ids": sorted(doc_atoms[did]),
+            }, ensure_ascii=False) + "\n")
+
     print(f"[remap] {total} occurrences: {rewritten} atom_ids rewritten, "
-          f"{unmapped} unmapped (kept as-is). backup: {bak.name}")
+          f"{unmapped} unmapped ({detached} left without a topic). backup: {bak.name}")
+    print(f"[remap] document_links.jsonl: {len(doc_atoms)} documents, "
+          f"{sum(len(v) for v in doc_atoms.values())} links to final nodes")
     return 0
 
 

@@ -268,8 +268,7 @@ def main() -> int:
     facet_dir = base / "facet_extraction"
     atom_naming = base / "atom_naming"
     aspect_naming = base / "aspect_naming"
-    # A normalized custom corpus only borrows --domain to satisfy the ingestion
-    # choices; that placeholder must not reach prompts, titles or file prefixes.
+    # A custom corpus only borrows --domain as a placeholder.
     custom_corpus = args.domain_description is not None
     domain_description = (args.domain_description if custom_corpus
                           else DOMAIN_SPECS[args.domain].get("description", ""))

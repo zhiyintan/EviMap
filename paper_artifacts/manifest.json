@@ -13,15 +13,15 @@
       "counts": {
         "documents": 2108,
         "linked_documents": 2108,
-        "topic_evidence_links": 7951,
+        "topic_evidence_links": 7607,
         "spans": 18477,
         "unaligned_phrases": 53,
         "groups": 110,
         "leaf_nodes_including_other": 221
       },
       "archive": "evimap-peer_review.tar.gz",
-      "archive_bytes": 17657094,
-      "archive_sha256": "17387d21b9429ae1ab3bc668ebe7ce9b57ce3fbb1e27b618888f8e48cf9fe66f",
+      "archive_bytes": 17659628,
+      "archive_sha256": "7048988a42804a95110690d1fc55523a47ca3f877b9cc47edc22ebb9c1c33d4c",
       "files": [
         {
           "path": "baselines/tnt_llm_style/outputs/peer_review_full_shared/assignments.jsonl",
@@ -215,13 +215,13 @@
         },
         {
           "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/doc_all_phrases.jsonl",
-          "bytes": 3461667,
-          "sha256": "8585c46ea091e7fdbe8c0916420d0e65a69196e8a0ea51a5a990593e701ae689"
+          "bytes": 3590709,
+          "sha256": "386f5d4b1490e73bd6492dda5f93de7188977a99557f3668efeaf1376d20d2f7"
         },
         {
           "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/document_links.jsonl",
-          "bytes": 445228,
-          "sha256": "f9a3b86155449a77bfcb6197bbae46e6ac38359cfee1c097953701d2b5af36a6"
+          "bytes": 426740,
+          "sha256": "ea23725c568064549d5b476765c663e34f1f18bd0086f1d0cabd0093dee93edd"
         },
         {
           "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/documents.jsonl",
@@ -333,15 +333,15 @@
       "counts": {
         "documents": 2864,
         "linked_documents": 2864,
-        "topic_evidence_links": 15597,
+        "topic_evidence_links": 14631,
         "spans": 19277,
         "unaligned_phrases": 121,
         "groups": 52,
         "leaf_nodes_including_other": 110
       },
       "archive": "evimap-city_hotel.tar.gz",
-      "archive_bytes": 10428771,
-      "archive_sha256": "dee6a97531a6d9b03429ca4013a0d6ce2fc6d0f50db40716e180ea6d7e98043b",
+      "archive_bytes": 10423214,
+      "archive_sha256": "48f1c07298d56feaa6e35e7874c262c5bfe9cd22af8c3bef72ea428bdaa14ef8",
       "files": [
         {
           "path": "baselines/tnt_llm_style/outputs/city_hotel_full_shared/assignments.jsonl",
@@ -535,13 +535,13 @@
         },
         {
           "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/doc_all_phrases.jsonl",
-          "bytes": 3559769,
-          "sha256": "05f3793115e089bbed8354c87ef7e25202b3a98e193f9b8634b963b19becf9f4"
+          "bytes": 3758088,
+          "sha256": "7b3ac0c3566226cbe740155ab8a420573a93a47b2596b3d30ef6d32276c1332e"
         },
         {
           "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/document_links.jsonl",
-          "bytes": 834437,
-          "sha256": "ad42331a17394a51233036433898294f4a48dd849f41b76f9171844061f9e1bf"
+          "bytes": 834026,
+          "sha256": "39ff87081a33abb3a5bd10721065b0c5983ebdf81fb1ec154352673336d3d144"
         },
         {
           "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/documents.jsonl",
@@ -653,15 +653,15 @@
       "counts": {
         "documents": 24640,
         "linked_documents": 24640,
-        "topic_evidence_links": 392199,
+        "topic_evidence_links": 309425,
         "spans": 629483,
         "unaligned_phrases": 1853,
         "groups": 170,
         "leaf_nodes_including_other": 277
       },
       "archive": "evimap-music_reviews.tar.gz",
-      "archive_bytes": 280066155,
-      "archive_sha256": "34bf6a04d5ae40c35674b228a1d735e3e225b939287568918656d83590b600be",
+      "archive_bytes": 279315393,
+      "archive_sha256": "85c6926ece50467c99f85072f36f07fa19cce995188ab504d32b5875bb657581",
       "files": [
         {
           "path": "baselines/tnt_llm_style/outputs/music_reviews_full_shared/assignments.jsonl",
@@ -855,13 +855,13 @@
         },
         {
           "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/doc_all_phrases.jsonl",
-          "bytes": 134953767,
-          "sha256": "1d41dce1e3d88da89798e494f8d7e842815f2eedb52d798e3d12e24587c74134"
+          "bytes": 161845420,
+          "sha256": "7e054e2ddedddd54a3788d2e78faa542037fa675373216028b7a27da57f19b98"
         },
         {
           "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/document_links.jsonl",
-          "bytes": 30902306,
-          "sha256": "3661d703276d70998f8ecaf0b08cedc3f273791c63bcb28b4ef0db1d024fe602"
+          "bytes": 28678844,
+          "sha256": "27970aa10db6e80c3afb8dea137b5057db65a6763ce947ad42db3a20d2194c2e"
         },
         {
           "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/documents.jsonl",
@@ -973,15 +973,15 @@
       "counts": {
         "documents": 32686,
         "linked_documents": 32686,
-        "topic_evidence_links": 1568772,
+        "topic_evidence_links": 1085693,
         "spans": 1987564,
         "unaligned_phrases": 227380,
         "groups": 350,
         "leaf_nodes_including_other": 3246
       },
       "archive": "evimap-career_jobs.tar.gz",
-      "archive_bytes": 368465247,
-      "archive_sha256": "9302a2458ac26a28fc311bf9e365e7e2e20efc7155871eb6bb4089b86325df64",
+      "archive_bytes": 364888989,
+      "archive_sha256": "0b082f429a924a87319930ba2f279d8fae1b54597f6603e3039c67eceaf5ab88",
       "files": [
         {
           "path": "baselines/tnt_llm_style/outputs/career_jobs_full_shared/assignments.jsonl",
@@ -1140,13 +1140,13 @@
         },
         {
           "path": "runs/2026-06-04_career_jobs_numeric_filtered_strict_dashboard/dashboard_ui/data/doc_all_phrases.jsonl",
-          "bytes": 473624717,
-          "sha256": "7b7b67761519c53d4371af483d373975e793041bb072248c234271d56d2e6115"
+          "bytes": 473624236,
+          "sha256": "d30f8cc3aaec99233a97aa2f8c1b8863e650578135e6f090790805af7b788249"
         },
         {
           "path": "runs/2026-06-04_career_jobs_numeric_filtered_strict_dashboard/dashboard_ui/data/document_links.jsonl",
-          "bytes": 84795088,
-          "sha256": "7adb735c868bf7bdb6e234f9399c8e1106ae3ce43311483aeaf2a7437b071c3d"
+          "bytes": 61291639,
+          "sha256": "8c379ebcd43086abfa23fef92bd063d40458a7a9e372e5d3068f97ceb2ae1922"
         },
         {
           "path": "runs/2026-06-04_career_jobs_numeric_filtered_strict_dashboard/dashboard_ui/data/documents.jsonl",
@@ -1208,15 +1208,15 @@
       "counts": {
         "documents": 39447,
         "linked_documents": 39447,
-        "topic_evidence_links": 662519,
+        "topic_evidence_links": 589329,
         "spans": 746815,
         "unaligned_phrases": 287,
         "groups": 91,
         "leaf_nodes_including_other": 142
       },
       "archive": "evimap-recipes.tar.gz",
-      "archive_bytes": 92972433,
-      "archive_sha256": "37499164116375587349367904f184b5d1eacf6db6137c4b0631599daaa4c44d",
+      "archive_bytes": 92203068,
+      "archive_sha256": "f6bf85071c7ffb193b50139460e5554493ce2c8e6577a443afc54291317f107d",
       "files": [
         {
           "path": "baselines/tnt_llm_style/outputs/recipes_full_shared/assignments.jsonl",
@@ -1410,13 +1410,13 @@
         },
         {
           "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/doc_all_phrases.jsonl",
-          "bytes": 140068853,
-          "sha256": "c492dd0342d42d16c8b4a618b5bc52e26bdd8b6cefdd6523a516491be919075d"
+          "bytes": 145542962,
+          "sha256": "9be295a71228b0c0e7817c3908bc9c3f8d9572935ade3c0e9c2ef1e00cc95fcd"
         },
         {
           "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/document_links.jsonl",
-          "bytes": 35283681,
-          "sha256": "15aab8e956298094a392843ff5b8145902c4c95f75ada669def88b43efc629fa"
+          "bytes": 33850309,
+          "sha256": "0064243aca65cf90280c2902baddb905872bc0c62ee3fe5db7783e739dd98dd9"
         },
         {
           "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/documents.jsonl",
@@ -1528,15 +1528,15 @@
       "counts": {
         "documents": 101699,
         "linked_documents": 101699,
-        "topic_evidence_links": 643882,
+        "topic_evidence_links": 623415,
         "spans": 956005,
         "unaligned_phrases": 22008,
         "groups": 323,
         "leaf_nodes_including_other": 972
       },
       "archive": "evimap-eu_debates.tar.gz",
-      "archive_bytes": 442823746,
-      "archive_sha256": "77e6ae1191641c0a886a76ca022104a5a7d5f007a2748d9886f4c9d77be68e9f",
+      "archive_bytes": 442605012,
+      "archive_sha256": "618c6640fd636a09082de1d1387d726ad9b0cfea4cf9807d69ad70bb927f6ff1",
       "files": [
         {
           "path": "baselines/tnt_llm_style/outputs/eu_debates_full_shared/assignments.jsonl",
@@ -1735,8 +1735,8 @@
         },
         {
           "path": "runs/2026-05-11_eu_debates_full_dataset/dashboard_ui/data/document_links.jsonl",
-          "bytes": 38629299,
-          "sha256": "9d6b55cee7890fd90bdddd7f53a66e07af20aa30e3514296a40cbc1992229328"
+          "bytes": 38843846,
+          "sha256": "73a6c2faa1da6f00482e68f46e3c1f8b616b7a374ba8bda3336830b91aa164c8"
         },
         {
           "path": "runs/2026-05-11_eu_debates_full_dataset/dashboard_ui/data/documents.jsonl",

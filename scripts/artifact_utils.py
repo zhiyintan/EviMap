@@ -31,6 +31,7 @@ def validate_corpus(data: Path, minimum: int) -> dict:
     if len(docs) < minimum:
         raise ValueError(f"{data}: {len(docs)} documents is below paper minimum {minimum}")
     nodes = {row["atom_id"]: row for row in read_jsonl(data / "nodes.jsonl")}
+    leaves = {atom_id for atom_id, node in nodes.items() if not node.get("is_group_header")}
     for node in nodes.values():
         missing = set(node.get("support_doc_ids", [])) - docs.keys()
         if missing:
@@ -47,6 +48,8 @@ def validate_corpus(data: Path, minimum: int) -> dict:
     for row in read_jsonl(data / "document_links.jsonl"):
         if row["doc_id"] not in docs:
             raise ValueError(f"link references missing document {row['doc_id']}")
+        if set(row.get("linked_atom_ids", [])) - leaves:
+            raise ValueError(f"link in {row['doc_id']} references a missing topic node")
         if row.get("linked_atom_ids"):
             linked.add(row["doc_id"])
         links += len(row.get("linked_atom_ids", []))
@@ -59,6 +62,8 @@ def validate_corpus(data: Path, minimum: int) -> dict:
             raise ValueError(f"span references missing document {doc_id}")
         text = docs[doc_id]
         for phrase in row.get("phrases", []):
+            if phrase.get("atom_id") is not None and phrase["atom_id"] not in leaves:
+                raise ValueError(f"phrase in {doc_id} references a missing topic node")
             start, end = phrase.get("start"), phrase.get("end")
             if start is None or end is None:
                 unaligned += 1

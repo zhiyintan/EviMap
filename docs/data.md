@@ -14,55 +14,22 @@ source. `scripts/fetch_paper_artifacts.py` verifies checksums before extracting.
 The release does not downsample any paper cohort. Downloading one corpus is
 supported for inspection; validating the complete release requires all six.
 
-## Spans and phrases without offsets
+## Counts in the manifest
 
-`spans` in the manifest counts phrase occurrences that carry character offsets
-into the stored document. The validator checks each of them against the source
-text; they sum to 4,357,621 across the six corpora.
+- `spans`: phrase occurrences with character offsets into the stored document.
+- `unaligned_phrases`: occurrences without offsets. The phrase is not verbatim
+  in the document, or it only occurs glued to a neighbouring letter or digit,
+  as in job postings that lost their line breaks (`...Experience2+ years...`).
+  They keep their topic but are not highlighted.
+- `topic_evidence_links`: (document, final leaf topic) pairs in
+  `document_links.jsonl`. The paper's 3,290,920 counts the pairs before
+  near-duplicate topics were merged; those are in `evidence_phrases.jsonl`.
 
-`unaligned_phrases` counts phrase occurrences in `doc_all_phrases.jsonl` whose
-`start` and `end` are null. The aligner matches an extracted phrase
-case-insensitively and requires a word boundary on each side, so that a short
-phrase is never highlighted inside a longer word. A phrase stays without
-offsets when its wording is not verbatim in the document, or when it only
-occurs glued to a neighbouring letter or digit. The second case dominates in
-the job postings, where the source text lost line breaks
-(`...Experience2+ years...`). Such phrases keep their topic assignment but
-cannot be highlighted, and they are not part of the validated span count.
+## File names
 
-| Corpus | Spans | Phrases without offsets |
-| --- | ---: | ---: |
-| ICLR peer reviews | 18,477 | 53 |
-| TripAdvisor hotel reviews | 19,277 | 121 |
-| Pitchfork music reviews | 629,483 | 1,853 |
-| LinkedIn job postings | 1,987,564 | 227,380 |
-| Recipes | 746,815 | 287 |
-| EU debates | 956,005 | 22,008 |
-| Total | 4,357,621 | 251,702 |
-
-## File and directory names
-
-Some file names in the archives are historical and easy to misread:
-
-- `baselines/*/outputs/*_full_shared/sampled_documents.jsonl` lists the
-  documents the baseline consumed. For these runs that is the complete cohort
-  (the same count as `documents.jsonl`), not a sample.
-- `nodes_pre_v5.jsonl` and `aspects_pre_coassoc.jsonl` are snapshots taken
-  before the three-level hierarchy rebuild and are kept as intermediate
-  provenance. The dashboard reads `nodes.jsonl` and `aspects.jsonl`.
-- Summary files (`method_comparison.json`, `rebasket_merge_summary.json`,
-  `statistical_pre_rebasket_summary.json`, and the baseline `summary.json` and
-  `report.md`) originally recorded absolute paths on the machine that produced
-  them. These were rewritten to repository-relative paths before packaging;
-  nothing else in the artifacts was changed.
-
-The EU-debates run directory was created for an earlier experiment and carried
-another model's name. The released snapshot was rebuilt with
-`deepseek-ai/DeepSeek-V4-Flash`: extraction was redone (every recorded
-extraction output names that model) and the downstream stages were rerun
-afterwards. The directory was therefore renamed to
-`runs/2026-05-11_eu_debates_full_dataset` for this release. The other run
-directory names are kept as they were.
+- `sampled_documents.jsonl` in the baseline outputs holds the full cohort.
+- `nodes_pre_v5.jsonl` and `aspects_pre_coassoc.jsonl` are snapshots from
+  before the hierarchy rebuild.
 
 ## Upstream datasets
 

@@ -4,9 +4,7 @@
 
 Download and validate the six release archives with the README commands. All
 paths below are repository-relative. The run locations are listed in
-`experiments/six_corpus_representation_config.json`; they keep the original
-run identifiers, except the EU-debates directory, which was renamed (see
-[data provenance](data.md)).
+`experiments/six_corpus_representation_config.json`.
 
 ## New input corpus
 
@@ -22,11 +20,7 @@ completed extraction. Requests and responses are recorded in
 `runs/my_corpus/llm_calls.jsonl`; pipeline commands and settings are recorded in
 `publication_config.json`. An API key is never stored in these files.
 
-`--output` must lie inside the checkout (for example `runs/my_corpus`); a path
-elsewhere is rejected. Intermediate files of the hierarchy rebuild are written
-to `runs/_standalone/`, prefixed with the output directory name, so give
-concurrent runs distinct directory names. Paths recorded in run outputs are
-repository-relative.
+`--output` must be inside the checkout.
 
 For upstream domain-specific ingestion:
 

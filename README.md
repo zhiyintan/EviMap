@@ -67,8 +67,7 @@ Input is JSONL with `{doc_id, text, metadata}` records. The domain profile guide
 extraction; it does not prescribe the final taxonomy. The public entry point
 uses five grouping rounds, a 0.7 first-layer threshold and 14 top-level aspects
 (at most 20). Small topics are absorbed where appropriate or retained in Other.
-`--output` must be a directory inside this checkout, such as `runs/<name>`,
-because pipeline stages address their files relative to the repository root.
+`--output` must be inside this checkout, such as `runs/<name>`.
 
 `--rough-k` is intended for tiny smoke tests. Omit it for a real corpus so the
 rough KMeans scaffold selects its size from the data. `--workers` depends on
@@ -97,10 +96,7 @@ full-cohort coverage, document and topic references, and every stored span.
 
 ## License
 
-The code, documentation and EviMap-generated artifacts are released under
-[CC BY-NC-ND 4.0](LICENSE), the license of the paper. The corpus texts inside
-the release archives remain under the terms of their upstream sources; see
-[data provenance](docs/data.md).
+[CC BY-NC-ND 4.0](LICENSE). Corpus texts keep their upstream terms.
 
 ## Citation
 

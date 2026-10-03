@@ -7,6 +7,7 @@ import sys
 import tarfile
 import tempfile
 import unittest
+from contextlib import redirect_stdout
 from pathlib import Path
 from unittest.mock import patch
 from types import SimpleNamespace
@@ -62,6 +63,38 @@ class PublicationTests(unittest.TestCase):
             {"text": "bilingual", "start": 1, "end": 10}]}])
         with self.assertRaisesRegex(ValueError, "span-text mismatch"):
             validate_corpus(data, 1)
+
+    def test_link_to_missing_topic_is_rejected(self):
+        data = self.fixture()
+        jsonl(data / "document_links.jsonl", [{"doc_id": "d1", "linked_atom_ids": ["t1", "stale"]}])
+        with self.assertRaisesRegex(ValueError, "missing topic node"):
+            validate_corpus(data, 1)
+
+    def test_phrase_tagged_with_missing_topic_is_rejected(self):
+        data = self.fixture()
+        jsonl(data / "doc_all_phrases.jsonl", [{"doc_id": "d1", "phrases": [
+            {"text": "bilingual", "start": 0, "end": 9, "atom_id": "stale"}]}])
+        with self.assertRaisesRegex(ValueError, "missing topic node"):
+            validate_corpus(data, 1)
+
+    def test_rebuild_remap_points_phrases_and_links_at_final_nodes(self):
+        from experiments.catalogue.aspects import remap_doc_phrases
+        run = self.root / "run"
+        data = run / "dashboard_ui" / "data"
+        jsonl(run / "inputs" / "phrase_occurrences.jsonl", [
+            {"doc_id": "d1", "text": "bilingual", "start": 0, "end": 9, "phrase_entry_id": 7}])
+        jsonl(data / "nodes.jsonl", [
+            {"atom_id": "final", "display_title": "Languages", "member_phrase_entry_ids": [7]}])
+        jsonl(data / "doc_all_phrases.jsonl", [{"doc_id": "d1", "phrases": [
+            {"text": "bilingual", "start": 0, "end": 9, "atom_id": "pre-merge"}]}])
+        jsonl(data / "document_links.jsonl", [{"doc_id": "d1", "linked_atom_ids": ["pre-merge"]}])
+        with patch.object(sys, "argv", ["remap_doc_phrases", "--run", str(run)]), \
+                redirect_stdout(io.StringIO()):
+            remap_doc_phrases.main()
+        phrases = json.loads((data / "doc_all_phrases.jsonl").read_text())["phrases"]
+        self.assertEqual(phrases[0]["atom_id"], "final")
+        self.assertEqual(json.loads((data / "document_links.jsonl").read_text()),
+                         {"doc_id": "d1", "linked_atom_ids": ["final"]})
 
     def test_missing_hierarchy_node_is_rejected(self):
         data = self.fixture()
