@@ -26,6 +26,7 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from experiments.catalogue.llm import DEFAULT_MODEL, chat_json  # noqa: E402
+from experiments.catalogue.paths import repo_relative  # noqa: E402
 
 
 GEN_SYSTEM = """You are implementing a TopicGPT-style topic modeling baseline.
@@ -366,7 +367,7 @@ def summarize(
                 topic_counts[a["topic_id"]] += 1
     summary = {
         "baseline": "TopicGPT-style",
-        "input_docs": str(input_docs),
+        "input_docs": repo_relative(input_docs),
         "model": model,
         "max_docs": args.max_docs,
         "sampled_docs": len(docs),
@@ -400,7 +401,7 @@ def summarize(
     report = [
         "# TopicGPT-style Baseline Report",
         "",
-        f"- Input: `{input_docs}`",
+        f"- Input: `{repo_relative(input_docs)}`",
         f"- Model: `{model}`",
         f"- Sampled documents: `{len(docs)}`",
         f"- Generation documents: `{generation_docs}`",

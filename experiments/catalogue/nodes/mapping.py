@@ -18,7 +18,7 @@ import json
 from pathlib import Path
 from typing import Dict, List, Set
 
-from experiments.catalogue.paths import ROOT
+from experiments.catalogue.paths import ROOT, repo_relative
 from experiments.catalogue.io_utils import load_jsonl
 
 
@@ -137,7 +137,7 @@ def main() -> int:
         "n_phrase_types_assigned": len(entry_id_to_node),  # legacy alias
         "n_occurrences_total": len(occ_rows),
         "n_occurrences_assigned": sum(node_occ_count.values()),
-        "source_rebasket_dir": str(rebasket),
+        "source_rebasket_dir": repo_relative(rebasket),
     }
     (out / "provenance.json").write_text(
         json.dumps(summary, indent=2, ensure_ascii=False),

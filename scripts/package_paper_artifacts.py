@@ -33,6 +33,13 @@ def files_for_corpus(source: Path, corpus: dict) -> list[Path]:
     return sorted(files)
 
 
+def anonymous(member: tarfile.TarInfo) -> tarfile.TarInfo:
+    """Drop the packaging account's owner fields from archive members."""
+    member.uid = member.gid = 0
+    member.uname = member.gname = ""
+    return member
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source-root", type=Path, default=ROOT)
@@ -57,7 +64,8 @@ def main() -> None:
         print(f"[{cid}] archiving {len(files)} files", flush=True)
         with tarfile.open(archive, "w:gz", compresslevel=1) as handle:
             for path in files:
-                handle.add(path, arcname=str(path.relative_to(source)), recursive=False)
+                handle.add(path, arcname=str(path.relative_to(source)), recursive=False,
+                           filter=anonymous)
         manifest["corpora"].append({"id": cid, "name": corpus["paper_name"],
                                    "minimum_documents": corpus["expected_documents"],
                                    "data_dir": corpus["evimap_data_dir"], "counts": counts,

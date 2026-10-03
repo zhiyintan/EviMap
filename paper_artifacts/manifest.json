@@ -20,8 +20,8 @@
         "leaf_nodes_including_other": 221
       },
       "archive": "evimap-peer_review.tar.gz",
-      "archive_bytes": 17657807,
-      "archive_sha256": "ad97b739e62085ee17f48944f07ff4e946cfaa02bc5ffcd164aa8406983cf1ff",
+      "archive_bytes": 17657094,
+      "archive_sha256": "17387d21b9429ae1ab3bc668ebe7ce9b57ce3fbb1e27b618888f8e48cf9fe66f",
       "files": [
         {
           "path": "baselines/tnt_llm_style/outputs/peer_review_full_shared/assignments.jsonl",
@@ -35,8 +35,8 @@
         },
         {
           "path": "baselines/tnt_llm_style/outputs/peer_review_full_shared/report.md",
-          "bytes": 4852,
-          "sha256": "b2e1590e6a830ecc2d9e8b63cbe7e9e02e6638276bdd6b2bd59bcb7714163af8"
+          "bytes": 4834,
+          "sha256": "25d0e73bb7d97ef5ef4d1d051ea784b64b80f7b5d2b1853add015d04789a1149"
         },
         {
           "path": "baselines/tnt_llm_style/outputs/peer_review_full_shared/sampled_documents.jsonl",
@@ -50,8 +50,8 @@
         },
         {
           "path": "baselines/tnt_llm_style/outputs/peer_review_full_shared/summary.json",
-          "bytes": 1389,
-          "sha256": "fdb31f8deb9240e768666766cf0e58b8537f86e2be792f8cfda3e3eb2ed89d78"
+          "bytes": 1371,
+          "sha256": "6960223c09b975df89325fa952d38a7c10716fc4eae3180851b7dae983d5f189"
         },
         {
           "path": "baselines/tnt_llm_style/outputs/peer_review_full_shared/taxonomy_tree.json",
@@ -90,8 +90,8 @@
         },
         {
           "path": "baselines/topicgpt_style/outputs/peer_review_full_shared/report.md",
-          "bytes": 5439,
-          "sha256": "2de76d254d5909a10cac538d631a6cf060c58b134bb2f6a7edf9711702072e8d"
+          "bytes": 5421,
+          "sha256": "93161f30cdc5db98d1cb6ffca32537161a89d01d650b80c242b93172a4ac061c"
         },
         {
           "path": "baselines/topicgpt_style/outputs/peer_review_full_shared/sampled_documents.jsonl",
@@ -100,8 +100,8 @@
         },
         {
           "path": "baselines/topicgpt_style/outputs/peer_review_full_shared/summary.json",
-          "bytes": 1140,
-          "sha256": "018ec45c545a5007e020b59263d300f4355187a717d8b9fe93b68de11fe78a11"
+          "bytes": 1122,
+          "sha256": "36973deef30c9389243d7748335803ae4c95cbc95d4b84efb418b4dcc8b4f25f"
         },
         {
           "path": "baselines/topicgpt_style/outputs/peer_review_full_shared/topics_refined.json",
@@ -265,8 +265,8 @@
         },
         {
           "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/method_comparison.json",
-          "bytes": 214,
-          "sha256": "48a6b1ab3b884ec1b2170f0af98af9914c7515234416221511845764eeffd707"
+          "bytes": 196,
+          "sha256": "a2c5a21b0af1e70367c5677fab649d8d57f20aa3a9da89741b0ab7a67ae8f205"
         },
         {
           "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/nodes.jsonl",
@@ -295,8 +295,8 @@
         },
         {
           "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/rebasket_merge_summary.json",
-          "bytes": 108637,
-          "sha256": "51875058cf671c0e04d331b022ba34d1426289a434d80d78b0a1b0e23233e87e"
+          "bytes": 108619,
+          "sha256": "b1d2fa60db4b098e02f96cc6524e2645d4a06ded687cf68b57ab8f2d633907f6"
         },
         {
           "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/refined_nodes.jsonl",
@@ -320,8 +320,8 @@
         },
         {
           "path": "runs/2026-06-04_peer_review_numeric_filtered_strict_dashboard/dashboard_ui/data/statistical_pre_rebasket_summary.json",
-          "bytes": 511,
-          "sha256": "4a5af8dfd45f3e5ad958135c6ac1669049de2655aab48ab669545173571a6cec"
+          "bytes": 475,
+          "sha256": "2c542a368bafe57f62ced53dbea9dc7ee8205a1d9c720cce05bd6104a9a9684a"
         }
       ]
     },
@@ -340,8 +340,8 @@
         "leaf_nodes_including_other": 110
       },
       "archive": "evimap-city_hotel.tar.gz",
-      "archive_bytes": 10429923,
-      "archive_sha256": "bdaabc48500a554acf07d77427e22041b81758c98cc6c78493feb03eb40601b5",
+      "archive_bytes": 10428771,
+      "archive_sha256": "dee6a97531a6d9b03429ca4013a0d6ce2fc6d0f50db40716e180ea6d7e98043b",
       "files": [
         {
           "path": "baselines/tnt_llm_style/outputs/city_hotel_full_shared/assignments.jsonl",
@@ -355,8 +355,8 @@
         },
         {
           "path": "baselines/tnt_llm_style/outputs/city_hotel_full_shared/report.md",
-          "bytes": 5328,
-          "sha256": "0ef2068bb5845829835312716cae4a5b6fdeab03b6f9b597c87fa81d27c4e03f"
+          "bytes": 5310,
+          "sha256": "e829b1c025034296647a8eb139e7af16d1b079151204dca5fbd326df4d3995a8"
         },
         {
           "path": "baselines/tnt_llm_style/outputs/city_hotel_full_shared/sampled_documents.jsonl",
@@ -370,8 +370,8 @@
         },
         {
           "path": "baselines/tnt_llm_style/outputs/city_hotel_full_shared/summary.json",
-          "bytes": 1454,
-          "sha256": "51985628995b8927f26c3ca8776847a73f2facc998ba0d3f4e9dfbe0e89dd308"
+          "bytes": 1436,
+          "sha256": "5b9594b38b7432470c7149e73cca418d9dd3b26558b38701996e96b21fe76796"
         },
         {
           "path": "baselines/tnt_llm_style/outputs/city_hotel_full_shared/taxonomy_tree.json",
@@ -410,8 +410,8 @@
         },
         {
           "path": "baselines/topicgpt_style/outputs/city_hotel_full_shared/report.md",
-          "bytes": 5011,
-          "sha256": "a2bd6a8ecf4a064bfc51d72f7e90d40a5582cfa27f762b3c6b8b69e4822b5c11"
+          "bytes": 4993,
+          "sha256": "e926f9055fb5cb69c977cbdf8b160a279bcdc92819c03d7e85a147d54de8bf11"
         },
         {
           "path": "baselines/topicgpt_style/outputs/city_hotel_full_shared/sampled_documents.jsonl",
@@ -420,8 +420,8 @@
         },
         {
           "path": "baselines/topicgpt_style/outputs/city_hotel_full_shared/summary.json",
-          "bytes": 1155,
-          "sha256": "b25b9dacc6cfbada997ca877e6b771a7f33e7191c25b461648740ce3c86deb03"
+          "bytes": 1137,
+          "sha256": "e0d6b48e41926192b42f1797b2cb699a18fc0187b108eafaff2b096c0e368f9e"
         },
         {
           "path": "baselines/topicgpt_style/outputs/city_hotel_full_shared/topics_refined.json",
@@ -585,8 +585,8 @@
         },
         {
           "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/method_comparison.json",
-          "bytes": 213,
-          "sha256": "def1b730b1e745d5e09d18c6e75e103c0da944e86e9830ced3f2cc2670eeb843"
+          "bytes": 195,
+          "sha256": "54882fa0320aed8a544e94f6efe6c39fc547a3509a3c044436f653097cc839a0"
         },
         {
           "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/nodes.jsonl",
@@ -615,8 +615,8 @@
         },
         {
           "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/rebasket_merge_summary.json",
-          "bytes": 105206,
-          "sha256": "784a6e4daff16bf195bb4e908698ea2de38e34afa0a3734e3df3b2ef252f5973"
+          "bytes": 105188,
+          "sha256": "f9d7eec75cc888911b448dad06997e8ec0be07e802a336ad68f595155cd38371"
         },
         {
           "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/refined_nodes.jsonl",
@@ -640,8 +640,8 @@
         },
         {
           "path": "runs/2026-06-04_city_hotel_numeric_filtered_strict_dashboard/dashboard_ui/data/statistical_pre_rebasket_summary.json",
-          "bytes": 509,
-          "sha256": "5546c2420d3fabf0f70e2fbdd7c38d90618ce66e4661432e547b8198f6c0bf50"
+          "bytes": 473,
+          "sha256": "8b58b02c5a4fd211bfeede8004cc961556e36f93138e5119841080ce5d444465"
         }
       ]
     },
@@ -660,8 +660,8 @@
         "leaf_nodes_including_other": 277
       },
       "archive": "evimap-music_reviews.tar.gz",
-      "archive_bytes": 280066209,
-      "archive_sha256": "1852e869237058721c6bc3ff09b78c990273a3df0affea62b705e0042f71ef39",
+      "archive_bytes": 280066155,
+      "archive_sha256": "34bf6a04d5ae40c35674b228a1d735e3e225b939287568918656d83590b600be",
       "files": [
         {
           "path": "baselines/tnt_llm_style/outputs/music_reviews_full_shared/assignments.jsonl",
@@ -675,8 +675,8 @@
         },
         {
           "path": "baselines/tnt_llm_style/outputs/music_reviews_full_shared/report.md",
-          "bytes": 6342,
-          "sha256": "db6e253095f3b14d0c0db7a310aba2ee91513880948db43612900168df854ab8"
+          "bytes": 6324,
+          "sha256": "dcd8bdcda08d071f1c11e3328287710401b0b4840d2c3ed1cced09be9eea10fa"
         },
         {
           "path": "baselines/tnt_llm_style/outputs/music_reviews_full_shared/sampled_documents.jsonl",
@@ -690,8 +690,8 @@
         },
         {
           "path": "baselines/tnt_llm_style/outputs/music_reviews_full_shared/summary.json",
-          "bytes": 1558,
-          "sha256": "4434393936e56e4d21a0df6e2fea2334302c6c1c46b195ce1a4b5c7cb44d6b30"
+          "bytes": 1540,
+          "sha256": "b9c15e2a3dec9d56ac5104000fe48ca52b6b46fd1af9ab9de30b5d39c456d7ec"
         },
         {
           "path": "baselines/tnt_llm_style/outputs/music_reviews_full_shared/taxonomy_tree.json",
@@ -730,8 +730,8 @@
         },
         {
           "path": "baselines/topicgpt_style/outputs/music_reviews_full_shared/report.md",
-          "bytes": 4773,
-          "sha256": "cbb8194d9515ce9a0b1c2a62e071f74f567026c365ce8f1631a35879678fd3b7"
+          "bytes": 4755,
+          "sha256": "13adafc5a00543dfd63f5046e52efde280df90b3f4272c666284d3de2d58b1c1"
         },
         {
           "path": "baselines/topicgpt_style/outputs/music_reviews_full_shared/sampled_documents.jsonl",
@@ -740,8 +740,8 @@
         },
         {
           "path": "baselines/topicgpt_style/outputs/music_reviews_full_shared/summary.json",
-          "bytes": 1182,
-          "sha256": "9f962a2bd24e41cd85f100549de6019fd90151a1603aa9a41b40d2d9f5be5110"
+          "bytes": 1164,
+          "sha256": "d2f2c8ba05a1d1f85a84da256edbfb20955be753bb0d958e1cd302b4a4faed3a"
         },
         {
           "path": "baselines/topicgpt_style/outputs/music_reviews_full_shared/topics_refined.json",
@@ -905,8 +905,8 @@
         },
         {
           "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/method_comparison.json",
-          "bytes": 232,
-          "sha256": "f8de67c08c7edbe7c69824fd3651a31130a120b255b0cccd494e3d663c0326b6"
+          "bytes": 214,
+          "sha256": "062e9a578bd38240cc93b0485a3293c49b9e01c2b81b498f1356f3bef605627d"
         },
         {
           "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/nodes.jsonl",
@@ -935,8 +935,8 @@
         },
         {
           "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/rebasket_merge_summary.json",
-          "bytes": 302583,
-          "sha256": "8efd566d146a6b93471751a18ca0203efba97eebc876509fe0ba93b7baed079d"
+          "bytes": 302565,
+          "sha256": "4098231241f3a67dea8a24c8d9d4fa581da700056cf0fdfac7854fac26624148"
         },
         {
           "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/refined_nodes.jsonl",
@@ -960,8 +960,8 @@
         },
         {
           "path": "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard/dashboard_ui/data/statistical_pre_rebasket_summary.json",
-          "bytes": 519,
-          "sha256": "f64373594539297a5d9f3b8b27302dd23bd24da7f5101fd08a1764206aaf7068"
+          "bytes": 483,
+          "sha256": "9a14159d2ee8a36b8c762e2c31c5c8b82761ede3cc6904d7d7b575483e333ee7"
         }
       ]
     },
@@ -980,8 +980,8 @@
         "leaf_nodes_including_other": 3246
       },
       "archive": "evimap-career_jobs.tar.gz",
-      "archive_bytes": 368465680,
-      "archive_sha256": "75d750c9532843d5943cb3361eeb4dda5c0e1eecf5cb3ed8a6de9bb467a6414b",
+      "archive_bytes": 368465247,
+      "archive_sha256": "9302a2458ac26a28fc311bf9e365e7e2e20efc7155871eb6bb4089b86325df64",
       "files": [
         {
           "path": "baselines/tnt_llm_style/outputs/career_jobs_full_shared/assignments.jsonl",
@@ -1180,8 +1180,8 @@
         },
         {
           "path": "runs/2026-06-04_career_jobs_numeric_filtered_strict_dashboard/dashboard_ui/data/method_comparison.json",
-          "bytes": 220,
-          "sha256": "ce7da9adb8813297a05420a34ad0f7d7cccd96ba6ecff9ce505770473c15ba47"
+          "bytes": 202,
+          "sha256": "eb93a87cda32a84ee089b2590fe485376b56a8813556990ab4f96f80bbd52d16"
         },
         {
           "path": "runs/2026-06-04_career_jobs_numeric_filtered_strict_dashboard/dashboard_ui/data/nodes.before_round2_verify.jsonl",
@@ -1215,8 +1215,8 @@
         "leaf_nodes_including_other": 142
       },
       "archive": "evimap-recipes.tar.gz",
-      "archive_bytes": 92974412,
-      "archive_sha256": "aca5940d06a1fa9090505f6e861c2256a57da5f957c08e2d29a5f51778410a05",
+      "archive_bytes": 92972433,
+      "archive_sha256": "37499164116375587349367904f184b5d1eacf6db6137c4b0631599daaa4c44d",
       "files": [
         {
           "path": "baselines/tnt_llm_style/outputs/recipes_full_shared/assignments.jsonl",
@@ -1230,8 +1230,8 @@
         },
         {
           "path": "baselines/tnt_llm_style/outputs/recipes_full_shared/report.md",
-          "bytes": 5802,
-          "sha256": "24f43355cfacc724ea228deb45332dd1141154f469bdd0f3a94413cf28706c15"
+          "bytes": 5784,
+          "sha256": "8c6c5e7fd03d545d500991f9021f7aecc59c621257fd4569d1a07a68bbcd332c"
         },
         {
           "path": "baselines/tnt_llm_style/outputs/recipes_full_shared/sampled_documents.jsonl",
@@ -1245,8 +1245,8 @@
         },
         {
           "path": "baselines/tnt_llm_style/outputs/recipes_full_shared/summary.json",
-          "bytes": 1592,
-          "sha256": "1f62c87dda1eaa914c221346576cd5de7b20ddfb9749724f493ad606434b5087"
+          "bytes": 1574,
+          "sha256": "0da095061cb942660261af50a67fd2780b867bbfc271b0b2607db334c7cf9db0"
         },
         {
           "path": "baselines/tnt_llm_style/outputs/recipes_full_shared/taxonomy_tree.json",
@@ -1285,8 +1285,8 @@
         },
         {
           "path": "baselines/topicgpt_style/outputs/recipes_full_shared/report.md",
-          "bytes": 3523,
-          "sha256": "4cdc64cf9366a593ceb7b8f4669ad201edcd0e602aac420efe5aab7d55343e8d"
+          "bytes": 3505,
+          "sha256": "c7a1bba0c596ce19ba6308197af7800dfc3b382b5d9429528d0f64ec4609121e"
         },
         {
           "path": "baselines/topicgpt_style/outputs/recipes_full_shared/sampled_documents.jsonl",
@@ -1295,8 +1295,8 @@
         },
         {
           "path": "baselines/topicgpt_style/outputs/recipes_full_shared/summary.json",
-          "bytes": 1181,
-          "sha256": "3d663aa3390a0cd9fa6383c12bfbf4b3d8c93c2618c2ed815a5e06f90155e54a"
+          "bytes": 1163,
+          "sha256": "a4e76b63a016b65b7ac47beb8ab8264e48c08287051253787935d3e589b7335d"
         },
         {
           "path": "baselines/topicgpt_style/outputs/recipes_full_shared/topics_refined.json",
@@ -1460,8 +1460,8 @@
         },
         {
           "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/method_comparison.json",
-          "bytes": 221,
-          "sha256": "7711b64875592f94efc8e077fd276cbc1648f18beb452bc5e9bdfa78c78aafc1"
+          "bytes": 203,
+          "sha256": "0a8eb1565522728fbdb0b82bb01f49173f8b3416a67f90491b1308906d999eee"
         },
         {
           "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/nodes.jsonl",
@@ -1490,8 +1490,8 @@
         },
         {
           "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/rebasket_merge_summary.json",
-          "bytes": 150088,
-          "sha256": "98e948a4b5f9cf92e036f54185cb4640d67144bc0d76bf94167028320775cc68"
+          "bytes": 150070,
+          "sha256": "59c30efcd654669235018ede94977b3d1a92c9420678951259b35d11ed8eeb66"
         },
         {
           "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/refined_nodes.jsonl",
@@ -1515,8 +1515,8 @@
         },
         {
           "path": "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard/dashboard_ui/data/statistical_pre_rebasket_summary.json",
-          "bytes": 516,
-          "sha256": "133e4cd31349ccadb751030fdcf6caea96d867d1d777e9e7174bf9e7f8d643da"
+          "bytes": 480,
+          "sha256": "8b985d6c4fbfbb8cba42155969fbef1b91dc336f480ff8e734d9b30e9aa74ff0"
         }
       ]
     },
@@ -1524,7 +1524,7 @@
       "id": "eu_debates",
       "name": "EU debates",
       "minimum_documents": 101699,
-      "data_dir": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data",
+      "data_dir": "runs/2026-05-11_eu_debates_full_dataset/dashboard_ui/data",
       "counts": {
         "documents": 101699,
         "linked_documents": 101699,
@@ -1535,8 +1535,8 @@
         "leaf_nodes_including_other": 972
       },
       "archive": "evimap-eu_debates.tar.gz",
-      "archive_bytes": 442824744,
-      "archive_sha256": "69a45fa53db22441f58c3e88786c8f29c1b9bf9b3538161ba1990c60727e9859",
+      "archive_bytes": 442823746,
+      "archive_sha256": "77e6ae1191641c0a886a76ca022104a5a7d5f007a2748d9886f4c9d77be68e9f",
       "files": [
         {
           "path": "baselines/tnt_llm_style/outputs/eu_debates_full_shared/assignments.jsonl",
@@ -1550,8 +1550,8 @@
         },
         {
           "path": "baselines/tnt_llm_style/outputs/eu_debates_full_shared/report.md",
-          "bytes": 6399,
-          "sha256": "77fe6d5311381e4e8efd1895ad1ee3c7e801681116933c7362a53cceeaa65db1"
+          "bytes": 6372,
+          "sha256": "15b224503cb15b8314257a00ba16fe8cfa789cefef0ab5ded39ebb1f74a549e3"
         },
         {
           "path": "baselines/tnt_llm_style/outputs/eu_debates_full_shared/sampled_documents.jsonl",
@@ -1565,8 +1565,8 @@
         },
         {
           "path": "baselines/tnt_llm_style/outputs/eu_debates_full_shared/summary.json",
-          "bytes": 1594,
-          "sha256": "af96e4dd39b163f91f422318e3e49a117421e4f44d754f358e933c83616bdd31"
+          "bytes": 1567,
+          "sha256": "df80a171755974c90c72d31a55da3ade5a8442836fe5c6ce6778ab180f34a6d0"
         },
         {
           "path": "baselines/tnt_llm_style/outputs/eu_debates_full_shared/taxonomy_tree.json",
@@ -1605,8 +1605,8 @@
         },
         {
           "path": "baselines/topicgpt_style/outputs/eu_debates_full_shared/report.md",
-          "bytes": 6021,
-          "sha256": "a18a4cabe1bdf89d11b48489ae0852574f76652498843f32a193df9403b130ba"
+          "bytes": 5994,
+          "sha256": "cb2d5a5e62dc0c4f7b070ad747d378842fdbad5325eee886a20ca0c298def5e7"
         },
         {
           "path": "baselines/topicgpt_style/outputs/eu_debates_full_shared/sampled_documents.jsonl",
@@ -1615,8 +1615,8 @@
         },
         {
           "path": "baselines/topicgpt_style/outputs/eu_debates_full_shared/summary.json",
-          "bytes": 1180,
-          "sha256": "a8863d91eea27a5734c0cc007cf6c8fe59adb27ab41c932bb18cfa7aaf1b93ec"
+          "bytes": 1153,
+          "sha256": "0ae4c5c55ee084e406b6fe11b3ac095373a7adc01f987039852cf35c274ad336"
         },
         {
           "path": "baselines/topicgpt_style/outputs/eu_debates_full_shared/topics_refined.json",
@@ -1674,152 +1674,152 @@
           "sha256": "ae933d1728897e5fab84a4e93144248d82b06f4b0c6376a3957dde2c30b147a9"
         },
         {
-          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/accepted_merged_refined_nodes.jsonl",
+          "path": "runs/2026-05-11_eu_debates_full_dataset/dashboard_ui/data/accepted_merged_refined_nodes.jsonl",
           "bytes": 15592235,
           "sha256": "e1f093239b9d9a9107021b678e237f7a9934a71135959225ac4f1672d116f9e4"
         },
         {
-          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/accepted_refined_nodes.jsonl",
+          "path": "runs/2026-05-11_eu_debates_full_dataset/dashboard_ui/data/accepted_refined_nodes.jsonl",
           "bytes": 17799541,
           "sha256": "2099f6ee4031f4463884a27ff77aa3a0170dc42997e08047798fd1cfafde0c62"
         },
         {
-          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/aspect_trees.jsonl",
+          "path": "runs/2026-05-11_eu_debates_full_dataset/dashboard_ui/data/aspect_trees.jsonl",
           "bytes": 0,
           "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
         },
         {
-          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/aspects.jsonl",
+          "path": "runs/2026-05-11_eu_debates_full_dataset/dashboard_ui/data/aspects.jsonl",
           "bytes": 141884,
           "sha256": "281971f1246e436e802c6434b7f13b6d826329eccbcdcb9a463ee929df32f7e3"
         },
         {
-          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/aspects_pre_coassoc.jsonl",
+          "path": "runs/2026-05-11_eu_debates_full_dataset/dashboard_ui/data/aspects_pre_coassoc.jsonl",
           "bytes": 1003178,
           "sha256": "f699171439525355af815a83f60c20f4e12c7ef1db8d0ca20c3054889189d2e7"
         },
         {
-          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/atom_rebasket_baskets.jsonl",
+          "path": "runs/2026-05-11_eu_debates_full_dataset/dashboard_ui/data/atom_rebasket_baskets.jsonl",
           "bytes": 1659948,
           "sha256": "05bf64bd51d464faa0fea7a4764226cbb7c199c966ae8d52bbda0058daefa269"
         },
         {
-          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/atom_rebasket_validation.jsonl",
+          "path": "runs/2026-05-11_eu_debates_full_dataset/dashboard_ui/data/atom_rebasket_validation.jsonl",
           "bytes": 193330,
           "sha256": "b9a503c2e059e07b5160894d1ec4bdc8039ed5430a55da3af9f59df7b7e2e4bd"
         },
         {
-          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/atom_subclusters.jsonl",
+          "path": "runs/2026-05-11_eu_debates_full_dataset/dashboard_ui/data/atom_subclusters.jsonl",
           "bytes": 454005,
           "sha256": "cdaa10b4c8fdd8bbf4127bc7a1aeb7bd6fdea976e04b96bb89d567312d4d4e87"
         },
         {
-          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/atom_subclusters_from_rebasket.jsonl",
+          "path": "runs/2026-05-11_eu_debates_full_dataset/dashboard_ui/data/atom_subclusters_from_rebasket.jsonl",
           "bytes": 16744468,
           "sha256": "4ffbfb333220cd05f8770eff1371b763fb53a8b330b7ce43a25560aa20037faf"
         },
         {
-          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/basket_merge_candidates.jsonl",
+          "path": "runs/2026-05-11_eu_debates_full_dataset/dashboard_ui/data/basket_merge_candidates.jsonl",
           "bytes": 1602222329,
           "sha256": "1869b99a040faaf1364ea8cca733bb4e8f94774103cdc2be12411b0bae71ccfa"
         },
         {
-          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/bottom_up_aspect_assignments.jsonl",
+          "path": "runs/2026-05-11_eu_debates_full_dataset/dashboard_ui/data/bottom_up_aspect_assignments.jsonl",
           "bytes": 546631,
           "sha256": "3b72ce7064b613099e3fd341efe0fb90ee80bb3db62dd1e392782afbb547155d"
         },
         {
-          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/doc_all_phrases.jsonl",
+          "path": "runs/2026-05-11_eu_debates_full_dataset/dashboard_ui/data/doc_all_phrases.jsonl",
           "bytes": 204732855,
           "sha256": "5c6903fb391d3b7a23f6d23d4b05ac55391f2e8e2c1a3fe1cb2de4f83ac7fe5f"
         },
         {
-          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/document_links.jsonl",
+          "path": "runs/2026-05-11_eu_debates_full_dataset/dashboard_ui/data/document_links.jsonl",
           "bytes": 38629299,
           "sha256": "9d6b55cee7890fd90bdddd7f53a66e07af20aa30e3514296a40cbc1992229328"
         },
         {
-          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/documents.jsonl",
+          "path": "runs/2026-05-11_eu_debates_full_dataset/dashboard_ui/data/documents.jsonl",
           "bytes": 179303162,
           "sha256": "7109a4bedd23961f9722e8e0d9caad2d57584602d7d7aa21c5b66a6e2352cebc"
         },
         {
-          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/evidence_phrases.jsonl",
+          "path": "runs/2026-05-11_eu_debates_full_dataset/dashboard_ui/data/evidence_phrases.jsonl",
           "bytes": 258647216,
           "sha256": "0837c3a3cafa1f6e9739a7f807181b848b651ddc876c620900d7829e6f607b5d"
         },
         {
-          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/facets_by_sub.jsonl",
+          "path": "runs/2026-05-11_eu_debates_full_dataset/dashboard_ui/data/facets_by_sub.jsonl",
           "bytes": 0,
           "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
         },
         {
-          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/llm_aspect_facets.jsonl",
+          "path": "runs/2026-05-11_eu_debates_full_dataset/dashboard_ui/data/llm_aspect_facets.jsonl",
           "bytes": 0,
           "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
         },
         {
-          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/llm_atom_facets.jsonl",
+          "path": "runs/2026-05-11_eu_debates_full_dataset/dashboard_ui/data/llm_atom_facets.jsonl",
           "bytes": 201601,
           "sha256": "06f5303fc306737f6025c2ae3ac9a8a09f7b6f0f0ae07ae57c36ef507fe989a2"
         },
         {
-          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/llm_atom_names.jsonl",
+          "path": "runs/2026-05-11_eu_debates_full_dataset/dashboard_ui/data/llm_atom_names.jsonl",
           "bytes": 685980,
           "sha256": "24fbbb56a444128ad91e678454a371dcfab0fff0f06f20aa8544d511ae5706cd"
         },
         {
-          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/merged_refined_nodes.jsonl",
+          "path": "runs/2026-05-11_eu_debates_full_dataset/dashboard_ui/data/merged_refined_nodes.jsonl",
           "bytes": 17039352,
           "sha256": "938cc5e5612f2fb282154fabac30db5d38f9fd534023c57d7ea8679a5b9cde86"
         },
         {
-          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/merged_refined_phrase_assignments.jsonl",
+          "path": "runs/2026-05-11_eu_debates_full_dataset/dashboard_ui/data/merged_refined_phrase_assignments.jsonl",
           "bytes": 14435325,
           "sha256": "eeb8b1d505e0ffbfc02874143a247ad59d80da473cd43bc4f0dd68df125b9629"
         },
         {
-          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/method_comparison.json",
-          "bytes": 205,
-          "sha256": "57500ebacc24adb94952a6f563dce2a5d66e4717ac5bfc297d0171f68548c6cf"
+          "path": "runs/2026-05-11_eu_debates_full_dataset/dashboard_ui/data/method_comparison.json",
+          "bytes": 178,
+          "sha256": "2a45653b264dfe9b5b865c5c9912f5e10ede39c7f02b2debb150586a50483946"
         },
         {
-          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/nodes.jsonl",
+          "path": "runs/2026-05-11_eu_debates_full_dataset/dashboard_ui/data/nodes.jsonl",
           "bytes": 25943970,
           "sha256": "494323ab9ae50ed02b6f67cbb49fe8524d870ea66299171fd476b9645df29f9d"
         },
         {
-          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/nodes_pre_v5.jsonl",
+          "path": "runs/2026-05-11_eu_debates_full_dataset/dashboard_ui/data/nodes_pre_v5.jsonl",
           "bytes": 16591260,
           "sha256": "e1afa6a2bee725813bdd5d3875a819d66212bda8df5bfed406a8660968be8815"
         },
         {
-          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/pending_recovery_candidates.jsonl",
+          "path": "runs/2026-05-11_eu_debates_full_dataset/dashboard_ui/data/pending_recovery_candidates.jsonl",
           "bytes": 24688883,
           "sha256": "80e71aa340a59306dd26aaaf9bf84840411bf6555a0522c085e8e80c22d8cdf5"
         },
         {
-          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/pending_recovery_llm_prompts.jsonl",
+          "path": "runs/2026-05-11_eu_debates_full_dataset/dashboard_ui/data/pending_recovery_llm_prompts.jsonl",
           "bytes": 24781234,
           "sha256": "87c66f16a49d2d8a5af25f689b710539e20101b5b5ab8da2afe49a611981b0a0"
         },
         {
-          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/pending_recovery_summary.json",
+          "path": "runs/2026-05-11_eu_debates_full_dataset/dashboard_ui/data/pending_recovery_summary.json",
           "bytes": 51158,
           "sha256": "ba2a5cf02b1eef065675887d55914c22dc4cc3d7f7b3cf1480782de5c44efb79"
         },
         {
-          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/rebasket_merge_summary.json",
-          "bytes": 205983,
-          "sha256": "886859d1456c5bd902ae98214807e04350405912ff25077be11a8d5c1dd38206"
+          "path": "runs/2026-05-11_eu_debates_full_dataset/dashboard_ui/data/rebasket_merge_summary.json",
+          "bytes": 205956,
+          "sha256": "6833980d040a362c1d0317e6331c1ce919e0b142996fe96c060053cb8dfc7a64"
         },
         {
-          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/refined_nodes.jsonl",
+          "path": "runs/2026-05-11_eu_debates_full_dataset/dashboard_ui/data/refined_nodes.jsonl",
           "bytes": 19569364,
           "sha256": "83c41004f4d0da8213340de0c003466448bb33dc9d7b5f01ccc5d8a2cd98ea3c"
         },
         {
-          "path": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/refined_phrase_assignments.jsonl",
+          "path": "runs/2026-05-11_eu_debates_full_dataset/dashboard_ui/data/refined_phrase_assignments.jsonl",
           "bytes": 9057297,
           "sha256": "36cb51e14ffacb06ade291d151b054d4fdb37d36376b4710bcc7bffb1a4bf016"
         }

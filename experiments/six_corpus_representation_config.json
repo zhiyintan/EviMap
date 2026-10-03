@@ -57,8 +57,8 @@
       "paper_name": "EU debates",
       "corpus_label": "European Parliament debates",
       "expected_documents": 101699,
-      "evimap_data_dir": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data",
-      "input_documents": "runs/2026-05-11_eu_debates_qwen_mps_full_dataset/dashboard_ui/data/documents.jsonl",
+      "evimap_data_dir": "runs/2026-05-11_eu_debates_full_dataset/dashboard_ui/data",
+      "input_documents": "runs/2026-05-11_eu_debates_full_dataset/dashboard_ui/data/documents.jsonl",
       "topicgpt_dir": "baselines/topicgpt_style/outputs/eu_debates_full_shared",
       "tnt_dir": "baselines/tnt_llm_style/outputs/eu_debates_full_shared"
     }

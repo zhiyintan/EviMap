@@ -1,8 +1,9 @@
 """Shared JSONL helpers for catalogue modules.
 
-以前每个 stage 模块各自复制一份 load_jsonl/write_jsonl（共 20 处），
-2026-06-09 统一收到这里。两个历史变体合并为一个开关：
-strict（默认，文件不存在就抛错）和 missing_ok=True（汇总类步骤容忍可选输入）。
+Every stage module used to carry its own copy of load_jsonl/write_jsonl; they
+are consolidated here. The two historical variants are one switch: strict (the
+default, a missing file raises) and missing_ok=True (summary steps tolerate
+optional inputs).
 """
 
 from __future__ import annotations

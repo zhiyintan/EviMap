@@ -26,6 +26,7 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from experiments.catalogue.llm import DEFAULT_MODEL, chat_json  # noqa: E402
+from experiments.catalogue.paths import repo_relative  # noqa: E402
 
 
 SUMMARIZE_SYSTEM = """You summarize one corpus document for taxonomy induction.
@@ -578,7 +579,7 @@ def summarize_run(
 
     summary = {
         "baseline": "TnT-LLM-style",
-        "input_docs": str(input_docs),
+        "input_docs": repo_relative(input_docs),
         "model": model,
         "sampled_docs": len(docs),
         "taxonomy_sample": len(summaries),
@@ -619,7 +620,7 @@ def summarize_run(
     report = [
         "# TnT-LLM-style Baseline Report",
         "",
-        f"- Input: `{input_docs}`",
+        f"- Input: `{repo_relative(input_docs)}`",
         f"- Model: `{model}`",
         f"- Sampled documents: `{len(docs)}`",
         f"- Taxonomy sample summaries: `{len(summaries)}`",

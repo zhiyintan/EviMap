@@ -1,4 +1,4 @@
-# tt — runtime dependencies (verified against actual imports)
+# EviMap runtime dependencies (verified against actual imports)
 # Install with uv:
 #   uv venv --python 3.9
 #   uv pip install -r requirements.txt
@@ -16,5 +16,5 @@ numpy>=1.26.0,<2.0       # <2.0 for torch / sentence-transformers wheel compatib
 openai>=1.0.0
 httpx>=0.25.0
 
-# --- real-corpus catalogue (Phase 1) ---
+# --- upstream dataset ingestion ---
 datasets>=2.18.0

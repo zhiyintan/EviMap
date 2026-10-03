@@ -37,7 +37,7 @@ class PipelineModules:
     name_aspects: str = "experiments.catalogue.commands.name_aspects"
     # Three-layer co-association aspect rebuild (driver under aspects.*, not a
     # commands.* step): atom -> mid-group -> top aspect, replaces the old flat
-    # aspect grouping/naming. See docs/wiki/aspect-rebuild-flow.md.
+    # aspect grouping/naming. See docs/paper-alignment.md.
     rebuild_aspects: str = "experiments.catalogue.aspects.rebuild_aspects"
 
 

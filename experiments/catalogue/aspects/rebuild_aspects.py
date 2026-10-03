@@ -1,4 +1,4 @@
-"""One-shot driver for the 3-layer aspect rebuild (docs/wiki/aspect-rebuild-flow.md).
+"""One-shot driver for the 3-layer aspect rebuild (docs/paper-alignment.md).
 
 Given an existing dashboard run, runs the whole chain end to end:
 

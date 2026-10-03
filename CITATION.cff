@@ -7,6 +7,7 @@ authors:
     given-names: Zhiyin
   - family-names: Duan
     given-names: Changxu
+license: CC-BY-NC-ND-4.0
 repository-code: "https://github.com/zhiyintan/EviMap"
 url: "https://arxiv.org/abs/2609.06664"
 preferred-citation:
@@ -17,5 +18,14 @@ preferred-citation:
       given-names: Zhiyin
     - family-names: Duan
       given-names: Changxu
+  collection-title: "Proceedings of the 35th ACM International Conference on Information and Knowledge Management (CIKM '26)"
+  conference:
+    name: "35th ACM International Conference on Information and Knowledge Management"
+    city: "Rome"
+    country: "IT"
+    date-start: "2026-11-07"
+    date-end: "2026-11-11"
+  publisher:
+    name: "ACM"
   year: 2026
   doi: "10.1145/3799682.3840239"

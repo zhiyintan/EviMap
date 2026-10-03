@@ -25,8 +25,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 TEMPLATE = ROOT / "experiments" / "dashboard_ui_template"
 OUT = ROOT / "site" / "demo"
-DATA_VERSION = "2026-06-28f"    # data-file cache token (bump when data re-sharded)
-ASSET_VERSION = 130             # app.js/style.css cache token (bump on any frontend edit)
+DATA_VERSION = "2026-10-03a"    # data-file cache token (bump when data re-sharded)
+ASSET_VERSION = 131             # app.js/style.css cache token (bump on any frontend edit)
 BUCKET = 200                       # docs per bucket
 ATOM_BUCKET = 20                   # atoms per topic-phrase shard
 MAX_PART_BYTES = 4 * 1024 * 1024  # split core files larger than this (< CF 25 MiB)
@@ -64,7 +64,7 @@ DATASETS = [
     ("career_jobs",   "runs/2026-06-04_career_jobs_numeric_filtered_strict_dashboard"),
     ("music_reviews", "runs/2026-06-04_music_reviews_numeric_filtered_strict_dashboard"),
     ("recipes",       "runs/2026-06-07_recipes_bonus_numeric_filtered_strict_dashboard"),
-    ("eu_debates",    "runs/2026-05-11_eu_debates_qwen_mps_full_dataset"),
+    ("eu_debates",    "runs/2026-05-11_eu_debates_full_dataset"),
 ]
 
 DISPLAY = {

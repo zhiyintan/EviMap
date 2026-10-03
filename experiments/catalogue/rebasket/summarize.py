@@ -15,7 +15,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 from typing import List
 
-from experiments.catalogue.paths import ROOT
+from experiments.catalogue.paths import ROOT, repo_relative
 from experiments.catalogue.io_utils import load_jsonl
 
 
@@ -94,7 +94,7 @@ def main() -> int:
             by_source_atom[aid]["merged_groups"] += 1
 
     summary = {
-        "rebasket_dir": str(rebasket),
+        "rebasket_dir": repo_relative(rebasket),
         "split": {
             "atoms_processed": len(atom_rows),
             "decision_counts": dict(decision_counts),

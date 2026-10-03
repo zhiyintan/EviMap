@@ -28,7 +28,7 @@ from typing import Dict, Iterable, List, Tuple
 
 import numpy as np
 
-from experiments.catalogue.paths import ROOT
+from experiments.catalogue.paths import ROOT, repo_relative
 from experiments.catalogue.io_utils import load_jsonl, write_jsonl
 
 
@@ -346,8 +346,8 @@ def main() -> int:
     write_jsonl(out / "statistical_pre_atom_summaries.jsonl", atom_summaries)
     summary = {
         "method": "statistical_pre_rebasket_v1",
-        "inputs_dir": str(inputs),
-        "route_dir": str(route),
+        "inputs_dir": repo_relative(inputs),
+        "route_dir": repo_relative(route),
         "n_atoms": len(atom_summaries),
         "n_phrase_entries": sum(a["n_entries"] for a in atom_summaries),
         "n_statistical_prebaskets": len(all_baskets),

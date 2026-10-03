@@ -1,4 +1,4 @@
-"""Targeted regroup of grab-bag aspects (治本, surgical, flat-OK for focused domains).
+"""Targeted regroup of grab-bag aspects (surgical, flat-OK for focused domains).
 
 The audit-repair pass FLAGS aspects that lumped off-theme clusters together; this
 pass REPAIRS the milder ones in place. For each substantive aspect with >=

@@ -14,7 +14,7 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Dict, List
 
-from experiments.catalogue.paths import ROOT
+from experiments.catalogue.paths import ROOT, repo_relative
 
 
 REPRESENTATIVE_NAME_WARNING = (
@@ -175,7 +175,7 @@ def main() -> int:
 
     summary = {
         "domain": args.domain_name,
-        "chosen_route": str(rdir),
+        "chosen_route": repo_relative(rdir),
         "n_atoms": len(atoms),
         "n_linked_docs": len(linked_docs),
         "n_evidence_pairs": len(ev_by_pair),
@@ -186,7 +186,7 @@ def main() -> int:
     )
     readme = (
         f"# {args.domain_name} Dashboard Data\n\n"
-        f"- chosen route: `{rdir}`\n"
+        f"- chosen route: `{repo_relative(rdir)}`\n"
         f"- atoms/topics: **{len(atoms)}**\n"
         f"- linked documents: **{len(linked_docs)}**\n"
         f"- evidence doc-topic pairs: **{len(ev_by_pair)}**\n\n"

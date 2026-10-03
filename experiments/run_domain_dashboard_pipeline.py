@@ -139,15 +139,15 @@ def write_summary(base: Path, domain: str) -> None:
         "",
         "## Key Files",
         "",
-        f"- dataset report: `{paths['source'] / 'dataset_report.md'}`",
-        f"- extractor profile: `{paths['extraction'] / 'domain_profile.json'}`",
-        f"- rough atom report: `{paths['rough_atoms'] / 'atom_method_report.md'}`",
-        f"- statistical pre-rebasket: `{base / 'statistical_pre_rebasket' / 'statistical_pre_rebasket_report.md'}`",
-        f"- pending recovery candidates: `{paths['rebasket'] / 'pending_recovery_report.md'}`",
-        f"- node mapping quality: `{paths['active_mapping'] / 'atom_quality_report.md'}`",
-        f"- aspect boundary: `{paths['active_mapping'] / 'aspect_boundary_report.md'}`",
-        f"- dashboard data: `{paths['dashboard']}`",
-        f"- dashboard UI: `{base / 'dashboard_ui' / 'index.html'}`",
+        f"- dataset report: `{(paths['source'] / 'dataset_report.md').relative_to(ROOT)}`",
+        f"- extractor profile: `{(paths['extraction'] / 'domain_profile.json').relative_to(ROOT)}`",
+        f"- rough atom report: `{(paths['rough_atoms'] / 'atom_method_report.md').relative_to(ROOT)}`",
+        f"- statistical pre-rebasket: `{(base / 'statistical_pre_rebasket' / 'statistical_pre_rebasket_report.md').relative_to(ROOT)}`",
+        f"- pending recovery candidates: `{(paths['rebasket'] / 'pending_recovery_report.md').relative_to(ROOT)}`",
+        f"- node mapping quality: `{(paths['active_mapping'] / 'atom_quality_report.md').relative_to(ROOT)}`",
+        f"- aspect boundary: `{(paths['active_mapping'] / 'aspect_boundary_report.md').relative_to(ROOT)}`",
+        f"- dashboard data: `{paths['dashboard'].relative_to(ROOT)}`",
+        f"- dashboard UI: `{(base / 'dashboard_ui' / 'index.html').relative_to(ROOT)}`",
         "",
         "## Note",
         "",
@@ -268,12 +268,16 @@ def main() -> int:
     facet_dir = base / "facet_extraction"
     atom_naming = base / "atom_naming"
     aspect_naming = base / "aspect_naming"
-    domain_description = (args.domain_description if args.domain_description is not None
+    # A normalized custom corpus only borrows --domain to satisfy the ingestion
+    # choices; that placeholder must not reach prompts, titles or file prefixes.
+    custom_corpus = args.domain_description is not None
+    domain_description = (args.domain_description if custom_corpus
                           else DOMAIN_SPECS[args.domain].get("description", ""))
+    domain_name = "custom_corpus" if custom_corpus else args.domain
     requested_max_docs = args.max_docs if args.max_docs is not None else 300
 
     if not args.dry_run:
-        copy_dashboard_ui(dashboard_ui, args.domain)
+        copy_dashboard_ui(dashboard_ui, domain_name)
 
     if not args.skip_prepare:
         prepare_cmd = module_cmd(
@@ -361,7 +365,7 @@ def main() -> int:
             "--out-dir", str(rebasket_dir.relative_to(ROOT)),
             "--model", args.model,
             "--domain-profile", str((extraction / "domain_profile.json").relative_to(ROOT)),
-            "--domain-name", "custom_corpus" if args.domain_description is not None else args.domain,
+            "--domain-name", domain_name,
             "--max-phrase-entries-per-call", str(args.max_phrase_entries_per_call),
             # rebasket prompts are much larger than extraction prompts, so cap
             # concurrency lower than the extraction --n-workers to avoid the
@@ -463,7 +467,7 @@ def main() -> int:
         "--inputs-dir", str(inputs.relative_to(ROOT)),
         "--route-dir", str(active_mapping.relative_to(ROOT)),
         "--out-dir", str(dashboard_data.relative_to(ROOT)),
-        "--domain-name", args.domain,
+        "--domain-name", domain_name,
     ), dry_run=args.dry_run)
 
     run(module_cmd(
@@ -564,7 +568,7 @@ def main() -> int:
             "--facet-dir", str(facet_dir.relative_to(ROOT)),
             "--out-dir", str(atom_naming.relative_to(ROOT)),
             "--model", args.model,
-            "--domain-name", args.domain,
+            "--domain-name", domain_name,
             "--domain-description", domain_description,
         ), dry_run=args.dry_run)
         run(module_cmd(
@@ -578,11 +582,11 @@ def main() -> int:
         # the dashboard nodes.jsonl produced above, rebuilds atom -> mid-group ->
         # top aspect bottom-up, names every layer with the domain-agnostic
         # core-word prompts, logically orders all three layers, and applies the
-        # result back onto dashboard_data. See docs/wiki/aspect-rebuild-flow.md.
+        # result back onto dashboard_data. See docs/paper-alignment.md.
         run(module_cmd(
             MODULES.rebuild_aspects,
             "--run", str(base.relative_to(ROOT)),
-            "--dom", args.domain,
+            "--dom", base.name if custom_corpus else args.domain,
             "--n-workers", str(args.aspect_rebuild_workers),
         ), dry_run=args.dry_run)
         # Rebuilt names live in nodes.jsonl, and build_document_phrases reads
@@ -604,7 +608,7 @@ def main() -> int:
         ), dry_run=args.dry_run)
 
     if not args.dry_run:
-        write_summary(base, args.domain)
+        write_summary(base, domain_name)
         print(f"\n[done] {base}")
         print(f"summary: {base / 'run_summary.md'}")
         print(f"dashboard: {dashboard_ui / 'index.html'}")
