@@ -1,18 +1,16 @@
 # Data and artifact provenance
 
-The release preserves the complete six dashboard cohorts described in Table 2
-of arXiv:2609.06664v1 (203,444 documents in total). Each corpus archive contains
+The release contains the six dashboard cohorts described in Table 2 of
+arXiv:2609.06664v1 (203,444 documents in total). Each corpus archive contains
 the normalized source documents, topic nodes, hierarchy, document-topic links,
-evidence phrases, and full per-document phrase spans. Baseline and diagnostic
-outputs are included where recorded, so users can inspect the comparison as
-well as rerun it.
+evidence phrases and full per-document phrase spans, together with the recorded
+baseline and diagnostic outputs.
 
-`paper_artifacts/manifest.json` records the minimum paper cohort size, actual
-document count, SHA-256 of every distributed file, archive checksum, and corpus
-source. `scripts/fetch_paper_artifacts.py` verifies checksums before extracting.
-`scripts/validate_paper_artifacts.py` checks coverage and evidence traceability.
-The release does not downsample any paper cohort. Downloading one corpus is
-supported for inspection; validating the complete release requires all six.
+`paper_artifacts/manifest.json` records the paper cohort size, the document
+count, the SHA-256 of every distributed file and the archive checksums.
+`scripts/fetch_paper_artifacts.py` verifies checksums before extracting, and
+`scripts/validate_paper_artifacts.py` checks coverage and evidence
+traceability. `--corpus <id>` restricts either script to one corpus.
 
 ## Counts in the manifest
 
@@ -40,7 +38,5 @@ supported for inspection; validating the complete release requires all six.
 - Recipes: https://huggingface.co/datasets/datahiveai/recipes-with-nutrition
 - Debates: https://huggingface.co/datasets/coastalcph/eu_debates
 
-Original source terms and attribution still apply to the corpus texts. The
-archives preserve the normalized text used by the dashboard; preprocessing may
-add field labels or metadata. They do not purport to replace upstream datasets
-or introduce a new license for their contents.
+The archives contain the normalized text shown in the dashboard. The corpus
+texts keep the terms of their upstream sources.

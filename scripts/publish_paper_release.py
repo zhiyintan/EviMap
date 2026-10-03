@@ -93,9 +93,8 @@ def main() -> None:
                        "body": "Complete six-corpus artifacts accompanying arXiv:2609.06664v1. "
                        "203,444 normalized documents, full evidence spans, hierarchical maps, "
                        "and recorded baseline/diagnostic outputs. Archive and per-file SHA-256 "
-                       "checksums are pinned in paper_artifacts/manifest.json. No corpus is "
-                       "smaller than the paper cohort. Use scripts/fetch_paper_artifacts.py "
-                       "to download and validate the datasets."})
+                       "checksums are pinned in paper_artifacts/manifest.json. Use "
+                       "scripts/fetch_paper_artifacts.py to download and validate the datasets."})
     existing = {row["name"]: row for row in release["assets"]}
     upload_base = release["upload_url"].split("{", 1)[0]
     for corpus in manifest["corpora"]:

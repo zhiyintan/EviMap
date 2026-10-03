@@ -11,8 +11,8 @@ phrases, two-topic intersection with a proximity window, and long-tail auditing.
 
 This repository contains the full research pipeline, the interactive frontend,
 small-topic absorption and Other handling, baseline implementations, evaluation
-scripts, and the six complete paper cohorts. Large corpus files are distributed
-as checksum-verified release assets rather than embedded in Git history.
+scripts, and the six complete paper cohorts. The corpora are distributed as
+checksum-verified release assets.
 
 ## Explore the full paper artifacts
 
@@ -27,11 +27,10 @@ python scripts/build_demo_site.py
 python scripts/serve_debug_site.py --dir site/demo --port 8000
 ```
 
-Open `http://localhost:8000/`. The downloaded normalized `documents.jsonl` files
-can also be used independently as input corpora. No sampling is performed by
-the downloader. Validation rejects a corpus smaller than the paper cohort.
+Open `http://localhost:8000/`. The downloaded `documents.jsonl` files can also
+be used as input corpora.
 
-| Corpus | Minimum documents |
+| Corpus | Documents |
 | --- | ---: |
 | ICLR peer reviews | 2,108 |
 | TripAdvisor hotel reviews | 2,864 |
@@ -40,10 +39,8 @@ the downloader. Validation rejects a corpus smaller than the paper cohort.
 | Recipes | 39,447 |
 | EU Parliament debates | 101,699 |
 
-Document counts refer to the published artifact cohort, not the size of the
-upstream source dataset. A newer release may increase these counts. The small
-file in `data/` is a smoke-test example, not a substitute for these cohorts.
-See [data provenance](docs/data.md) and [paper alignment](docs/paper-alignment.md).
+`data/` holds a small smoke-test example. See [data provenance](docs/data.md)
+and [paper alignment](docs/paper-alignment.md).
 
 ## Generate a new map
 
@@ -63,21 +60,18 @@ python -m evimap.run_pipeline \
 python -m http.server 8000 --directory runs/sample_job_posts/dashboard_ui
 ```
 
-Input is JSONL with `{doc_id, text, metadata}` records. The domain profile guides
-extraction; it does not prescribe the final taxonomy. The public entry point
-uses five grouping rounds, a 0.7 first-layer threshold and 14 top-level aspects
-(at most 20). Small topics are absorbed where appropriate or retained in Other.
-`--output` must be inside this checkout, such as `runs/<name>`.
+Input is JSONL with `{doc_id, text, metadata}` records. The domain profile only
+guides extraction; the taxonomy is induced from the evidence. The public entry
+point uses five grouping rounds, a 0.7 first-layer threshold and 14 top-level
+aspects (at most 20). Small topics are absorbed where appropriate or retained
+in Other. `--output` must be inside this checkout, such as `runs/<name>`.
 
 `--rough-k` is intended for tiny smoke tests. Omit it for a real corpus so the
 rough KMeans scaffold selects its size from the data. `--workers` depends on
-your backend capacity; the paper extraction setup used 128 workers. Every fresh
-build calls the configured LLM and local multilingual encoder. Existing paper
-artifacts are fixed snapshots; fresh model outputs can differ.
+your backend capacity; the paper extraction setup used 128 workers.
 
-The lower-level domain ingestion and resumable pipeline remain available under
-`experiments/`. See [reproduction](docs/reproduction.md) for full commands,
-intermediate outputs, model settings, evaluation, and known limitations.
+See [reproduction](docs/reproduction.md) for the lower-level pipeline under
+`experiments/`, model settings and evaluation.
 
 ## Verify
 
@@ -91,8 +85,7 @@ node --check experiments/dashboard_ui_template/app.js
 node tests/test_dashboard.js
 ```
 
-Offline tests do not issue model calls. The artifact validator separately checks
-full-cohort coverage, document and topic references, and every stored span.
+The tests make no model calls.
 
 ## License
 
