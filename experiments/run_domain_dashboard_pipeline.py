@@ -588,22 +588,14 @@ def main() -> int:
             "--dom", base.name if custom_corpus else args.domain,
             "--n-workers", str(args.aspect_rebuild_workers),
         ), dry_run=args.dry_run)
-        # Rebuilt names live in nodes.jsonl, and build_document_phrases reads
-        # titles from there, so doc_all_phrases has to be regenerated to pick
-        # them up. That regeneration writes atom_ids straight from node_mapping,
-        # i.e. the PRE-rebuild atoms — which silently undid rebuild_aspects'
-        # own step-6 remap (measured: 19,243 of 48,886 occurrences left pointing
-        # at merged-away atoms, so phrase-click filtering found nothing). Remap
-        # again, after the regeneration, so both the titles and the ids are final.
+        # Regenerate doc_all_phrases and document_links against the rebuilt
+        # nodes.jsonl: atom ids come from the final phrase-entry owners and
+        # titles from the rebuilt names.
         run(module_cmd(
             MODULES.build_document_phrases,
             "--inputs-dir", str(inputs.relative_to(ROOT)),
             "--route-dir", str(active_mapping.relative_to(ROOT)),
             "--out-dir", str(dashboard_data.relative_to(ROOT)),
-        ), dry_run=args.dry_run)
-        run(module_cmd(
-            "experiments.catalogue.aspects.remap_doc_phrases",
-            "--run", str(base.relative_to(ROOT)),
         ), dry_run=args.dry_run)
 
     if not args.dry_run:

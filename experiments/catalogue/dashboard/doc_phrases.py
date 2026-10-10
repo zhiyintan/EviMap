@@ -39,13 +39,20 @@ def main() -> int:
             if r.get("atom_id"):
                 pid_to_atom[r["phrase_id"]] = r["atom_id"]
 
+    # Final atoms own phrase entries (member_phrase_entry_ids). The route
+    # assignments above predate the aspect rebuild, which merges atoms away, so
+    # the entry owner is the authoritative atom and the route is only a fallback.
     nodes = {}
+    entry_to_atom = {}
     with (out / "nodes.jsonl").open() as f:
         for line in f:
             line = line.strip()
             if not line: continue
             n = json.loads(line)
             nodes[n["atom_id"]] = n.get("display_title", "?")
+            if n.get("is_group_header"): continue
+            for e in (n.get("member_phrase_entry_ids") or []):
+                entry_to_atom[e] = n["atom_id"]
 
     # phrase_text_normalized -> sub_id within each atom
     phrase_to_sub = {}  # (atom_id, phrase_text_lower) -> sub_id
@@ -67,7 +74,8 @@ def main() -> int:
             line = line.strip()
             if not line: continue
             occ = json.loads(line)
-            aid = pid_to_atom.get(occ["phrase_id"])
+            aid = (entry_to_atom.get(occ.get("phrase_entry_id"))
+                   or pid_to_atom.get(occ["phrase_id"]))
             if not aid: continue  # skip phrases that didn't get assigned
             text_lower = (occ.get("text_normalized") or
                           (occ.get("text") or "").lower().strip())
@@ -91,7 +99,15 @@ def main() -> int:
                 "doc_id": did,
                 "phrases": by_doc[did],
             }, ensure_ascii=False) + "\n")
-    print(f"Done. {out / 'doc_all_phrases.jsonl'}")
+    # document_links.jsonl is first written before the aspect rebuild; rewrite
+    # it from the same final per-document atom sets.
+    with (out / "document_links.jsonl").open("w", encoding="utf-8") as f:
+        for did in sorted(by_doc):
+            f.write(json.dumps({
+                "doc_id": did,
+                "linked_atom_ids": sorted({ph["atom_id"] for ph in by_doc[did]}),
+            }, ensure_ascii=False) + "\n")
+    print(f"Done. {out / 'doc_all_phrases.jsonl'}, {out / 'document_links.jsonl'}")
     return 0
 
 
