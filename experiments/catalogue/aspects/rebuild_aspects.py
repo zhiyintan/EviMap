@@ -294,13 +294,15 @@ def main() -> int:
         print(f"[5b] injected 'Other — Small / Recyclable' top-level aspect "
               f"({other_bin.get('n_recycled_atoms', 0)} atoms)")
 
-    # ---- 6. re-tag doc_all_phrases occurrence atom_ids to the FINAL atoms ----
-    # The merge/absorb steps collapsed many atoms; doc_all_phrases still carries
-    # the pre-merge atom_ids (~30% stale), which breaks phrase-click filtering
-    # and in-text highlighting for absorbed phrases. Re-map via phrase_entry_id.
-    if (data / "doc_all_phrases.jsonl").exists():
-        sh([PY, "-m", "experiments.catalogue.aspects.remap_doc_phrases",
-            "--run", rel(run)])
+    # ---- 6. regenerate doc_all_phrases + document_links against the final nodes ----
+    inputs_dir = run / "inputs"
+    route_dir = run / "node_mapping" if (run / "node_mapping").exists() else run / "rough_atoms"
+    if (inputs_dir / "phrase_occurrences.jsonl").exists() and (route_dir / "atom_assignments.jsonl").exists():
+        sh([PY, "-m", "experiments.catalogue.commands.build_document_phrases",
+            "--inputs-dir", str(inputs_dir.relative_to(ROOT)),
+            "--route-dir", str(route_dir.relative_to(ROOT)),
+            "--out-dir", str(data.relative_to(ROOT))])
+        sh([PY, str(ROOT / "scripts" / "check_highlight_promise.py"), str(data)])
 
     # ---- post: drop stale llm_aspect_names.jsonl (B8), refresh app.js (B9) -
     stale_names = data / "llm_aspect_names.jsonl"

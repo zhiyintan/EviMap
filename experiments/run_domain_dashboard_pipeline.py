@@ -597,6 +597,9 @@ def main() -> int:
             "--route-dir", str(active_mapping.relative_to(ROOT)),
             "--out-dir", str(dashboard_data.relative_to(ROOT)),
         ), dry_run=args.dry_run)
+        if not args.dry_run:
+            run([sys.executable, str(ROOT / "scripts" / "check_highlight_promise.py"),
+                 str(dashboard_data)], dry_run=False)
 
     if not args.dry_run:
         write_summary(base, domain_name)

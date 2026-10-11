@@ -19,6 +19,8 @@ from __future__ import annotations
 import json
 import re
 import shutil
+import sys
+import subprocess
 import argparse
 from pathlib import Path
 
@@ -575,6 +577,11 @@ def main():
     for name, run in selected:
         print(f"[build] {name} ...", flush=True)
         stats.append(shard_dataset(name, run))
+        # Refuse to ship a bundle in which a listed document cannot show its topic.
+        gate = subprocess.run([sys.executable, str(ROOT / "scripts" / "check_highlight_promise.py"),
+                               str(OUT / name / "data")])
+        if gate.returncode != 0:
+            raise SystemExit(f"[build] {name}: highlight promise check failed; bundle not built")
     (OUT / "index.html").write_text(landing(stats), encoding="utf-8")
     # CF Pages reads _headers ONLY at the deploy root (per-subdir copies are ignored).
     (OUT / "_headers").write_text(build_headers([s["name"] for s in stats]), encoding="utf-8")

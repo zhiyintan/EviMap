@@ -42,6 +42,7 @@ from experiments.catalogue.llm import DEFAULT_MODEL
 from experiments.catalogue.paths import ROOT
 from experiments.catalogue.extraction.core import (
     call_openai, discover_domain_profile, render_profile_text,
+    repair_non_substring_phrases,
 )
 
 
@@ -417,6 +418,16 @@ def main() -> int:
                 "doc_chars": len(text),
             })
         merged_spec = merge_outputs(per_model_specs)
+        # Every phrase must be locatable in the document; paraphrases are sent
+        # back once for the exact wording, the rest are dropped here rather
+        # than carried through the pipeline without an offset.
+        if merged_spec and merged_spec.get("phrases"):
+            kept, n_rep, n_drop = repair_non_substring_phrases(
+                text, merged_spec["phrases"], model=args.models[0],
+                temperature=args.temperature)
+            merged_spec["phrases"] = kept
+            merged_spec["n_phrases_repaired"] = n_rep
+            merged_spec["n_phrases_dropped"] = n_drop
         successful_models = [m["model"] for m in per_model_meta if not m["error"]]
         all_model_errors = not successful_models
         merged_meta = {

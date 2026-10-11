@@ -77,20 +77,20 @@ class PublicationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "missing topic node"):
             validate_corpus(data, 1)
 
-    def test_rebuild_remap_points_phrases_and_links_at_final_nodes(self):
-        from experiments.catalogue.aspects import remap_doc_phrases
+    def test_document_phrases_are_tagged_with_final_nodes(self):
+        from experiments.catalogue.dashboard import doc_phrases
         run = self.root / "run"
         data = run / "dashboard_ui" / "data"
         jsonl(run / "inputs" / "phrase_occurrences.jsonl", [
-            {"doc_id": "d1", "text": "bilingual", "start": 0, "end": 9, "phrase_entry_id": 7}])
+            {"phrase_id": "p1", "doc_id": "d1", "text": "bilingual", "start": 0, "end": 9, "phrase_entry_id": 7}])
+        jsonl(run / "node_mapping" / "atom_assignments.jsonl", [{"phrase_id": "p1", "atom_id": "pre-merge"}])
         jsonl(data / "nodes.jsonl", [
             {"atom_id": "final", "display_title": "Languages", "member_phrase_entry_ids": [7]}])
-        jsonl(data / "doc_all_phrases.jsonl", [{"doc_id": "d1", "phrases": [
-            {"text": "bilingual", "start": 0, "end": 9, "atom_id": "pre-merge"}]}])
-        jsonl(data / "document_links.jsonl", [{"doc_id": "d1", "linked_atom_ids": ["pre-merge"]}])
-        with patch.object(sys, "argv", ["remap_doc_phrases", "--run", str(run)]), \
-                redirect_stdout(io.StringIO()):
-            remap_doc_phrases.main()
+        jsonl(data / "atom_subclusters.jsonl", [])
+        argv = ["build_document_phrases", "--inputs-dir", str(run / "inputs"),
+                "--route-dir", str(run / "node_mapping"), "--out-dir", str(data)]
+        with patch.object(sys, "argv", argv), redirect_stdout(io.StringIO()):
+            doc_phrases.main()
         phrases = json.loads((data / "doc_all_phrases.jsonl").read_text())["phrases"]
         self.assertEqual(phrases[0]["atom_id"], "final")
         self.assertEqual(json.loads((data / "document_links.jsonl").read_text()),

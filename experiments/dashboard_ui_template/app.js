@@ -1048,37 +1048,6 @@ function renderSearchResults() {
 // Highlighting helpers
 // ============================================================ //
 
-// Word char for boundary checks: ASCII letter/digit only. Mirrors the backend
-// `_is_word_char` in build_inputs.py — non-ASCII scripts (CJK, etc.) are
-// treated as boundaries so we keep plain-substring behaviour where we have no
-// reliable segmentation.
-function isWordChar(c) {
-  return !!c && /[A-Za-z0-9]/.test(c);
-}
-
-// Case-insensitive find of the first occurrence of `phrase` in `text` that
-// respects word boundaries, so a short phrase like "sit" doesn't match inside
-// "vi*sit*" or "po*sit*ion". Only the phrase edges that are themselves word
-// chars impose a boundary (e.g. "401(k)" imposes none on the left). Returns
-// the start index, or -1.
-function findWordBoundedIndex(text, phrase) {
-  if (!phrase) return -1;
-  const tlow = text.toLowerCase();
-  const plow = phrase.toLowerCase();
-  const checkLeft = isWordChar(phrase[0]);
-  const checkRight = isWordChar(phrase[phrase.length - 1]);
-  let cursor = 0;
-  while (true) {
-    const i = tlow.indexOf(plow, cursor);
-    if (i < 0) return -1;
-    const e = i + phrase.length;
-    const leftOk = !checkLeft || i === 0 || !isWordChar(text[i - 1]);
-    const rightOk = !checkRight || e >= text.length || !isWordChar(text[e]);
-    if (leftOk && rightOk) return i;
-    cursor = i + 1;
-  }
-}
-
 function buildHighlightedHtml(text, phrases) {
   const spans = [];
   const fallback = [];
@@ -1093,24 +1062,14 @@ function buildHighlightedHtml(text, phrases) {
   for (const p of phrases) {
     const phText = (p.text || "").trim();
     if (!phText) continue;
+    // Offsets come from the pipeline (build_inputs); the renderer does not
+    // search the text. An occurrence without a valid offset is listed as
+    // "not located" so the gap stays visible instead of being papered over.
     let s = -1, e = -1;
-    const sourceStart = sourceToJs[p.start];
-    const sourceEnd = sourceToJs[p.end];
     if (Number.isInteger(p.start) && Number.isInteger(p.end) &&
-        p.start >= 0 && p.end < sourceToJs.length &&
-        text.slice(sourceStart, sourceEnd).toLowerCase() === phText.toLowerCase()) {
-      s = sourceStart; e = sourceEnd;
-    } else {
-      let idxCi = findWordBoundedIndex(text, phText);
-      // Relaxed recovery for multi-word phrases: run-together source text
-      // (common in job postings, e.g. "experience10+ years of work experience")
-      // glues a phrase to its neighbor, so the word-boundary check fails. A
-      // phrase containing whitespace cannot false-match inside a single word,
-      // so a plain substring match is safe and recovers real evidence spans.
-      if (idxCi < 0 && /\s/.test(phText)) {
-        idxCi = text.toLowerCase().indexOf(phText.toLowerCase());
-      }
-      if (idxCi >= 0) { s = idxCi; e = idxCi + phText.length; }
+        p.start >= 0 && p.end < sourceToJs.length && p.start <= p.end &&
+        text.slice(sourceToJs[p.start], sourceToJs[p.end]).toLowerCase() === phText.toLowerCase()) {
+      s = sourceToJs[p.start]; e = sourceToJs[p.end];
     }
     if (s >= 0) spans.push({
       start: s, end: e,
@@ -1120,22 +1079,44 @@ function buildHighlightedHtml(text, phrases) {
     });
     else fallback.push(p);
   }
-  spans.sort((a, b) => a.start - b.start || (b.end - b.start) - (a.end - a.start));
-  const kept = [];
-  let lastEnd = -1;
+  // Outer spans first; for the same range the current topic's span wins.
+  spans.sort((a, b) => a.start - b.start
+    || (b.end - b.start) - (a.end - a.start)
+    || (b.cssClass === "subject") - (a.cssClass === "subject"));
+  // A span inside another span is rendered as a nested mark (a short phrase
+  // such as "abilities" often sits inside a longer phrase from another topic).
+  // A span that crosses the end of the open span, or repeats its exact range,
+  // is dropped.
+  const roots = [];
+  const stack = [];
   for (const sp of spans) {
-    if (sp.start >= lastEnd) { kept.push(sp); lastEnd = sp.end; }
+    while (stack.length && sp.start >= stack[stack.length - 1].end) stack.pop();
+    const parent = stack[stack.length - 1];
+    if (parent && (sp.end > parent.end || (sp.start === parent.start && sp.end === parent.end))) continue;
+    sp.children = [];
+    (parent ? parent.children : roots).push(sp);
+    stack.push(sp);
   }
-  let html = ""; let cursor = 0;
-  for (const sp of kept) {
-    if (sp.start > cursor) html += escapeHtml(text.slice(cursor, sp.start));
+  const render = (sp) => {
+    let inner = ""; let cur = sp.start;
+    for (const c of sp.children) {
+      if (c.start > cur) inner += escapeHtml(text.slice(cur, c.start));
+      inner += render(c);
+      cur = c.end;
+    }
+    if (cur < sp.end) inner += escapeHtml(text.slice(cur, sp.end));
     const cls = sp.cssClass + (sp.jumpAtom ? " jump" : "");
     const dataAttr = sp.jumpAtom
       ? ` data-jump-atom="${escapeHtml(sp.jumpAtom)}"` +
         (sp.jumpSub ? ` data-jump-sub="${escapeHtml(sp.jumpSub)}"` : "") +
         (sp.otherAtomTitle ? ` title="in topic: ${escapeHtml(sp.otherAtomTitle)}"` : "")
       : "";
-    html += `<mark class="${cls}"${dataAttr}>${escapeHtml(text.slice(sp.start, sp.end))}</mark>`;
+    return `<mark class="${cls}"${dataAttr}>${inner}</mark>`;
+  };
+  let html = ""; let cursor = 0;
+  for (const sp of roots) {
+    if (sp.start > cursor) html += escapeHtml(text.slice(cursor, sp.start));
+    html += render(sp);
     cursor = sp.end;
   }
   if (cursor < text.length) html += escapeHtml(text.slice(cursor));

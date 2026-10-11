@@ -8,7 +8,7 @@ prompt, it does not own it.
 """
 from __future__ import annotations
 import json, os, time
-from typing import Optional
+from typing import Optional, Tuple
 
 from experiments.catalogue.llm import DEFAULT_MODEL, chat_json
 
@@ -286,6 +286,46 @@ def discover_domain_profile(
         sample_doc_texts, user_specified_audience, model, sample_chars_per_doc)
     out["_pipeline"] = "single_pass"
     return out
+
+
+REPAIR_SYSTEM_PROMPT = """You are given a document and phrases that were extracted from it but do not occur in it verbatim.
+For each phrase return the exact substring of the document it was taken from, copied character for character (same case, spelling and punctuation). If no single substring of the document carries the same meaning, return null.
+Return STRICT JSON only: {"phrases": [{"given": "<phrase as given>", "exact": "<exact substring or null>"}]}"""
+
+
+def repair_non_substring_phrases(doc_text: str, phrases: list, model: str,
+                                 temperature: float = 0.0) -> Tuple[list, int, int]:
+    """Keep only phrases that occur in doc_text as build_inputs will locate them.
+
+    Phrases the model paraphrased are sent back once for the exact wording;
+    a phrase that still cannot be located is dropped. Returns
+    (phrases, n_repaired, n_dropped)."""
+    from experiments.catalogue.inputs.build_inputs import find_all_occurrences
+    located, missing = [], []
+    for ph in phrases:
+        (located if find_all_occurrences(doc_text, ph.get("text") or "") else missing).append(ph)
+    if not missing:
+        return located, 0, 0
+    user = ("Document:\n\n" + doc_text + "\n\nPhrases:\n"
+            + json.dumps([ph["text"] for ph in missing], ensure_ascii=False))
+    try:
+        out = chat_json(REPAIR_SYSTEM_PROMPT, user, model=model,
+                        temperature=temperature, max_retries=1)
+        exact_by_given = {r.get("given"): r.get("exact")
+                          for r in (out.get("phrases") or []) if isinstance(r, dict)}
+    except Exception:
+        exact_by_given = {}
+    n_repaired = n_dropped = 0
+    for ph in missing:
+        exact = exact_by_given.get(ph["text"])
+        exact = exact.strip() if isinstance(exact, str) else ""
+        if exact and find_all_occurrences(doc_text, exact):
+            ph["text"] = exact
+            located.append(ph)
+            n_repaired += 1
+        else:
+            n_dropped += 1
+    return located, n_repaired, n_dropped
 
 
 def call_openai(doc_text: str, model: str, profile_text: str = "",
