@@ -7,7 +7,8 @@ discovery and the retry-wrapped per-document call. Both the production runner
 prompt, it does not own it.
 """
 from __future__ import annotations
-import json, os, time
+import json, os, re, time
+from collections import Counter
 from typing import Optional, Tuple
 
 from experiments.catalogue.llm import DEFAULT_MODEL, chat_json
@@ -288,43 +289,94 @@ def discover_domain_profile(
     return out
 
 
-REPAIR_SYSTEM_PROMPT = """You are given a document and phrases that were extracted from it but do not occur in it verbatim.
-For each phrase return the exact substring of the document it was taken from, copied character for character (same case, spelling and punctuation). If no single substring of the document carries the same meaning, return null.
-Return STRICT JSON only: {"phrases": [{"given": "<phrase as given>", "exact": "<exact substring or null>"}]}"""
+REPAIR_SYSTEM_PROMPT = """You are given a document and phrases that were extracted from it but do not occur in it verbatim: the extractor reworded them.
+For each phrase, find the place in the document the phrase was taken from and return that passage copied character for character (same case, spelling, punctuation and word order as in the document). The passage must be a contiguous part of the document; returning the phrase unchanged is wrong because it does not occur in the document. If the document has no passage with the same meaning, return null.
+Return STRICT JSON only: {"phrases": [{"given": "<phrase as given>", "exact": "<passage copied from the document or null>"}]}"""
+
+_TOKEN_RE = re.compile(r"[^\W_]+(?:'[^\W_]+)?")
+
+
+def align_phrase_span(doc_text: str, phrase: str, slack: int = 3) -> Optional[Tuple[int, int]]:
+    """Shortest passage of one sentence that contains every token of `phrase`.
+
+    Covers rewordings that only reorder or link the words ("friendly staff"
+    for "staff was friendly"): the passage may hold at most `slack` extra
+    tokens and may not cross a sentence boundary. Returns (start, end) in
+    doc_text, or None."""
+    from experiments.catalogue.inputs.build_inputs import fold_keep_offsets
+    need = Counter(m.group(0) for m in _TOKEN_RE.finditer(fold_keep_offsets(phrase)))
+    if not need:
+        return None
+    toks = [(m.group(0), m.start(), m.end()) for m in _TOKEN_RE.finditer(fold_keep_offsets(doc_text))]
+    limit = sum(need.values()) + slack
+    best = None
+    for i, (w, s, _) in enumerate(toks):
+        if w not in need:
+            continue
+        have: Counter = Counter()
+        for j in range(i, min(len(toks), i + limit)):
+            have[toks[j][0]] += 1
+            if all(have[k] >= v for k, v in need.items()):
+                e = toks[j][2]
+                if not re.search(r"[.!?\n]", doc_text[s:e]) and (best is None or e - s < best[1] - best[0]):
+                    best = (s, e)
+                break
+    return best
 
 
 def repair_non_substring_phrases(doc_text: str, phrases: list, model: str,
                                  temperature: float = 0.0) -> Tuple[list, list, list]:
     """Keep only phrases that occur in doc_text as build_inputs will locate them.
 
-    Phrases the model paraphrased are sent back once for the exact wording;
-    a phrase that still cannot be located is dropped. Returns
+    A reworded phrase is first aligned deterministically to the passage that
+    holds all its words; what remains is sent to the model once for the exact
+    wording, and an answer that is not a passage of the document is asked
+    for once more. A phrase that still cannot be located is dropped. Returns
     (phrases, repairs, dropped) with repairs as [given, exact] pairs."""
     from experiments.catalogue.inputs.build_inputs import find_all_occurrences
-    located, missing = [], []
+    located, missing, repairs, dropped = [], [], [], []
     for ph in phrases:
-        (located if find_all_occurrences(doc_text, ph.get("text") or "") else missing).append(ph)
-    if not missing:
-        return located, [], []
-    user = ("Document:\n\n" + doc_text + "\n\nPhrases:\n"
-            + json.dumps([ph["text"] for ph in missing], ensure_ascii=False))
-    try:
-        out = chat_json(REPAIR_SYSTEM_PROMPT, user, model=model,
-                        temperature=temperature, max_retries=1)
-        exact_by_given = {r.get("given"): r.get("exact")
-                          for r in (out.get("phrases") or []) if isinstance(r, dict)}
-    except Exception:
-        exact_by_given = {}
-    repairs, dropped = [], []
-    for ph in missing:
-        exact = exact_by_given.get(ph["text"])
-        exact = exact.strip() if isinstance(exact, str) else ""
-        if exact and find_all_occurrences(doc_text, exact):
-            repairs.append([ph["text"], exact])
+        text = ph.get("text") or ""
+        if find_all_occurrences(doc_text, text):
+            located.append(ph)
+            continue
+        span = align_phrase_span(doc_text, text)
+        if span:
+            exact = doc_text[span[0]:span[1]]
+            repairs.append([text, exact])
             ph["text"] = exact
             located.append(ph)
         else:
-            dropped.append(ph["text"])
+            missing.append(ph)
+    pending = list(missing)
+    for attempt in range(2):
+        if not pending:
+            break
+        user = ("Document:\n\n" + doc_text + "\n\nPhrases:\n"
+                + json.dumps([ph["text"] for ph in pending], ensure_ascii=False))
+        if attempt:
+            user += "\n\nYour previous answer repeated the phrases unchanged; they do not occur in the document. Copy the document's own wording or return null."
+        try:
+            out = chat_json(REPAIR_SYSTEM_PROMPT, user, model=model,
+                            temperature=temperature, max_retries=1)
+            exact_by_given = {r.get("given"): r.get("exact")
+                              for r in (out.get("phrases") or []) if isinstance(r, dict)}
+        except Exception:
+            exact_by_given = {}
+        still = []
+        for ph in pending:
+            exact = exact_by_given.get(ph["text"])
+            exact = exact.strip() if isinstance(exact, str) else ""
+            if exact and find_all_occurrences(doc_text, exact):
+                repairs.append([ph["text"], exact])
+                ph["text"] = exact
+                located.append(ph)
+            elif exact_by_given.get(ph["text"], "") is None:
+                dropped.append(ph["text"])          # model says: not in the document
+            else:
+                still.append(ph)
+        pending = still
+    dropped.extend(ph["text"] for ph in pending)
     return located, repairs, dropped
 
 
