@@ -294,18 +294,18 @@ Return STRICT JSON only: {"phrases": [{"given": "<phrase as given>", "exact": "<
 
 
 def repair_non_substring_phrases(doc_text: str, phrases: list, model: str,
-                                 temperature: float = 0.0) -> Tuple[list, int, int]:
+                                 temperature: float = 0.0) -> Tuple[list, list, list]:
     """Keep only phrases that occur in doc_text as build_inputs will locate them.
 
     Phrases the model paraphrased are sent back once for the exact wording;
     a phrase that still cannot be located is dropped. Returns
-    (phrases, n_repaired, n_dropped)."""
+    (phrases, repairs, dropped) with repairs as [given, exact] pairs."""
     from experiments.catalogue.inputs.build_inputs import find_all_occurrences
     located, missing = [], []
     for ph in phrases:
         (located if find_all_occurrences(doc_text, ph.get("text") or "") else missing).append(ph)
     if not missing:
-        return located, 0, 0
+        return located, [], []
     user = ("Document:\n\n" + doc_text + "\n\nPhrases:\n"
             + json.dumps([ph["text"] for ph in missing], ensure_ascii=False))
     try:
@@ -315,17 +315,17 @@ def repair_non_substring_phrases(doc_text: str, phrases: list, model: str,
                           for r in (out.get("phrases") or []) if isinstance(r, dict)}
     except Exception:
         exact_by_given = {}
-    n_repaired = n_dropped = 0
+    repairs, dropped = [], []
     for ph in missing:
         exact = exact_by_given.get(ph["text"])
         exact = exact.strip() if isinstance(exact, str) else ""
         if exact and find_all_occurrences(doc_text, exact):
+            repairs.append([ph["text"], exact])
             ph["text"] = exact
             located.append(ph)
-            n_repaired += 1
         else:
-            n_dropped += 1
-    return located, n_repaired, n_dropped
+            dropped.append(ph["text"])
+    return located, repairs, dropped
 
 
 def call_openai(doc_text: str, model: str, profile_text: str = "",

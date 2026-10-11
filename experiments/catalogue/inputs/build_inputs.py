@@ -87,14 +87,25 @@ def _is_word_char(c: str) -> bool:
     return c.isascii() and c.isalnum()
 
 
-# str.lower() is not length-preserving: "İ" (U+0130) lowers to two code points,
-# which shifts every index after it. Fold that one character first so offsets
-# found in the lowered text are valid in the original.
-_LOWER_SAFE = {0x130: ord("i")}
+# Matching is insensitive to case and to typography the model does not echo
+# faithfully: curly vs straight quotes, dash variants, and whitespace kind
+# (a line break or no-break space in the document, a space in the phrase).
+# Every fold maps one character to one character, so an index found in the
+# folded text is valid in the original. "İ" (U+0130) is folded explicitly
+# because str.lower() turns it into two code points.
+_FOLD = {0x130: ord("i")}
+_FOLD.update({ord(c): ord("'") for c in "\u2019\u2018\u201a\u201b`\u00b4"})
+_FOLD.update({ord(c): ord('"') for c in "\u201c\u201d\u201e\u201f\u00ab\u00bb"})
+_FOLD.update({ord(c): ord("-") for c in "\u2013\u2014\u2010\u2011\u2012\u2212"})
+_FOLD.update({ord(c): ord(" ") for c in "\t\n\r\x0b\x0c\u00a0\u1680\u2000\u2001\u2002"
+              "\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000"})
 
 
-def lower_keep_offsets(s: str) -> str:
-    return s.translate(_LOWER_SAFE).lower()
+def fold_keep_offsets(s: str) -> str:
+    return s.translate(_FOLD).lower()
+
+
+lower_keep_offsets = fold_keep_offsets
 
 
 def find_all_occurrences(text: str, phrase: str) -> List[Tuple[int, int]]:
@@ -114,8 +125,8 @@ def find_all_occurrences(text: str, phrase: str) -> List[Tuple[int, int]]:
     ("analytical backgroundRelevant experience in statistical modeling"), and
     the glued neighbour must not hide the phrase."""
     if not phrase: return []
-    plow = lower_keep_offsets(phrase)
-    tlow = lower_keep_offsets(text)
+    plow = fold_keep_offsets(phrase)
+    tlow = fold_keep_offsets(text)
     assert len(tlow) == len(text)
     multi_word = any(c.isspace() for c in phrase.strip())
     check_left = not multi_word and _is_word_char(phrase[0])

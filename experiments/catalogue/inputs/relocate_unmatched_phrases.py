@@ -17,7 +17,7 @@ import json
 from collections import defaultdict
 from pathlib import Path
 
-from experiments.catalogue.inputs.build_inputs import find_all_occurrences, lower_keep_offsets
+from experiments.catalogue.inputs.build_inputs import find_all_occurrences, fold_keep_offsets
 
 ROOT = Path(__file__).resolve().parents[3]
 BACKUP_SUFFIX = ".pre_relocate"
@@ -34,7 +34,7 @@ def sentence_of(text: str, s: int, e: int) -> str:
 def needs_placing(o: dict) -> bool:
     if o.get("start") is None:
         return True
-    return lower_keep_offsets(o.get("text") or "").strip() != (o.get("text_normalized") or "")
+    return fold_keep_offsets(o.get("text") or "").strip() != (o.get("text_normalized") or "")
 
 
 def main() -> int:

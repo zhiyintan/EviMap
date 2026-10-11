@@ -88,6 +88,13 @@ def test_offsets_survive_dotted_capital_i():
     assert _texts(doc, "istanbul") == ["İstanbul"]
 
 
+def test_typography_and_whitespace_folded_but_offsets_kept():
+    doc = "Max Roach\u2019s group \u2014 recorded\nlive \u201cin the studio\u201d"
+    assert _texts(doc, "Max Roach's group") == ["Max Roach\u2019s group"]
+    assert _texts(doc, "recorded live") == ["recorded\nlive"]
+    assert _texts(doc, '"in the studio"') == ["\u201cin the studio\u201d"]
+
+
 def test_empty_phrase_returns_nothing():
     assert find_all_occurrences("anything", "") == []
 

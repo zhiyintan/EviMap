@@ -422,12 +422,14 @@ def main() -> int:
         # back once for the exact wording, the rest are dropped here rather
         # than carried through the pipeline without an offset.
         if merged_spec and merged_spec.get("phrases"):
-            kept, n_rep, n_drop = repair_non_substring_phrases(
+            kept, repairs, dropped = repair_non_substring_phrases(
                 text, merged_spec["phrases"], model=args.models[0],
                 temperature=args.temperature)
             merged_spec["phrases"] = kept
-            merged_spec["n_phrases_repaired"] = n_rep
-            merged_spec["n_phrases_dropped"] = n_drop
+            merged_spec["n_phrases_repaired"] = len(repairs)
+            merged_spec["n_phrases_dropped"] = len(dropped)
+            merged_spec["phrase_repairs"] = repairs
+            merged_spec["phrases_dropped"] = dropped
         successful_models = [m["model"] for m in per_model_meta if not m["error"]]
         all_model_errors = not successful_models
         merged_meta = {
@@ -487,6 +489,8 @@ def main() -> int:
                     "phrases": result["merged"]["raw_output"].get("phrases", []),
                     "n_phrases_repaired": result["merged"]["raw_output"].get("n_phrases_repaired", 0),
                     "n_phrases_dropped": result["merged"]["raw_output"].get("n_phrases_dropped", 0),
+                    "phrase_repairs": result["merged"]["raw_output"].get("phrase_repairs", []),
+                    "phrases_dropped": result["merged"]["raw_output"].get("phrases_dropped", []),
                     "_merged_from": result["merged"]["_merged_from"],
                 }, ensure_ascii=False) + "\n")
             raw_f.flush(); merged_f.flush(); fail_f.flush()
