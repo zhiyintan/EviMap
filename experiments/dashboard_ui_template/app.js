@@ -1079,47 +1079,36 @@ function buildHighlightedHtml(text, phrases) {
     });
     else fallback.push(p);
   }
-  // Outer spans first; for the same range the current topic's span wins.
+  // Outer spans first; for the same range the current topic's span wins and
+  // duplicates of that range are dropped.
   spans.sort((a, b) => a.start - b.start
     || (b.end - b.start) - (a.end - a.start)
     || (b.cssClass === "subject") - (a.cssClass === "subject"));
-  // A span inside another span is rendered as a nested mark (a short phrase
-  // such as "abilities" often sits inside a longer phrase from another topic).
-  // A span that crosses the end of the open span, or repeats its exact range,
-  // is dropped.
-  const roots = [];
-  const stack = [];
-  for (const sp of spans) {
-    while (stack.length && sp.start >= stack[stack.length - 1].end) stack.pop();
-    const parent = stack[stack.length - 1];
-    if (parent && (sp.end > parent.end || (sp.start === parent.start && sp.end === parent.end))) continue;
-    sp.children = [];
-    (parent ? parent.children : roots).push(sp);
-    stack.push(sp);
-  }
-  const render = (sp) => {
-    let inner = ""; let cur = sp.start;
-    for (const c of sp.children) {
-      if (c.start > cur) inner += escapeHtml(text.slice(cur, c.start));
-      inner += render(c);
-      cur = c.end;
-    }
-    if (cur < sp.end) inner += escapeHtml(text.slice(cur, sp.end));
+  const unique = spans.filter((sp, i) => !i || sp.start !== spans[i - 1].start || sp.end !== spans[i - 1].end);
+  // Cut the text at every span boundary. Each segment is wrapped by every span
+  // covering it, longest outermost, so a phrase inside or across another one
+  // is still drawn (as nested or adjacent marks).
+  const openTag = (sp) => {
     const cls = sp.cssClass + (sp.jumpAtom ? " jump" : "");
     const dataAttr = sp.jumpAtom
       ? ` data-jump-atom="${escapeHtml(sp.jumpAtom)}"` +
         (sp.jumpSub ? ` data-jump-sub="${escapeHtml(sp.jumpSub)}"` : "") +
         (sp.otherAtomTitle ? ` title="in topic: ${escapeHtml(sp.otherAtomTitle)}"` : "")
       : "";
-    return `<mark class="${cls}"${dataAttr}>${inner}</mark>`;
+    return `<mark class="${cls}"${dataAttr}>`;
   };
-  let html = ""; let cursor = 0;
-  for (const sp of roots) {
-    if (sp.start > cursor) html += escapeHtml(text.slice(cursor, sp.start));
-    html += render(sp);
-    cursor = sp.end;
+  const cuts = new Set([0, text.length]);
+  for (const sp of unique) { cuts.add(sp.start); cuts.add(sp.end); }
+  const bounds = [...cuts].sort((a, b) => a - b);
+  let html = ""; let next = 0; let active = [];
+  for (let i = 0; i + 1 < bounds.length; i++) {
+    const a = bounds[i], b = bounds[i + 1];
+    active = active.filter(sp => sp.end > a);
+    while (next < unique.length && unique[next].start <= a) { if (unique[next].end > a) active.push(unique[next]); next++; }
+    let seg = escapeHtml(text.slice(a, b));
+    for (let k = active.length - 1; k >= 0; k--) seg = openTag(active[k]) + seg + "</mark>";
+    html += seg;
   }
-  if (cursor < text.length) html += escapeHtml(text.slice(cursor));
   return { html, fallback };
 }
 

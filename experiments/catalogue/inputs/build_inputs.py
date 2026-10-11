@@ -87,6 +87,16 @@ def _is_word_char(c: str) -> bool:
     return c.isascii() and c.isalnum()
 
 
+# str.lower() is not length-preserving: "İ" (U+0130) lowers to two code points,
+# which shifts every index after it. Fold that one character first so offsets
+# found in the lowered text are valid in the original.
+_LOWER_SAFE = {0x130: ord("i")}
+
+
+def lower_keep_offsets(s: str) -> str:
+    return s.translate(_LOWER_SAFE).lower()
+
+
 def find_all_occurrences(text: str, phrase: str) -> List[Tuple[int, int]]:
     """Case-insensitive find of every non-overlapping occurrence of `phrase`
     in `text`, respecting word boundaries. Returns list of (start, end)
@@ -104,8 +114,9 @@ def find_all_occurrences(text: str, phrase: str) -> List[Tuple[int, int]]:
     ("analytical backgroundRelevant experience in statistical modeling"), and
     the glued neighbour must not hide the phrase."""
     if not phrase: return []
-    plow = phrase.lower()
-    tlow = text.lower()
+    plow = lower_keep_offsets(phrase)
+    tlow = lower_keep_offsets(text)
+    assert len(tlow) == len(text)
     multi_word = any(c.isspace() for c in phrase.strip())
     check_left = not multi_word and _is_word_char(phrase[0])
     check_right = not multi_word and _is_word_char(phrase[-1])

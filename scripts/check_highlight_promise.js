@@ -40,7 +40,7 @@ function* batches() {
     yield [docs, readJsonl(path.join(D, "doc_all_phrases.jsonl"))];
   }
 }
-let listings = 0, missing = 0, noPhrase = 0, unlocated = 0, swallowed = 0;
+let listings = 0, missing = 0, noPhrase = 0, unlocated = 0, swallowed = 0, mismatch = 0;
 const docsAffected = new Set(); const examples = [];
 for (const [docs, rows] of batches()) {
   for (const r of rows) {
@@ -56,20 +56,22 @@ for (const [docs, rows] of batches()) {
       missing++; docsAffected.add(r.doc_id);
       const mine = r.phrases.filter(o => o.atom_id === a);
       let cause;
+      const located = mine.filter(o => o.start != null);
       if (!mine.length) cause = "no_phrase_in_doc";
-      else if (mine.every(o => o.start == null)) cause = "phrase_unlocated";
+      else if (!located.length) cause = "phrase_unlocated";
+      else if (located.every(o => text.slice(o.start, o.end).toLowerCase() !== (o.text || "").trim().toLowerCase())) cause = "offset_text_mismatch";
       else cause = "swallowed_by_overlap";
-      if (cause === "no_phrase_in_doc") noPhrase++; else if (cause === "phrase_unlocated") unlocated++; else swallowed++;
+      if (cause === "no_phrase_in_doc") noPhrase++; else if (cause === "phrase_unlocated") unlocated++; else if (cause === "offset_text_mismatch") mismatch++; else swallowed++;
       if (examples.length < 5) examples.push({ doc: r.doc_id, topic: a, cause, phrases: mine.slice(0, 2).map(o => o.text) });
     }
   }
 }
 const rate = listings ? missing / listings : 0;
 const report = { data_dir: D, listings, without_visible_highlight: missing, rate: (rate * 100).toFixed(2) + "%",
-  cause: { no_phrase_in_doc: noPhrase, phrase_unlocated: unlocated, swallowed_by_overlap: swallowed },
+  cause: { no_phrase_in_doc: noPhrase, phrase_unlocated: unlocated, offset_text_mismatch: mismatch, swallowed_by_overlap: swallowed },
   docs_affected: docsAffected.size, examples };
 console.log(JSON.stringify(report, null, 1));
-const defects = noPhrase + swallowed;
+const defects = noPhrase + mismatch + swallowed;
 const unlocatedRate = listings ? unlocated / listings : 0;
 if (defects > 0) { console.error(`[promise] FAIL: ${defects} listings cannot show their topic's phrase (pipeline/renderer defect)`); process.exit(1); }
 if (unlocatedRate > maxUnlocated) { console.error(`[promise] FAIL: ${(unlocatedRate * 100).toFixed(2)}% listings have only unlocated phrases (bound ${maxUnlocated * 100}%)`); process.exit(1); }

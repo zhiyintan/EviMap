@@ -80,6 +80,14 @@ def test_multi_word_phrase_matches_when_glued_to_neighbour():
     assert _texts(doc, "background") == []
 
 
+def test_offsets_survive_dotted_capital_i():
+    # "İ".lower() is two code points; an index found in the lowered text must
+    # still point at the phrase in the original text.
+    doc = "İstanbul office. Contact Nick Cave for details."
+    assert _texts(doc, "Nick Cave") == ["Nick Cave"]
+    assert _texts(doc, "istanbul") == ["İstanbul"]
+
+
 def test_empty_phrase_returns_nothing():
     assert find_all_occurrences("anything", "") == []
 

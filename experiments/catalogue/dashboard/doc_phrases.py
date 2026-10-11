@@ -107,7 +107,54 @@ def main() -> int:
                 "doc_id": did,
                 "linked_atom_ids": sorted({ph["atom_id"] for ph in by_doc[did]}),
             }, ensure_ascii=False) + "\n")
-    print(f"Done. {out / 'doc_all_phrases.jsonl'}, {out / 'document_links.jsonl'}")
+    # Which documents a topic lists is the same fact as which documents carry
+    # its phrases, so nodes.jsonl and aspects.jsonl take their document sets
+    # from by_doc too (leaf topics, group headers, aspect totals).
+    atom_docs = defaultdict(set)
+    for did, phs in by_doc.items():
+        for ph in phs:
+            atom_docs[ph["atom_id"]].add(did)
+    group_members = defaultdict(set)
+    aspect_rows = []
+    aspects_path = out / "aspects.jsonl"
+    if aspects_path.exists():
+        with aspects_path.open(encoding="utf-8") as f:
+            aspect_rows = [json.loads(line) for line in f if line.strip()]
+        for a in aspect_rows:
+            tree = a.get("tree") or {}
+            leaves = set()
+            for parent, kids in (tree.get("children_by_parent") or {}).items():
+                group_members[parent].update(kids)
+                leaves.update(kids)
+            for root in tree.get("roots") or []:
+                if root not in group_members:
+                    leaves.add(root)
+            leaves.update(x for x in (a.get("member_atom_ids") or []) if x not in group_members)
+            docs_total = set()
+            for leaf in leaves:
+                docs_total.update(atom_docs.get(leaf, ()))
+            a["n_documents_total"] = len(docs_total)
+        with aspects_path.open("w", encoding="utf-8") as f:
+            for a in aspect_rows:
+                f.write(json.dumps(a, ensure_ascii=False) + "\n")
+    node_rows = []
+    with (out / "nodes.jsonl").open(encoding="utf-8") as f:
+        node_rows = [json.loads(line) for line in f if line.strip()]
+    for n in node_rows:
+        aid = n["atom_id"]
+        if n.get("is_group_header"):
+            docs = set()
+            for leaf in group_members.get(aid, ()):
+                docs.update(atom_docs.get(leaf, ()))
+        else:
+            docs = atom_docs.get(aid, set())
+        n["support_doc_ids"] = sorted(docs)
+        n["support_doc_count"] = len(docs)
+    with (out / "nodes.jsonl").open("w", encoding="utf-8") as f:
+        for n in node_rows:
+            f.write(json.dumps(n, ensure_ascii=False) + "\n")
+    print(f"Done. {out / 'doc_all_phrases.jsonl'}, {out / 'document_links.jsonl'}; "
+          f"support sets rewritten in nodes.jsonl{' and aspects.jsonl' if aspect_rows else ''}")
     return 0
 
 
