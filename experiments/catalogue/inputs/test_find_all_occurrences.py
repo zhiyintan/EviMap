@@ -67,6 +67,19 @@ def test_non_ascii_neighbours_treated_as_boundary():
     assert _texts("远程remote工作", "remote") == ["remote"]
 
 
+def test_multi_word_phrase_matches_when_glued_to_neighbour():
+    # Job postings concatenate list items without a separator; the phrase is
+    # verbatim in the text, only its neighbour is glued on.
+    doc = ("Extremely strong quantitative and analytical backgroundRelevant "
+           "experience in statistical modeling3+ years of experience")
+    assert _texts(doc, "Relevant experience in statistical modeling") == \
+        ["Relevant experience in statistical modeling"]
+    assert _texts(doc, "analytical background") == ["analytical background"]
+    # single-word phrases keep the strict boundary
+    assert _texts(doc, "modeling") == []
+    assert _texts(doc, "background") == []
+
+
 def test_empty_phrase_returns_nothing():
     assert find_all_occurrences("anything", "") == []
 

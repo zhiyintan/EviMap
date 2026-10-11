@@ -97,12 +97,18 @@ def find_all_occurrences(text: str, phrase: str) -> List[Tuple[int, int]]:
     is itself a word char: if the phrase starts with an ASCII letter/digit,
     the preceding doc char must not be one (and likewise for the end). Phrase
     edges that are punctuation (e.g. "401(k)", "(CDs)") impose no boundary on
-    that side."""
+    that side.
+
+    A phrase containing whitespace cannot sit inside a single word, so it
+    imposes no boundary at all: source text often glues list items together
+    ("analytical backgroundRelevant experience in statistical modeling"), and
+    the glued neighbour must not hide the phrase."""
     if not phrase: return []
     plow = phrase.lower()
     tlow = text.lower()
-    check_left = _is_word_char(phrase[0])
-    check_right = _is_word_char(phrase[-1])
+    multi_word = any(c.isspace() for c in phrase.strip())
+    check_left = not multi_word and _is_word_char(phrase[0])
+    check_right = not multi_word and _is_word_char(phrase[-1])
     spans = []
     cursor = 0
     while True:
