@@ -485,6 +485,8 @@ def main() -> int:
                     "candidate_axis_hints":
                         result["merged"]["raw_output"].get("candidate_axis_hints", []),
                     "phrases": result["merged"]["raw_output"].get("phrases", []),
+                    "n_phrases_repaired": result["merged"]["raw_output"].get("n_phrases_repaired", 0),
+                    "n_phrases_dropped": result["merged"]["raw_output"].get("n_phrases_dropped", 0),
                     "_merged_from": result["merged"]["_merged_from"],
                 }, ensure_ascii=False) + "\n")
             raw_f.flush(); merged_f.flush(); fail_f.flush()

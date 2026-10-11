@@ -294,6 +294,15 @@ def main() -> int:
         print(f"[5b] injected 'Other — Small / Recyclable' top-level aspect "
               f"({other_bin.get('n_recycled_atoms', 0)} atoms)")
 
+    # ---- 5c. Other-recovery, then targeted regroup of grab-bag aspects --------
+    # Both are LLM method steps over aspects.jsonl (each backs the file up first):
+    # audit_repair re-attaches clearly categorizable "Other" topics; regroup splits
+    # an aspect whose mid-groups are a few clearly different subjects.
+    sh([PY, "-m", "experiments.catalogue.aspects.audit_repair_aspects",
+        "--run", str(run.relative_to(ROOT))])
+    sh([PY, "-m", "experiments.catalogue.aspects.regroup_aspects",
+        "--run", str(run.relative_to(ROOT))])
+
     # ---- 6. regenerate doc_all_phrases + document_links against the final nodes ----
     inputs_dir = run / "inputs"
     route_dir = run / "node_mapping" if (run / "node_mapping").exists() else run / "rough_atoms"
