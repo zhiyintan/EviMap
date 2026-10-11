@@ -296,29 +296,76 @@ Return STRICT JSON only: {"phrases": [{"given": "<phrase as given>", "exact": "<
 _TOKEN_RE = re.compile(r"[^\W_]+(?:'[^\W_]+)?")
 
 
-def align_phrase_span(doc_text: str, phrase: str, slack: int = 3) -> Optional[Tuple[int, int]]:
-    """Shortest passage of one sentence that contains every token of `phrase`.
+_SUFFIXES = ("ing", "ed", "es", "s", "d", "ly")
 
-    Covers rewordings that only reorder or link the words ("friendly staff"
-    for "staff was friendly"): the passage may hold at most `slack` extra
-    tokens and may not cross a sentence boundary. Returns (start, end) in
-    doc_text, or None."""
+
+def _stem(w: str) -> str:
+    for suf in _SUFFIXES:
+        if len(w) > len(suf) + 3 and w.endswith(suf):
+            return w[: -len(suf)]
+    return w
+
+
+def _one_edit_apart(a: str, b: str) -> bool:
+    """True for one substitution, insertion, deletion or adjacent swap."""
+    if abs(len(a) - len(b)) > 1:
+        return False
+    if len(a) == len(b):
+        diff = [i for i in range(len(a)) if a[i] != b[i]]
+        return len(diff) == 1 or (len(diff) == 2 and diff[1] == diff[0] + 1
+                                  and a[diff[0]] == b[diff[1]] and a[diff[1]] == b[diff[0]])
+    if len(a) > len(b):
+        a, b = b, a
+    i = 0
+    while i < len(a) and a[i] == b[i]:
+        i += 1
+    return a[i:] == b[i + 1:]
+
+
+def _same_word(a: str, b: str) -> bool:
+    """Equal after folding, or the same stem, or a one-letter misspelling."""
+    if a == b or _stem(a) == _stem(b):
+        return True
+    return len(a) >= 5 and len(b) >= 5 and _one_edit_apart(a, b)
+
+
+def _covers(window: list, need: list) -> bool:
+    free = list(window)
+    for w in need:
+        for k, cand in enumerate(free):
+            if _same_word(w, cand):
+                free.pop(k)
+                break
+        else:
+            return False
+    return True
+
+
+def align_phrase_span(doc_text: str, phrase: str, slack: int = 3) -> Optional[Tuple[int, int]]:
+    """Shortest passage of one sentence that contains every word of `phrase`.
+
+    Covers rewordings that reorder or inflect the words or correct a typo
+    ("friendly staff" for "staff was friendly", "checked out" for "checking
+    out", "toilet" for "toliet"): the passage may hold at most `slack` extra
+    words and may not cross a sentence boundary. The passage is returned as
+    (start, end) in doc_text, so what gets kept is still the document's own
+    wording. Returns None when no such passage exists."""
     from experiments.catalogue.inputs.build_inputs import fold_keep_offsets
-    need = Counter(m.group(0) for m in _TOKEN_RE.finditer(fold_keep_offsets(phrase)))
+    need = [m.group(0) for m in _TOKEN_RE.finditer(fold_keep_offsets(phrase))]
     if not need:
         return None
     toks = [(m.group(0), m.start(), m.end()) for m in _TOKEN_RE.finditer(fold_keep_offsets(doc_text))]
-    limit = sum(need.values()) + slack
+    limit = len(need) + slack
     best = None
     for i, (w, s, _) in enumerate(toks):
-        if w not in need:
+        if not any(_same_word(w, n) for n in need):
             continue
-        have: Counter = Counter()
-        for j in range(i, min(len(toks), i + limit)):
-            have[toks[j][0]] += 1
-            if all(have[k] >= v for k, v in need.items()):
-                e = toks[j][2]
-                if not re.search(r"[.!?\n]", doc_text[s:e]) and (best is None or e - s < best[1] - best[0]):
+        for j in range(i + len(need) - 1, min(len(toks), i + limit)):
+            e = toks[j][2]
+            if re.search(r"[.!?\n]", doc_text[s:e]):
+                break
+            if _covers([t[0] for t in toks[i:j + 1]], need):
+                if best is None or e - s < best[1] - best[0]:
                     best = (s, e)
                 break
     return best
