@@ -371,6 +371,65 @@ def align_phrase_span(doc_text: str, phrase: str, slack: int = 3) -> Optional[Tu
     return best
 
 
+POINT_SYSTEM_PROMPT = """You are given reworded phrases that were extracted from a document, each with the sentence of the document it came from. The words of each sentence are numbered.
+For each phrase return the first and last word numbers of the shortest run of words in its sentence that carries the phrase's meaning, including any negation ("isn't", "no means", "didn't") that belongs to it. If the sentence does not carry the phrase's meaning, return null for both.
+Return STRICT JSON only: {"items": [{"id": <item number>, "start": <word number or null>, "end": <word number or null>}]}"""
+
+_SENT_RE = re.compile(r"[^.!?\n]+[.!?]*")
+
+
+def _candidate_sentence(doc_text: str, phrase: str):
+    """(sentence_start, [(word, start, end), ...]) for the sentence sharing most words with phrase."""
+    from experiments.catalogue.inputs.build_inputs import fold_keep_offsets
+    need = [m.group(0) for m in _TOKEN_RE.finditer(fold_keep_offsets(phrase))]
+    folded = fold_keep_offsets(doc_text)
+    best, best_score = None, 0
+    for m in _SENT_RE.finditer(folded):
+        toks = [(t.group(0), m.start() + t.start(), m.start() + t.end()) for t in _TOKEN_RE.finditer(m.group(0))]
+        if not toks:
+            continue
+        score = sum(1 for n in need if any(_same_word(n, t[0]) for t in toks))
+        if score > best_score:
+            best, best_score = toks, score
+    return best if best and best_score >= max(1, len(need) // 2) else None
+
+
+def point_phrases_in_sentences(doc_text: str, phrases: list, model: str,
+                               temperature: float = 0.0) -> dict:
+    """Ask the model to point at word ranges; returns {given: exact passage}.
+
+    The model only chooses word numbers, so whatever it returns is the
+    document's own wording by construction."""
+    cands = {}
+    lines = []
+    for i, ph in enumerate(phrases, 1):
+        toks = _candidate_sentence(doc_text, ph["text"])
+        if not toks:
+            continue
+        cands[i] = (ph["text"], toks)
+        words = " ".join(f"{k}:{doc_text[s:e]}" for k, (_, s, e) in enumerate(toks, 1))
+        lines.append(f"{i}. phrase: {ph['text']}\n   sentence words: {words}")
+    if not lines:
+        return {}
+    try:
+        out = chat_json(POINT_SYSTEM_PROMPT, "Items:\n" + "\n".join(lines), model=model,
+                        temperature=temperature, max_retries=1)
+    except Exception:
+        return {}
+    found = {}
+    for item in (out.get("items") or []):
+        if not isinstance(item, dict) or item.get("id") not in cands:
+            continue
+        given, toks = cands[item["id"]]
+        a, b = item.get("start"), item.get("end")
+        n_need = len(_TOKEN_RE.findall(given))
+        if not (isinstance(a, int) and isinstance(b, int) and 1 <= a <= b <= len(toks)
+                and b - a + 1 <= n_need + 6):
+            continue
+        found[given] = doc_text[toks[a - 1][1]:toks[b - 1][2]]
+    return found
+
+
 def repair_non_substring_phrases(doc_text: str, phrases: list, model: str,
                                  temperature: float = 0.0) -> Tuple[list, list, list]:
     """Keep only phrases that occur in doc_text as build_inputs will locate them.
@@ -396,13 +455,10 @@ def repair_non_substring_phrases(doc_text: str, phrases: list, model: str,
         else:
             missing.append(ph)
     pending = list(missing)
-    for attempt in range(2):
-        if not pending:
-            break
+    if pending:
+        # 1st model pass: copy the document's wording.
         user = ("Document:\n\n" + doc_text + "\n\nPhrases:\n"
                 + json.dumps([ph["text"] for ph in pending], ensure_ascii=False))
-        if attempt:
-            user += "\n\nYour previous answer repeated the phrases unchanged; they do not occur in the document. Copy the document's own wording or return null."
         try:
             out = chat_json(REPAIR_SYSTEM_PROMPT, user, model=model,
                             temperature=temperature, max_retries=1)
@@ -418,8 +474,20 @@ def repair_non_substring_phrases(doc_text: str, phrases: list, model: str,
                 repairs.append([ph["text"], exact])
                 ph["text"] = exact
                 located.append(ph)
-            elif exact_by_given.get(ph["text"], "") is None:
-                dropped.append(ph["text"])          # model says: not in the document
+            else:
+                still.append(ph)
+        pending = still
+    if pending:
+        # 2nd model pass: the model tends to repeat a reworded phrase as if it
+        # were verbatim, so it is asked to point at word numbers instead.
+        found = point_phrases_in_sentences(doc_text, pending, model, temperature)
+        still = []
+        for ph in pending:
+            exact = found.get(ph["text"])
+            if exact and find_all_occurrences(doc_text, exact):
+                repairs.append([ph["text"], exact])
+                ph["text"] = exact
+                located.append(ph)
             else:
                 still.append(ph)
         pending = still
