@@ -108,6 +108,42 @@ def fold_keep_offsets(s: str) -> str:
 lower_keep_offsets = fold_keep_offsets
 
 
+def _glued_boundary(a: str, b: str, c: str) -> bool:
+    """True when the position between word chars `a|b` is a word break that the
+    source text lost (two words glued together without a space).
+
+    `c` is the char after `b` ("" at end of text). Recognised glue:
+      camelCase    "Massachusetts|Michigan", "training|Review"
+      ACRONYM|Word "HTTP|Real", "COMPANY|Meta"
+      letter|digit "PTO|401k", "365|MBA"
+    """
+    if a.islower() and b.isupper(): return True
+    if a.isupper() and b.isupper() and c.islower(): return True
+    return a.isalpha() != b.isalpha()
+
+
+def _scan(text: str, tlow: str, plow: str, check_left: bool, check_right: bool,
+          allow_glued: bool) -> List[Tuple[int, int]]:
+    spans = []
+    cursor = 0
+    while True:
+        i = tlow.find(plow, cursor)
+        if i < 0: break
+        e = i + len(plow)
+        left_ok = (not check_left or i == 0 or not _is_word_char(text[i - 1])
+                   or (allow_glued and _glued_boundary(text[i - 1], text[i], text[i + 1:i + 2])))
+        right_ok = (not check_right or e >= len(text) or not _is_word_char(text[e])
+                    or (allow_glued and _glued_boundary(text[e - 1], text[e], text[e + 1:e + 2])))
+        if left_ok and right_ok:
+            spans.append((i, e))
+            cursor = e
+        else:
+            # Reject this embedded hit but keep scanning — a valid standalone
+            # occurrence may appear later in the same document.
+            cursor = i + 1
+    return spans
+
+
 def find_all_occurrences(text: str, phrase: str) -> List[Tuple[int, int]]:
     """Case-insensitive find of every non-overlapping occurrence of `phrase`
     in `text`, respecting word boundaries. Returns list of (start, end)
@@ -123,7 +159,13 @@ def find_all_occurrences(text: str, phrase: str) -> List[Tuple[int, int]]:
     A phrase containing whitespace cannot sit inside a single word, so it
     imposes no boundary at all: source text often glues list items together
     ("analytical backgroundRelevant experience in statistical modeling"), and
-    the glued neighbour must not hide the phrase."""
+    the glued neighbour must not hide the phrase.
+
+    A single word can be glued too ("MassachusettsMichiganMinnesota",
+    "SaaSStakeholders", "PTO401k"). Only when the document has no occurrence
+    at a real word break do we accept a case or letter/digit transition as the
+    lost break (`_glued_boundary`); a document that contains "Java" standalone
+    never gets "Java" matched inside "JavaScript"."""
     if not phrase: return []
     plow = fold_keep_offsets(phrase)
     tlow = fold_keep_offsets(text)
@@ -131,21 +173,9 @@ def find_all_occurrences(text: str, phrase: str) -> List[Tuple[int, int]]:
     multi_word = any(c.isspace() for c in phrase.strip())
     check_left = not multi_word and _is_word_char(phrase[0])
     check_right = not multi_word and _is_word_char(phrase[-1])
-    spans = []
-    cursor = 0
-    while True:
-        i = tlow.find(plow, cursor)
-        if i < 0: break
-        e = i + len(phrase)
-        left_ok = not check_left or i == 0 or not _is_word_char(text[i - 1])
-        right_ok = not check_right or e >= len(text) or not _is_word_char(text[e])
-        if left_ok and right_ok:
-            spans.append((i, e))
-            cursor = e
-        else:
-            # Reject this embedded hit but keep scanning — a valid standalone
-            # occurrence may appear later in the same document.
-            cursor = i + 1
+    spans = _scan(text, tlow, plow, check_left, check_right, allow_glued=False)
+    if not spans and (check_left or check_right):
+        spans = _scan(text, tlow, plow, check_left, check_right, allow_glued=True)
     return spans
 
 

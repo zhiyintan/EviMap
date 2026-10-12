@@ -75,9 +75,9 @@ def test_multi_word_phrase_matches_when_glued_to_neighbour():
     assert _texts(doc, "Relevant experience in statistical modeling") == \
         ["Relevant experience in statistical modeling"]
     assert _texts(doc, "analytical background") == ["analytical background"]
-    # single-word phrases keep the strict boundary
-    assert _texts(doc, "modeling") == []
-    assert _texts(doc, "background") == []
+    # the glued single words are found too (see test_single_word_glued_*)
+    assert _texts(doc, "modeling") == ["modeling"]
+    assert _texts(doc, "background") == ["background"]
 
 
 def test_offsets_survive_dotted_capital_i():
@@ -112,6 +112,36 @@ def _run():
             print(f"  FAIL  {fn.__name__}: {exc}")
     print(f"\n{len(fns) - failed}/{len(fns)} passed")
     return 1 if failed else 0
+
+
+
+
+def test_single_word_glued_by_lost_line_break():
+    # Scraped postings lose line breaks between list items. When the word has
+    # no occurrence at a real break, a case or letter/digit transition counts
+    # as the lost break.
+    assert _texts("MassachusettsMichiganMinnesota", "Michigan") == ["Michigan"]
+    assert _texts("Facilitate trainingReview time", "training") == ["training"]
+    assert _texts("REST, SOAP, and HTTPReal-World experience", "HTTP") == ["HTTP"]
+    assert _texts("COMPANYMeta LOCATIONRedmond", "Meta") == ["Meta"]
+    assert _texts("vision, and PTO401k for all", "PTO") == ["PTO"]
+    assert _texts("Dynamics 365MBA preferred", "MBA") == ["MBA"]
+
+
+def test_glued_rule_never_relaxes_a_real_embedding():
+    # Lower→lower is never a break: the original "sit" bug stays fixed.
+    assert _texts("Please visit the website", "sit") == []
+    assert _texts("Salesforce admin", "Sales") == []
+    assert _texts("GPA 14.0 or 4.05", "4.0") == []
+
+
+def test_glued_rule_only_when_no_standalone_occurrence():
+    # A document with the standalone word keeps only the standalone match; the
+    # relaxed pass is not used, so "Java" is not marked inside "JavaScript".
+    doc = "JavaScript and Java developers"
+    spans = find_all_occurrences(doc, "Java")
+    assert [doc[s:e] for s, e in spans] == ["Java"]
+    assert doc[spans[0][0] - 4:spans[0][0]] == "and "
 
 
 if __name__ == "__main__":
